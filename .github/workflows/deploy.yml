@@ -6,6 +6,9 @@ on:
     paths:
       - 'index.html'
 
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -20,11 +23,10 @@ jobs:
           staticrypt index.html \
             --password ${{ secrets.STATICRYPT_PASSWORD }} \
             --template .staticrypt/login-template.html \
-            --output index.html
+            --output encrypted/index.html
 
       - name: Publicar no GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
-          include_files: index.html
+          publish_dir: ./encrypted
