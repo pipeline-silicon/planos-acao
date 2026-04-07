@@ -1,0 +1,6 @@
+{
+  "password": "",
+  "remember_me": "false",
+  "short": false,
+  "template": ".staticrypt/login-template.html"
+}
