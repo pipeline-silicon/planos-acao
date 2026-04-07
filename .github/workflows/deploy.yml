@@ -22,12 +22,7 @@ jobs:
         run: mkdir -p encrypted
 
       - name: Criptografar HTML
-        run: |
-          staticrypt index.html \
-            --password ${{ secrets.STATICRYPT_PASSWORD }} \
-            --template .staticrypt/login-template.html \
-            --directory encrypted
-            --short
+        run: staticrypt index.html --password ${{ secrets.STATICRYPT_PASSWORD }} --template .staticrypt/login-template.html --directory encrypted --short
 
       - name: Verificar arquivo gerado
         run: ls -la encrypted/
