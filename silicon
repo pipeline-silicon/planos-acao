@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pipeline Review — Silicon</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0a0c0f;
+    --surface: #111318;
+    --surface2: #181c23;
+    --border: #1f2530;
+    --border2: #2a3040;
+    --text: #e8ecf2;
+    --muted: #6b7585;
+    --accent: #00c2ff;
+    --accent2: #0084b4;
+    --ind: #3b82f6;
+    --esp: #f59e0b;
+    --cid: #10b981;
+    --all-color: #a78bfa;
+    --green: #22c55e;
+    --red: #ef4444;
+    --orange: #f97316;
+    --yellow: #eab308;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Sora', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 18px 28px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-mark {
+    width: 32px; height: 32px;
+    background: var(--accent);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 13px; color: #000;
+  }
+  .logo-text { font-size: 14px; font-weight: 600; color: var(--text); }
+  .logo-sub { font-size: 11px; color: var(--muted); font-family: 'DM Mono', monospace; }
+  .header-meta {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .header-meta strong { color: var(--accent); }
+
+  /* ── LAYOUT ── */
+  .layout {
+    display: flex;
+    flex: 1;
+  }
+
+  /* ── SIDEBAR FILTER ── */
+  aside {
+    width: 180px;
+    min-width: 180px;
+    border-right: 1px solid var(--border);
+    background: var(--surface);
+    padding: 24px 0;
+    position: sticky;
+    top: 61px;
+    height: calc(100vh - 61px);
+    overflow-y: auto;
+  }
+  .filter-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0 16px 10px;
+  }
+  .filter-opt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--muted);
+    user-select: none;
+  }
+  .filter-opt:hover { background: var(--surface2); color: var(--text); }
+  .filter-opt.active {
+    color: var(--text);
+    font-weight: 600;
+    background: var(--surface2);
+  }
+  .filter-opt.active.all { border-left-color: var(--all-color); color: var(--all-color); }
+  .filter-opt.active.ind { border-left-color: var(--ind); color: var(--ind); }
+  .filter-opt.active.esp { border-left-color: var(--esp); color: var(--esp); }
+  .filter-opt.active.cid { border-left-color: var(--cid); color: var(--cid); }
+  .bu-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+  .filter-count {
+    margin-left: auto;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    background: var(--border2);
+    padding: 2px 6px;
+    border-radius: 10px;
+    color: var(--muted);
+  }
+
+  aside .divider {
+    height: 1px; background: var(--border); margin: 16px 0;
+  }
+  .sidebar-section { padding: 0 16px 8px; }
+  .sidebar-section .filter-label { padding: 0 0 8px; }
+  .area-item { display: flex; align-items: flex-start; flex-direction: column; gap: 2px; padding: 7px 0; font-size: 12px; color: var(--muted); cursor: pointer; transition: color 0.15s; }
+  .area-item-row { display: flex; align-items: center; gap: 8px; width: 100%; }
+  .area-item:hover { color: var(--text); }
+  .area-item.active { color: var(--text); font-weight: 500; }
+  .area-item .area-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border2); flex-shrink: 0; }
+  .area-item.active .area-dot { background: var(--accent); }
+  .area-pipeline {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--accent);
+    opacity: 0.8;
+    padding-left: 14px;
+    min-height: 12px;
+  }
+
+  /* ── MAIN ── */
+  main {
+    flex: 1;
+    padding: 24px 28px;
+    overflow-y: auto;
+  }
+
+  /* ── TABS ── */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0;
+  }
+  .tab {
+    padding: 8px 16px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    color: var(--muted);
+    transition: all 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* ── KPI CARDS ── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .kpi {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .kpi:hover { border-color: var(--border2); }
+  .kpi::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+  .kpi.blue::before { background: var(--ind); }
+  .kpi.amber::before { background: var(--esp); }
+  .kpi.green::before { background: var(--cid); }
+  .kpi.purple::before { background: var(--all-color); }
+  .kpi.cyan::before { background: var(--accent); }
+  .kpi-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 8px; }
+  .kpi-value { font-size: 26px; font-weight: 700; line-height: 1; font-family: 'DM Mono', monospace; }
+  .kpi-value.small { font-size: 18px; }
+  .kpi-sub { font-size: 10px; color: var(--muted); margin-top: 6px; font-family: 'DM Mono', monospace; }
+  .kpi-value.ind { color: var(--ind); }
+  .kpi-value.esp { color: var(--esp); }
+  .kpi-value.cid { color: var(--cid); }
+  .kpi-value.accent { color: var(--accent); }
+  .kpi-value.all { color: var(--all-color); }
+
+  /* ── SECTION HEADER ── */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    margin-top: 28px;
+  }
+  .section-head:first-of-type { margin-top: 0; }
+  .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+  .section-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--border);
+    color: var(--muted);
+  }
+
+  /* ── DIAGNÓSTICO TABLE ── */
+  .diag-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  .diag-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .diag-head {
+    padding: 10px 16px;
+    background: var(--surface2);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+  }
+  .diag-row {
+    display: flex;
+    align-items: center;
+    padding: 9px 16px;
+    border-bottom: 1px solid var(--border);
+    gap: 12px;
+    font-size: 12px;
+    transition: background 0.1s;
+  }
+  .diag-row:last-child { border-bottom: none; }
+  .diag-row:hover { background: var(--surface2); }
+  .diag-row-label { flex: 1; color: var(--muted); }
+  .diag-row-label.highlight { color: var(--text); font-weight: 500; }
+  .diag-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    min-width: 52px;
+    text-align: right;
+    font-weight: 500;
+  }
+  .diag-val.total { color: var(--text); }
+  .diag-val.ind { color: var(--ind); }
+  .diag-val.esp { color: var(--esp); }
+  .diag-val.cid { color: var(--cid); }
+  .diag-val.muted { color: var(--muted); }
+  .diag-val.money { color: var(--accent); }
+
+  /* ── AÇÕES TABLE ── */
+  .acoes-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    background: var(--surface);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .acoes-table th {
+    padding: 9px 12px;
+    text-align: left;
+    background: var(--surface2);
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .acoes-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .acoes-table tr:last-child td { border-bottom: none; }
+  .acoes-table tr:hover td { background: #13171e; }
+  .hidden { display: none !important; }
+
+  .conta-name { font-weight: 600; color: var(--text); }
+  .tipo-tag {
+    font-size: 9px; font-weight: 600; text-transform: uppercase;
+    padding: 2px 7px; border-radius: 4px; letter-spacing: 0.06em;
+    display: inline-block; margin-top: 3px;
+  }
+  .tipo-tag.cliente { background: rgba(59,130,246,0.15); color: #7db4f8; }
+  .tipo-tag.parceiro { background: rgba(245,158,11,0.15); color: #fbbf24; }
+
+  .fase-badge {
+    font-size: 9px; font-weight: 500;
+    padding: 3px 8px; border-radius: 4px;
+    white-space: nowrap; display: inline-block;
+  }
+  .fase-negociacao { background: rgba(0,194,255,0.12); color: var(--accent); }
+  .fase-fechamento { background: rgba(34,197,94,0.12); color: #4ade80; }
+  .fase-desenvolvimento { background: rgba(167,139,250,0.12); color: #c4b5fd; }
+  .fase-potencial { background: rgba(107,117,133,0.15); color: var(--muted); }
+  .fase-revisao { background: rgba(249,115,22,0.12); color: #fb923c; }
+  .fase-abertura { background: rgba(16,185,129,0.12); color: #34d399; }
+  .fase-sem { background: rgba(107,117,133,0.1); color: #4b5563; }
+
+  .area-tag {
+    font-size: 9px; font-weight: 600; padding: 2px 7px;
+    border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em;
+    display: inline-block;
+  }
+  .area-comercial { background: rgba(59,130,246,0.12); color: #60a5fa; }
+  .area-marketing { background: rgba(167,139,250,0.12); color: #a78bfa; }
+  .area-eng { background: rgba(245,158,11,0.12); color: #fbbf24; }
+  .area-financeiro { background: rgba(16,185,129,0.12); color: #34d399; }
+
+  .status-tag {
+    font-size: 9px; font-weight: 600; padding: 2px 7px;
+    border-radius: 4px; display: inline-block;
+  }
+  .status-aguardando { background: rgba(107,117,133,0.15); color: var(--muted); }
+  .status-andamento { background: rgba(34,197,94,0.12); color: #4ade80; }
+  .status-finalizado { background: rgba(0,194,255,0.12); color: var(--accent); }
+  .status-stanby { background: rgba(249,115,22,0.1); color: #fb923c; }
+
+  .bu-pill {
+    font-size: 9px; font-weight: 700; padding: 2px 7px;
+    border-radius: 4px; text-transform: uppercase; letter-spacing: 0.06em;
+    display: inline-block;
+  }
+  .bu-industrial { background: rgba(59,130,246,0.15); color: #7db4f8; }
+  .bu-esportivo { background: rgba(245,158,11,0.15); color: #fbbf24; }
+  .bu-cidades { background: rgba(16,185,129,0.15); color: #34d399; }
+
+  .valor-cell {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    white-space: nowrap;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .valor-cell.big { color: #f472b6; }
+  .valor-cell.none { color: var(--muted); font-style: italic; font-size: 10px; }
+
+  .prazo-cell { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); white-space: nowrap; }
+  .prazo-cell.overdue { color: var(--red); }
+  .prazo-cell.soon { color: var(--yellow); }
+
+  .acao-text { color: #c9d1dc; max-width: 320px; line-height: 1.5; }
+  .owner-cell { color: var(--text); font-weight: 500; white-space: nowrap; font-size: 11px; }
+
+  /* ── GESTÃO GRID ── */
+  .gestao-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+  }
+  .gestao-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    transition: border-color 0.2s;
+  }
+  .gestao-card:hover { border-color: var(--border2); }
+  .gestao-cat {
+    font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+    padding: 2px 7px; border-radius: 4px; display: inline-block; margin-bottom: 10px;
+  }
+  .cat-inovacao { background: rgba(167,139,250,0.12); color: #c4b5fd; }
+  .cat-outros { background: rgba(107,117,133,0.15); color: var(--muted); }
+  .cat-contas { background: rgba(0,194,255,0.12); color: var(--accent); }
+  .gestao-plano { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
+  .gestao-meta { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+  /* ── MONITORAMENTO ── */
+  .monitor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .monitor-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .monitor-area { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+  .monitor-bar-wrap { height: 5px; background: var(--border2); border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+  .monitor-bar { height: 100%; border-radius: 3px; background: var(--accent); transition: width 0.6s ease; }
+  .monitor-stats { display: flex; gap: 12px; font-size: 10px; font-family: 'DM Mono', monospace; }
+  .monitor-stat { display: flex; flex-direction: column; gap: 2px; }
+  .monitor-stat-val { font-size: 16px; font-weight: 700; color: var(--text); }
+  .monitor-stat-label { color: var(--muted); font-size: 9px; }
+  .monitor-stat-val.green { color: var(--green); }
+  .monitor-stat-val.amber { color: var(--yellow); }
+
+  /* ── PIPELINE BAR ── */
+  .pipeline-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+  }
+  .pipeline-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 14px; }
+  .pipeline-bars { display: flex; flex-direction: column; gap: 10px; }
+  .p-bar-row { display: flex; align-items: center; gap: 12px; }
+  .p-bar-label { font-size: 12px; color: var(--muted); width: 90px; flex-shrink: 0; }
+  .p-bar-track { flex: 1; height: 8px; background: var(--border2); border-radius: 4px; overflow: hidden; }
+  .p-bar-fill { height: 100%; border-radius: 4px; transition: width 0.8s ease; }
+  .p-bar-val { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text); min-width: 100px; text-align: right; }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  /* ── ACTION CARDS ── */
+  .conta-group { margin-bottom: 16px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+  .conta-group-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+  }
+  .conta-group-name { font-size: 13px; font-weight: 700; color: var(--text); flex: 1; }
+  .conta-group-valor {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .conta-group-valor.big { color: #f472b6; }
+
+  .acao-card {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: background 0.12s;
+  }
+  .acao-card:first-of-type { border-top: none; }
+  .acao-card:hover { background: #13171e; }
+  .acao-card-body { display: flex; flex-direction: column; gap: 10px; }
+
+  .acao-card-text {
+    font-size: 12.5px;
+    color: #c4cdd9;
+    line-height: 1.7;
+    white-space: pre-line;
+  }
+  .acao-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+  .owner-pill {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--muted);
+    background: var(--border);
+    padding: 2px 8px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .owner-pill::before {
+    content: '';
+    display: inline-block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .acao-card-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 8px;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+  .acao-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    background: var(--border);
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+  .prazo-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    white-space: nowrap;
+    text-align: right;
+  }
+  .prazo-badge .prazo-label {
+    display: block;
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1px;
+  }
+
+  /* ── CHECK BUTTON ── */
+  .check-btn {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--border2);
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.18s;
+    padding: 0;
+    outline: none;
+  }
+  .check-btn:hover { border-color: var(--green); }
+  .check-btn svg { display: none; width: 12px; height: 12px; }
+  .check-btn.checked {
+    background: var(--green);
+    border-color: var(--green);
+  }
+  .check-btn.checked svg { display: block; }
+  .acao-card.done { opacity: 0.55; }
+  .acao-card.done .acao-card-text { text-decoration: line-through; color: var(--muted); }
+
+  /* ── COMMENTS ── */
+  .comments-section {
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+    padding: 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.25s ease, padding 0.25s ease;
+  }
+  .comments-section.open {
+    max-height: 600px;
+    padding: 12px 18px 14px;
+  }
+  .comments-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    color: var(--muted);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: 'Sora', sans-serif;
+    margin-top: 6px;
+    transition: color 0.15s;
+    outline: none;
+  }
+  .comments-toggle:hover { color: var(--accent); }
+  .comments-toggle .ct-icon { font-size: 11px; }
+  .comments-toggle .ct-count {
+    background: var(--border);
+    padding: 1px 5px;
+    border-radius: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+  }
+  .comments-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+  .comment-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 8px 10px;
+    font-size: 11.5px;
+    color: var(--text);
+    line-height: 1.5;
+    position: relative;
+  }
+  .comment-meta {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 4px;
+  }
+  .comment-author {
+    font-size: 10px; font-weight: 600;
+    color: var(--accent);
+  }
+  .comment-date {
+    font-size: 9px; color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+  .comment-del {
+    margin-left: auto;
+    background: none; border: none;
+    color: var(--muted); cursor: pointer;
+    font-size: 11px; padding: 0;
+    opacity: 0.5; transition: opacity 0.15s;
+  }
+  .comment-del:hover { opacity: 1; color: var(--red); }
+  .comment-text { color: #c4cdd9; }
+  .comment-input-row {
+    display: flex; gap: 8px; align-items: flex-start;
+  }
+  .comment-input {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 8px 10px;
+    font-size: 12px;
+    color: var(--text);
+    font-family: 'Sora', sans-serif;
+    resize: none;
+    outline: none;
+    min-height: 36px;
+    transition: border-color 0.15s;
+    line-height: 1.5;
+  }
+  .comment-input::placeholder { color: var(--muted); }
+  .comment-input:focus { border-color: var(--border2); }
+  .comment-send {
+    background: var(--accent2);
+    border: none;
+    border-radius: 7px;
+    padding: 8px 14px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Sora', sans-serif;
+    transition: background 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .comment-send:hover { background: var(--accent); }
+  .comment-name-row {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+  }
+  .comment-name-input {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-size: 11px;
+    color: var(--text);
+    font-family: 'Sora', sans-serif;
+    outline: none;
+    width: 140px;
+    transition: border-color 0.15s;
+  }
+  .comment-name-input:focus { border-color: var(--border2); }
+  .comment-name-label { font-size: 10px; color: var(--muted); }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div style="height:32px;display:flex;align-items:center"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 700" height="28" style="display:block"><defs><linearGradient id="lg" x1="224.51" y1="611.21" x2="994.75" y2="166.51" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f6c847"/><stop offset=".07" stop-color="#f5c244"/><stop offset=".15" stop-color="#f5b13c"/><stop offset=".25" stop-color="#f4962f"/><stop offset=".36" stop-color="#f2701d"/><stop offset=".47" stop-color="#f04107"/><stop offset=".5" stop-color="#f03200"/><stop offset=".54" stop-color="#e33311"/><stop offset=".65" stop-color="#bf3740"/><stop offset=".75" stop-color="#a33a66"/><stop offset=".85" stop-color="#8f3d81"/><stop offset=".93" stop-color="#833e92"/><stop offset="1" stop-color="#7f3f98"/></linearGradient></defs><path fill="url(#lg)" d="m339.73,595.83c-133.03,0-241.25-108.22-241.25-241.25,0-73.63,29.76-139.55,81.67-180.85,16.48-13.06,40.48-10.38,53.64,6.11,13.12,16.49,10.38,40.52-6.11,53.64-33.1,26.32-52.85,71.6-52.85,121.1,0,90.93,73.99,164.92,164.92,164.92s164.9-73.99,164.9-164.92c0-49.5-19.76-94.79-52.85-121.1-16.49-13.12-19.23-37.14-6.11-53.64,13.16-16.49,37.14-19.23,53.64-6.11,51.9,41.3,81.67,107.22,81.67,180.85,0,133.03-108.22,241.25-241.24,241.25Zm-.92-500c-30.75,0-55.67,24.93-55.67,55.68s24.93,55.67,55.67,55.67,55.68-24.93,55.68-55.67-24.93-55.68-55.68-55.68h0Zm371.98,451.41v-197.03c0-86.68,70.52-157.2,157.2-157.2s157.2,70.52,157.2,157.2v196.19c0,21.08,17.09,38.17,38.17,38.17s38.17-17.09,38.17-38.17v-196.19c0-128.78-104.76-233.54-233.54-233.54s-233.54,104.76-233.54,233.54v197.03c0,21.08,17.09,38.17,38.17,38.17s38.17-17.09,38.17-38.17Z"/></svg></div>
+    <div>
+      <div class="logo-text">Planos de Ação</div>
+      <div class="logo-sub">Pipeline Review · PR</div>
+    </div>
+  </div>
+  <div class="header-meta">
+    <strong>25 mar 2026</strong><br>
+    Próximo prazo geral: <strong>08/04</strong>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside>
+    <div class="filter-label">Filtro por BU</div>
+    <div class="filter-opt active all" onclick="setFilter('all')" id="filter-all">
+      <div class="bu-dot" style="background:var(--all-color)"></div>
+      Todas as BUs
+      <span class="filter-count">51</span>
+    </div>
+    <div class="filter-opt" onclick="setFilter('industrial')" id="filter-industrial">
+      <div class="bu-dot" style="background:var(--ind)"></div>
+      Industrial
+      <span class="filter-count">27</span>
+    </div>
+    <div class="filter-opt" onclick="setFilter('esportivo')" id="filter-esportivo">
+      <div class="bu-dot" style="background:var(--esp)"></div>
+      Esportivo
+      <span class="filter-count">13</span>
+    </div>
+    <div class="filter-opt" onclick="setFilter('cidades')" id="filter-cidades">
+      <div class="bu-dot" style="background:var(--cid)"></div>
+      Cidades
+      <span class="filter-count">11</span>
+    </div>
+    <div class="filter-opt" style="opacity:0.4;cursor:not-allowed" title="Nenhuma Pipeline Review realizada para USA">
+      <div class="bu-dot" style="background:#6366f1"></div>
+      USA
+      <span class="filter-count">—</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="sidebar-section">
+      <div class="filter-label">Filtro por Área</div>
+      <div class="area-item active" onclick="setArea('all')" id="area-all">
+        <div class="area-item-row"><div class="area-dot"></div><span>Todas</span></div>
+        <span class="area-pipeline" id="apipe-all"></span>
+      </div>
+      <div class="area-item" onclick="setArea('comercial')" id="area-comercial">
+        <div class="area-item-row"><div class="area-dot"></div><span>Comercial</span></div>
+        <span class="area-pipeline" id="apipe-comercial"></span>
+      </div>
+      <div class="area-item" onclick="setArea('marketing')" id="area-marketing">
+        <div class="area-item-row"><div class="area-dot"></div><span>Marketing</span></div>
+        <span class="area-pipeline" id="apipe-marketing"></span>
+      </div>
+      <div class="area-item" onclick="setArea('eng')" id="area-eng">
+        <div class="area-item-row"><div class="area-dot"></div><span>Eng. Comercial</span></div>
+        <span class="area-pipeline" id="apipe-eng"></span>
+      </div>
+      <div class="area-item" onclick="setArea('financeiro')" id="area-financeiro">
+        <div class="area-item-row"><div class="area-dot"></div><span>Financeiro</span></div>
+        <span class="area-pipeline" id="apipe-financeiro"></span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <div class="tab active" onclick="setTab('acoes')">Planos de Ação</div>
+      <div class="tab" onclick="setTab('diagnostico')">Diagnóstico</div>
+      <div class="tab" onclick="setTab('monitoramento')">Monitoramento</div>
+    </div>
+
+    <!-- TAB: DIAGNÓSTICO -->
+    <div class="tab-content" id="tab-diagnostico">
+
+      <!-- KPIs dinâmicos -->
+      <div class="kpi-grid" id="kpi-area">
+        <div class="kpi cyan">
+          <div class="kpi-label">Pipeline Total</div>
+          <div class="kpi-value small accent" id="kpi-pipeline">R$ 106,1M</div>
+          <div class="kpi-sub" id="kpi-pipeline-sub">todas as BUs</div>
+        </div>
+        <div class="kpi blue">
+          <div class="kpi-label">Contas Discutidas</div>
+          <div class="kpi-value accent" id="kpi-contas">41</div>
+          <div class="kpi-sub" id="kpi-contas-sub">14 clientes · 5 parceiros</div>
+        </div>
+        <div class="kpi purple">
+          <div class="kpi-label">Planos de Ação</div>
+          <div class="kpi-value all" id="kpi-planos">50</div>
+          <div class="kpi-sub" id="kpi-planos-sub">em todas as áreas</div>
+        </div>
+        <div class="kpi amber">
+          <div class="kpi-label">Acima de R$ 10M</div>
+          <div class="kpi-value" style="color:var(--yellow)" id="kpi-10m">5</div>
+          <div class="kpi-sub" id="kpi-10m-sub">oportunidades grandes</div>
+        </div>
+        <div class="kpi green">
+          <div class="kpi-label">Taxa Conclusão</div>
+          <div class="kpi-value" style="color:var(--green)">2%</div>
+          <div class="kpi-sub">1 finalizado · 3 em andamento</div>
+        </div>
+      </div>
+
+      <!-- Pipeline por BU bar -->
+      <div class="pipeline-wrap" id="pipeline-bar-section">
+        <div class="pipeline-title">Distribuição de Pipeline Gerado por BU</div>
+        <div class="pipeline-bars">
+          <div class="p-bar-row" data-bu="industrial">
+            <div class="p-bar-label">Industrial</div>
+            <div class="p-bar-track"><div class="p-bar-fill" style="width:23%; background:var(--ind)"></div></div>
+            <div class="p-bar-val" style="color:var(--ind)">R$ 33,9M</div>
+          </div>
+          <div class="p-bar-row" data-bu="esportivo">
+            <div class="p-bar-label">Esportivo</div>
+            <div class="p-bar-track"><div class="p-bar-fill" style="width:18%; background:var(--esp)"></div></div>
+            <div class="p-bar-val" style="color:var(--esp)">R$ 27,3M</div>
+          </div>
+          <div class="p-bar-row" data-bu="cidades">
+            <div class="p-bar-label">Cidades</div>
+            <div class="p-bar-track"><div class="p-bar-fill" style="width:59%; background:var(--cid)"></div></div>
+            <div class="p-bar-val" style="color:var(--cid)">R$ 87,6M</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diagnóstico detalhado -->
+      <div class="section-head">
+        <div class="section-title">Contas</div>
+        <div class="section-line"></div>
+      </div>
+      <div class="diag-grid" id="diag-contas">
+        <div class="diag-block">
+          <div class="diag-head">Composição da Carteira</div>
+          <div class="diag-row">
+            <div class="diag-row-label highlight">Contas discutidas</div>
+            <div class="diag-val total" data-total="42" data-ind="19" data-esp="11" data-cid="12">42</div>
+            <div class="diag-val ind" data-type="ind" data-total="42" data-ind="19" data-esp="11" data-cid="12">Ind 19</div>
+            <div class="diag-val esp" data-type="esp" data-total="42" data-ind="19" data-esp="11" data-cid="12">Esp 11</div>
+            <div class="diag-val cid" data-type="cid" data-total="42" data-ind="19" data-esp="11" data-cid="12">Cid 12</div>
+          </div>
+          <div class="diag-row">
+            <div class="diag-row-label">Clientes</div>
+            <div class="diag-val total" data-total="36" data-ind="14" data-esp="11" data-cid="11">36</div>
+            <div class="diag-val ind">14</div>
+            <div class="diag-val esp">11</div>
+            <div class="diag-val cid">11</div>
+          </div>
+          <div class="diag-row">
+            <div class="diag-row-label">Parceiros</div>
+            <div class="diag-val total">5</div>
+            <div class="diag-val ind">5</div>
+            <div class="diag-val esp muted">—</div>
+            <div class="diag-val cid muted">—</div>
+          </div>
+          <div class="diag-row">
+            <div class="diag-row-label" style="color:var(--red)">Sem cadastro SF</div>
+            <div class="diag-val total">1</div>
+            <div class="diag-val ind">1</div>
+            <div class="diag-val esp muted">—</div>
+            <div class="diag-val cid muted">—</div>
+          </div>
+          <div class="diag-row">
+            <div class="diag-row-label" style="color:var(--orange)">Sem valor de oport.</div>
+            <div class="diag-val total">1</div>
+            <div class="diag-val ind">1</div>
+            <div class="diag-val esp muted">—</div>
+            <div class="diag-val cid muted">—</div>
+          </div>
+        </div>
+
+        <div class="diag-block" id="diag-faixa-block">
+          <div class="diag-head" id="diag-faixa-head">Pipeline por Faixa de Valor</div>
+          <div id="diag-faixa-content"></div>
+        </div>
+      </div>
+
+      <div class="section-head" style="margin-top:20px">
+        <div class="section-title">Planos de Ação por Área</div>
+        <div class="section-line"></div>
+      </div>
+      <div class="diag-grid">
+        <div class="diag-block">
+          <div class="diag-head" id="diag-area-head">Distribuição por Área</div>
+          <div id="diag-area-content"></div>
+        </div>
+
+        <div class="diag-block">
+          <div class="diag-head">Observações e Alertas</div>
+          <div class="diag-row" style="flex-direction:column; align-items:flex-start; gap:6px">
+            <div style="font-size:11px; color:var(--red); font-weight:500">⚠ Laticínio Carolina sem cadastro no SF</div>
+            <div style="font-size:11px; color: var(--orange)">⚠ Ajinomoto sem valor de oportunidade</div>
+            <div style="font-size:11px; color:var(--yellow)">⚠ 9 contas com valor não mapeado</div>
+            <div style="font-size:11px; color:var(--muted)">ℹ Cidades: 7 contas sem valor definido</div>
+            <div style="font-size:11px; color:var(--muted)">ℹ Esportivo concentra maior ticket médio</div>
+            <div style="font-size:11px; color:var(--green); margin-top:4px">✓ 1 plano finalizado (Facchini / encantamento)</div>
+            <div style="font-size:11px; color:var(--green)">✓ 3 planos em andamento (Marketing)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TAB: PLANOS DE AÇÃO -->
+    <div class="tab-content active" id="tab-acoes">
+      <div class="section-head" style="margin-top:0">
+        <div class="section-title">Planos de Ação — BUs</div>
+        <div class="section-line"></div>
+        <div class="section-badge" id="acoes-count">51 ações</div>
+      </div>
+      <div id="acoes-cards"></div>
+    </div>
+
+    <!-- TAB: MONITORAMENTO -->
+    <div class="tab-content" id="tab-monitoramento">
+      <div class="section-head" style="margin-top:0">
+        <div class="section-title">Monitoramento de Ações por Área</div>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="kpi-grid" style="margin-bottom:24px">
+        <div class="kpi cyan">
+          <div class="kpi-label">Total de Ações</div>
+          <div class="kpi-value accent">51</div>
+          <div class="kpi-sub">em todas as áreas</div>
+        </div>
+        <div class="kpi green">
+          <div class="kpi-label">Concluídas</div>
+          <div class="kpi-value" style="color:var(--green)">3</div>
+          <div class="kpi-sub">Facchini, MaxFort, Atlas Schindler</div>
+        </div>
+        <div class="kpi amber">
+          <div class="kpi-label">Em Andamento</div>
+          <div class="kpi-value" style="color:var(--yellow)">11</div>
+          <div class="kpi-sub">22% em execução</div>
+        </div>
+        <div class="kpi blue">
+          <div class="kpi-label">Aguardando / Stanby</div>
+          <div class="kpi-value ind">37</div>
+          <div class="kpi-sub">pendentes de início</div>
+        </div>
+      </div>
+
+      <div class="monitor-grid">
+        <div class="monitor-card">
+          <div class="monitor-area">Comercial — Industrial</div>
+          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:10%; background:var(--ind)"></div></div>
+          <div class="monitor-stats">
+            <div class="monitor-stat"><div class="monitor-stat-val">10</div><div class="monitor-stat-label">Total</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val amber">5</div><div class="monitor-stat-label">Andamento</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val green">1</div><div class="monitor-stat-label">Concluídas</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--ind)">10%</div><div class="monitor-stat-label">% Concl.</div></div>
+          </div>
+        </div>
+        <div class="monitor-card">
+          <div class="monitor-area">Comercial — Esportivo</div>
+          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:0%"></div></div>
+          <div class="monitor-stats">
+            <div class="monitor-stat"><div class="monitor-stat-val">12</div><div class="monitor-stat-label">Total</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val amber">0</div><div class="monitor-stat-label">Andamento</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val green">0</div><div class="monitor-stat-label">Concluídas</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--muted)">0%</div><div class="monitor-stat-label">% Concl.</div></div>
+          </div>
+        </div>
+        <div class="monitor-card">
+          <div class="monitor-area">Comercial — Cidades</div>
+          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:0%"></div></div>
+          <div class="monitor-stats">
+            <div class="monitor-stat"><div class="monitor-stat-val">12</div><div class="monitor-stat-label">Total</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val amber">0</div><div class="monitor-stat-label">Andamento</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val green">0</div><div class="monitor-stat-label">Concluídas</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--muted)">0%</div><div class="monitor-stat-label">% Concl.</div></div>
+          </div>
+        </div>
+        <div class="monitor-card">
+          <div class="monitor-area" style="color:var(--all-color)">Marketing</div>
+          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:25%; background:var(--all-color)"></div></div>
+          <div class="monitor-stats">
+            <div class="monitor-stat"><div class="monitor-stat-val">8</div><div class="monitor-stat-label">Total</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val amber">5</div><div class="monitor-stat-label">Andamento</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val green">2</div><div class="monitor-stat-label">Concluídas</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--all-color)">25%</div><div class="monitor-stat-label">% Concl.</div></div>
+          </div>
+        </div>
+        <div class="monitor-card">
+          <div class="monitor-area" style="color:var(--esp)">Eng. Comercial</div>
+          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:0%; background:var(--esp)"></div></div>
+          <div class="monitor-stats">
+            <div class="monitor-stat"><div class="monitor-stat-val">6</div><div class="monitor-stat-label">Total</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val amber">0</div><div class="monitor-stat-label">Andamento</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val green">0</div><div class="monitor-stat-label">Concluídas</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--muted)">0%</div><div class="monitor-stat-label">% Concl.</div></div>
+          </div>
+        </div>
+        <div class="monitor-card">
+          <div class="monitor-area" style="color:var(--cid)">Financeiro</div>
+          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:0%; background:var(--cid)"></div></div>
+          <div class="monitor-stats">
+            <div class="monitor-stat"><div class="monitor-stat-val">3</div><div class="monitor-stat-label">Total</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val amber">1</div><div class="monitor-stat-label">Andamento</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val green">0</div><div class="monitor-stat-label">Concluídas</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--muted)">0%</div><div class="monitor-stat-label">% Concl.</div></div>
+          </div>
+        </div>
+        <div class="monitor-card" style="border-color:var(--border2); opacity:0.5">
+          <div class="monitor-area">TOTAL GERAL</div>
+          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:2%"></div></div>
+          <div class="monitor-stats">
+            <div class="monitor-stat"><div class="monitor-stat-val">51</div><div class="monitor-stat-label">Total</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val amber">11</div><div class="monitor-stat-label">Andamento</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val green">3</div><div class="monitor-stat-label">Concluídas</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val accent">5,9%</div><div class="monitor-stat-label">% Concl.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+</div>
+
+<script>
+// ── DATA ──
+// valorRef = valor da oportunidade na primeira linha da conta (evita dupla contagem).
+// valor = valor da conta exibido em todas as linhas dela.
+const acoesData = [
+  // INDUSTRIAL
+  {n:1,  bu:'Industrial', conta:'OCLE',                                 tipo:'Parceiro', area:'Comercial',      owner:'Pilato',     prazo:'08/04', valor:752919.56,   valorRef:752919.56,   status:'Aguardando início', acao:'Ações de relacionamento (ex: almoços, levar a jogos) com Bruno da OCLE para descobrir informações estratégicas da empresa:\n\n• Faturamento;\n• Donos/hierarquia;\n• Mercados: parceiros e clientes preferenciais com quem a OCLE ganha mais obras;\n• Inovação: Entender se eles têm alguma "dor" ou se precisam de algum produto específico que a empresa possa desenvolver e fornecer para ajudá-los;\n• Número de funcionários;\n• Principais parceiros;\n• Volume de luminárias compradas no ano passado.\n• Terceirizados: Visitar uma obra da OCLE para descobrir quem são os terceiros (empreiteiros) que eles contratam para a execução, também servirá como pesquisa de mercado para avaliar se a própria empresa poderia pivotar no futuro e atuar gerindo obras de forma parecida com o que a OCLE faz.'},
+  {n:2,  bu:'Industrial', conta:'LOG',                                  tipo:'Cliente',  area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:1128808.89,  valorRef:1128808.89,  status:'Aguardando início', acao:'Verificar se a luminária Highbay de 120W com 5 anos de garantia tem preço competitivo para vencer o leilão. Considerar visitar uma obra executada pelos concorrentes para medir se eles realmente entregam a luminosidade (lux) prometida.'},
+  {n:3,  bu:'Industrial', conta:'LOG',                                  tipo:'Cliente',  area:'Marketing',      owner:'Mychael',    prazo:'08/04', valor:1128808.89,  valorRef:null,        status:'Em andamento',     acao:'Realizar levantamento de informações e análise competitiva sobre a Luther e a ILumen no contexto da indústria.'},
+  {n:4,  bu:'Industrial', conta:'Sabor & Arte',                         tipo:'Cliente',  area:'Financeiro',     owner:'Rodrygo',    prazo:'08/04', valor:175000.22,   valorRef:175000.22,       status:'Em andamento',     acao:'1 entrada de sinal, e + 4 parcelas. Equipe financeira buscando uma maneira de financiar o cliente.'},
+  {n:5,  bu:'Industrial', conta:'Electrolux',                           tipo:'Cliente',  area:'Marketing',      owner:'Rebeca',     prazo:'08/04', valor:132850.71,   valorRef:132850.71,   status:'Em andamento',     acao:'Criar um programa institucional de relacionamento chamado "Jogando Junto", conduzido pelo Marketing, para viabilizar ações com contas estratégicas que possuem restrições de compliance, evitando que a abordagem seja feita diretamente pelo time comercial.'},
+  {n:6,  bu:'Industrial', conta:'Magnera',                              tipo:'Cliente',  area:'Comercial',      owner:'Pilato',     prazo:'08/04', valor:11000000,    valorRef:11000000,    status:'Aguardando início', acao:'Mapeamento de Decisor: investigar e encontrar o tomador de decisão final/CFO da Magneira para direcionar a comunicação estratégica diretamente a ele e acelerar a oportunidade.\n\nModelagem Financeira e Business Case: Utilizar os insights de mercado colhidos com especialistas (como a visão do CFO do Banco CNH) para estruturar opções financeiras robustas (como leasing) e avaliando precificação com planilha aberta ou redução estratégica de margem em equipamentos, com o objetivo de apresentar um payback altamente atrativo (abaixo de 5 anos) que justifique o investimento.\n\nAtendimento Consultivo (Opções Técnicas Integradas): Substituir o discurso padrão de venda de produtos por uma abordagem de reengenharia. Como a iluminação atual deles (da marca GE) começou a queimar e eles possuem metas de redução de energia, a equipe deve desenhar e apresentar o pacote completo unindo Usina Solar + Retrofit de LED, comprovando o impacto direto no fluxo de caixa da indústria.'},
+  {n:7,  bu:'Industrial', conta:'Facchini',                             tipo:'Cliente',  area:'Marketing',      owner:'Rebeca',     prazo:'30/03', valor:341737.20,   valorRef:341737.20,   status:'Finalizado',       acao:'Encantamento na entrega: Para combater a desconfiança do cliente em relação à eficiência prometida, a equipe deve focar em "encantar" a entrega dessas 10 unidades. A ação envolve enviá-las em uma embalagem especial acompanhada de um cartão com uma mensagem'},
+  {n:8,  bu:'Industrial', conta:'Facchini',                             tipo:'Cliente',  area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:341737.20,   valorRef:null,        status:'Aguardando início', acao:'Acompanhamento Técnico (Suporte): A equipe deve perguntar ao cliente exatamente quais critérios serão testados e disponibilizar alguém da engenharia comercial para ir até o local apoiar e acompanhar esse teste. Também ficou acordado que o Thiago (vendedor) deve fazer uma visita presencial lá'},
+  {n:9,  bu:'Industrial', conta:'CONFAB',                               tipo:'Cliente',  area:'Marketing',      owner:'Rebeca',     prazo:'30/03', valor:1268542,     valorRef:1268542,     status:'Stanby',           acao:'Aguardar o tempo do cliente para o envio do pedido. Para quebrar o gelo e acelerar as próximas áreas, enviar uma camiseta da Seleção Brasileira para o contato.'},
+  {n:10, bu:'Industrial', conta:'SINCOL',                               tipo:'Cliente',  area:'Comercial',      owner:'Pilato',     prazo:'08/04', valor:64003.82,    valorRef:64003.82,    status:'Em andamento', acao:'Desconversar sobre automação neste momento e focar na qualidade superior da luminária. Tentar descobrir se o cliente tem um potencial de compra maior do que os R$ 64.000 orçados'},
+  {n:11, bu:'Industrial', conta:'Caterpillar Campo Largo',              tipo:'Cliente',  area:'Comercial',      owner:'Pilato',     prazo:'08/04', valor:2075463,     valorRef:2075463,     status:'Em andamento', acao:'Aproximar-se de Edmilson (convidá-lo ao escritório, dar camiseta da Seleção Brasileira).'},
+  {n:12, bu:'Industrial', conta:'Caterpillar Campo Largo',              tipo:'Cliente',  area:'Comercial',      owner:'Pilato',     prazo:'08/04', valor:2075463,     valorRef:null,        status:'Aguardando início',           acao:'Fazer uma análise/perícia preventiva da fábrica junto à Segurança do Trabalho para patrocinar a troca de toda a planta (reprojeto).'},
+  {n:13, bu:'Industrial', conta:'Caterpillar Campo Largo',              tipo:'Cliente',  area:'Marketing',      owner:'Rebeca',     prazo:'08/04', valor:2075463,     valorRef:null,        status:'Em andamento',     acao:'Criar um Business Case (vídeos/depoimentos) sobre a durabilidade de 8 anos do produto. Abrir a oportunidade de projeto RGB na área externa'},
+  {n:14, bu:'Industrial', conta:'Caterpillar Piracicaba',               tipo:'Cliente',  area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:3834803.14,  valorRef:3834803.14,  status:'Aguardando início', acao:'Mapear três níveis de automação de mercado (básico, intermediário e top/chinês de ponta) com três grandes empresas de mercado:\n- Lutron\n- Crestron\n- Pesquisar alguma empresa chinesa.\nApresentar internamente antes de levar ao cliente num prazo de um mês.'},
+  {n:15, bu:'Industrial', conta:'Caterpillar Piracicaba',               tipo:'Cliente',  area:'Comercial',      owner:'Jeff',       prazo:'08/04', valor:3834803.14,  valorRef:null,        status:'Aguardando início', acao:'Trazer o CFO do Banco CNH (Diogo) para dar insights sobre modelagem financeira e payback para indústrias.'},
+  {n:16, bu:'Industrial', conta:'Sulfibra',                             tipo:'Cliente',  area:'Comercial',      owner:'Pilato',     prazo:'08/04', valor:458390.07,   valorRef:458390.07,   status:'Em andamento', acao:'Elaborar um laudo comparativo dos diferenciais técnicos em relação aos concorrentes A, B e C.'},
+  {n:17, bu:'Industrial', conta:'Sulfibra',                             tipo:'Cliente',  area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:458390.07,   valorRef:null,        status:'Standby', acao:'Revisar a precificação (pricing) para ser mais agressivo/ousado.'},
+  {n:18, bu:'Industrial', conta:'Atlas Schindler',                      tipo:'Cliente',  area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:11220589.78, valorRef:11220589.78, status:'Aguardando início', acao:'Estruturar opções técnicas como BESS (baterias), oferecer opções financeiras (leasing) e ajustar o modelo de negócios (precificação com planilha aberta/redução de margem em equipamentos)'},
+  {n:19, bu:'Industrial', conta:'Atlas Schindler',                      tipo:'Cliente',  area:'Comercial',      owner:'Pilato',     prazo:'08/04', valor:11220589.78, valorRef:null,        status:'Finalizado', acao:'Descobrir o nome do diretor em férias.'},
+  {n:20, bu:'Industrial', conta:'Laticínio Carolina / ICMS',            tipo:'Cliente',  area:'Financeiro',     owner:'Rodrygo',    prazo:'08/04', valor:null,        valorRef:null,        status:'Aguardando início', acao:'Passar a investigação da regra tributária para o Rod (área fiscal).'},
+  {n:21, bu:'Industrial', conta:'Laticínio Carolina / ICMS',            tipo:'Cliente',  area:'Financeiro',     owner:'Rodrygo',    prazo:'08/04', valor:null,        valorRef:null,        status:'Aguardando início', acao:'Tentar aproximação com os decisores do laticínio através do irmão do Felipinho'},
+  {n:22, bu:'Industrial', conta:'Ledvance',                             tipo:'Parceiro', area:'Eng. Comercial', owner:'José Lucas',     prazo:'08/04', valor:null,        valorRef:null,        status:'Aguardando início', acao:'Realizar uma reunião para alinhar diretrizes de comissionamento caso a empresa decida atuar como parceira que "pina" (especifica) o projeto para que a Ledvance fature direto'},
+  {n:23, bu:'Industrial', conta:'Emergent Cold (Negociação via Óptima)',tipo:'Parceiro', area:'Comercial',      owner:'Pilato',     prazo:'08/04', valor:null,        valorRef:null,        status:'Em andamento', acao:'Aceitar a divisão 50/50 do lucro, mas com a condição de contabilizar e descontar todos os custos de viagem e engenharia antes da divisão. Exigir também que, caso o negócio não feche, o prejuízo das visitas seja dividido por dois'},
+  {n:24, bu:'Industrial', conta:'Ajinomoto',                            tipo:'Cliente',  area:'Comercial',      owner:'Pilato',     prazo:'08/04', valor:null,        valorRef:null,        status:'Em andamento', acao:'Perguntar ao contato interno (LB) se o tomador de decisão do projeto grande tem relação direta com essa associação (ex: se ele joga bola lá). Se sim, o projeto pequeno ganha prioridade estratégica'},
+  {n:25, bu:'Industrial', conta:'MaxFort',                              tipo:'Cliente',  area:'Marketing',      owner:'Rebeca',     prazo:'05/04', valor:2147121.98,  valorRef:2147121.98,  status:'Finalizado',     acao:'Levar o Beto Kirsch e família para jogo do Grêmio x Remo e presentear com camisa.'},
+  {n:26, bu:'Industrial', conta:'Hollos',                               tipo:'Parceiro', area:'Marketing',      owner:'Mychael',    prazo:'08/04', valor:65423.11,    valorRef:65423.11,    status:'Em andamento',     acao:'Criar um One Pager para entender as dores da Hollos na mesma modelagem da OCLE'},
+  {n:27, bu:'Industrial', conta:'Engemase',                             tipo:'Parceiro', area:'Marketing',      owner:'Mychael',    prazo:'08/04', valor:null,        valorRef:null,        status:'Em andamento',     acao:'Criar um One Pager para entender as dores da parceira Engemasi na mesma modelagem da OCLE'},
+  // ESPORTIVO
+  {n:28, bu:'Esportivo',  conta:'Vila Belmiro',                         tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:null,        valorRef:null,        status:'Aguardando início', acao:'Agendar reunião presencial (um jantar/relacionamento) em São Paulo com Roger Antunes da WTorres. Este contato é a chave para destravar a obra da Vila Belmiro e oportunidades de iluminação RGB no Allianz Parque.'},
+  {n:29, bu:'Esportivo',  conta:'Barretos',                             tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:1547045.60,  valorRef:1547045.60,  status:'Aguardando início', acao:'Michel deve focar em trazer o decisor Geromim para Curitiba para proporcionar uma experiência exclusiva (ex: show de luzes no estádio), já que presentes tradicionais não funcionam com o perfil dele.'},
+  {n:30, bu:'Esportivo',  conta:'Náutico',                              tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:640555.40,   valorRef:640555.40,   status:'Aguardando início', acao:'Ligar para os contatos Gabriel e Fabinho para entender os riscos internos do negócio, fazer uma contraproposta aumentando a entrada para R$ 350 mil, e revisar o contrato para incluir multas altas, como a retirada dos refletores em caso de 60 dias de atraso.\n\nMandamos presente como pós-venda.'},
+  {n:31, bu:'Esportivo',  conta:'Mobit',                                tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:784000,      valorRef:784000,      status:'Aguardando início', acao:'Ficar próximo do cliente para evitar que busquem alternativas e mapear a conta para possíveis ações de relacionamento'},
+  {n:32, bu:'Esportivo',  conta:'Barbalhão (Mangueirão / OCC)',         tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:1400000,     valorRef:1400000,     status:'Aguardando início', acao:'Aguardar a antecipação da minuta do contrato prevista para a mesma semana e tratar diretamente com a gerente Paula, evitando envolver o diretor geral Marco Aurélio na negociação'},
+  {n:33, bu:'Esportivo',  conta:'Arena Pantanal',                       tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:4000000,     valorRef:4000000,     status:'Aguardando início', acao:'Atualizar e garantir a documentação de acervo técnico com projetos que unam iluminação esportiva e cênica para criar um diferencial'},
+  {n:34, bu:'Esportivo',  conta:'Arena Pernambuco',                     tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:3393324.21,  valorRef:3393324.21,  status:'Aguardando início', acao:'Intensificar os contatos e focar a aproximação na Ângela, que lidera administrativamente o processo'},
+  {n:35, bu:'Esportivo',  conta:'Sarasate',                             tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:1000000,     valorRef:1000000,     status:'Aguardando início', acao:'Manter o relacionamento ativo e aguardar, com possibilidade de ações presenciais no futuro'},
+  {n:36, bu:'Esportivo',  conta:'SEJEL',                                tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:5957030,     valorRef:5957030,     status:'Aguardando início', acao:'Fazer uma ligação de alinhamento com o contato Luquinha'},
+  {n:37, bu:'Esportivo',  conta:'SEJEL',                                tipo:'Cliente',  area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:5957030,     valorRef:null,        status:'Aguardando início', acao:'O Pedro deve entregar a conclusão do projeto de engenharia, enquanto o José constrói e compila toda a documentação administrativa exigida, visto que a verba de R$ 1 milhão já está disponível'},
+  {n:38, bu:'Esportivo',  conta:'Palotina',                             tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'30/03', valor:2500000,     valorRef:2500000,     status:'Aguardando início', acao:'Montar toda a documentação do zero e acompanhar de perto o processo da prefeitura para a contratação do engenheiro Fábio (o mesmo de Maringá), que será feita por dispensa de licitação'},
+  {n:39, bu:'Esportivo',  conta:'Sergipe',                              tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:4900000,     valorRef:4900000,     status:'Aguardando início', acao:'Aguardar a definição da reunião. Se houver a mudança para semi-integrada, será preciso voltar para a prancheta e refazer as alterações nos documentos. Além disso, foi sugerido aproveitar a boa relação com a secretária Mariana para mapear o estado inteiro em busca de novas oportunidades'},
+  {n:40, bu:'Esportivo',  conta:'Operário',                             tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:1200000,     valorRef:1200000,     status:'Aguardando início', acao:'Revisar orçamentos e simular um financiamento com parcela atrativa (ex: R$ 33 mil). Usar o valor da parcela como "isca" para trazer o presidente ao escritório.'},
+  // CIDADES
+  {n:41, bu:'Cidades',    conta:'Londrina / Projeto Atlas',             tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:11000000,    valorRef:11000000,    status:'Aguardando início', acao:'Agendar e realizar a reunião inicial com o prefeito para apresentar o projeto.'},
+  {n:42, bu:'Cidades',    conta:'Lupa',                                 tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:25000000,    valorRef:25000000,    status:'Aguardando início', acao:'Conta classificada como "Tipo 1". Fazer apenas acompanhamento macro e aguardar movimentações, sem ação imediata de fechamento.'},
+  {n:43, bu:'Cidades',    conta:'Brusque',                              tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:15000000,    valorRef:15000000,    status:'Aguardando início', acao:'Receber o cliente, apresentar os estudos de energia gerados pelo Andrei e validar juridicamente (com parceiros como Pironte) o status da lei de PPP no município'},
+  {n:44, bu:'Cidades',    conta:'Maringá (Eixos Will Davis e Catedral)',tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:4600000,     valorRef:4600000,     status:'Aguardando início', acao:'Tentar falar diretamente com o CEO/Prefeito para "tirar da jogada" o dono da Poste Luz que travou a comunicação, e ajudar na contratação do engenheiro.'},
+  {n:45, bu:'Cidades',    conta:'Ibiporã',                              tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:12000000,    valorRef:12000000,    status:'Aguardando início', acao:'Ligar para IAT e prefeitura para assumir a burocracia e encontrar o Cadastro Ambiental Rural (CAR) do terreno que sumiu nos órgãos públicos.'},
+  {n:46, bu:'Cidades',    conta:'Umuarama',                             tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:4500000,     valorRef:4500000,     status:'Aguardando início', acao:'Agilizar a engenharia comercial para readequar o tamanho dos projetos e planilhas orçamentárias à nova realidade do terreno'},
+  {n:47, bu:'Cidades',    conta:'Arapoti',                              tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:3000000,     valorRef:3000000,     status:'Aguardando início', acao:'Finalizar o termo de referência e pedir ao contato "Marine" para ajudar a destravar a prioridade dentro da secretaria'},
+  {n:48, bu:'Cidades',    conta:'USP (São Carlos)',                     tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:5500000,     valorRef:5500000,     status:'Aguardando início', acao:'Como estão ignorando prazos, buscar via Lucas Flores ou cruzar dados partidários do prefeito (PL) para tentar contato direto com o Reitor em São Carlos.'},
+  {n:49, bu:'Cidades',    conta:'Docas',                                tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:3000000,     valorRef:3000000,     status:'Aguardando início', acao:'Alinhar com consórcio (Fábio da FIP) para garantir medições e faturamentos parciais focados apenas no que for entregue (exigirá importação por falta de estoque)'},
+  {n:50, bu:'Cidades',    conta:'Campo Mourão',                         tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:1300000,     valorRef:1300000,     status:'Aguardando início', acao:'Resolver pendências antigas (retirada de abelhas dos postes e roubo de cabos). Marcar visita presencial via Marília para falar com o Douglas e destravar o novo aditivo.'},
+  {n:51, bu:'Cidades',    conta:'Guarapuava e Cascavel',                tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:null,        valorRef:null,        status:'Aguardando início', acao:'Agendar conversas iniciais com os prefeitos'},
+  {n:52, bu:'Cidades',    conta:'Itaquaquecetuba',                      tipo:'Cliente',  area:'Comercial',      owner:'Michel',     prazo:'08/04', valor:2700000,     valorRef:2700000,     status:'Aguardando início', acao:'O projeto e a documentação já foram totalmente entregues ao cliente. Ação atual é apenas aguardar a publicação.'},
+];
+
+
+
+const gestaoData = [
+  {cat:'Inovação', plano:'Rodar pesquisa de som para estádios', conta:'—', bu:'Esportivo', resp:'Definir'},
+  {cat:'Inovação', plano:'Luminária solar — Google Ads', conta:'—', bu:'Marketing', resp:'Kauana'},
+  {cat:'Inovação', plano:'Luminária solar — Landing Page (LP)', conta:'—', bu:'Marketing', resp:'Kauana'},
+  {cat:'Inovação', plano:'Luminária solar — Inbound', conta:'—', bu:'Marketing', resp:'Kauana'},
+  {cat:'Inovação', plano:'Luminária para LOG', conta:'—', bu:'Industrial', resp:'Definir'},
+  {cat:'Inovação', plano:'Potenze (luminárias EX)', conta:'—', bu:'Industrial', resp:'Definir'},
+  {cat:'Outros', plano:'Reforçar licitação tipo 2', conta:'—', bu:'Cidades', resp:'Definir'},
+  {cat:'Outros', plano:'Ledvance (parceria)', conta:'Ledvance', bu:'Industrial', resp:'Definir'},
+  {cat:'Outros', plano:'Problema de Cidades Magno', conta:'—', bu:'Cidades', resp:'Definir'},
+  {cat:'Contas', plano:'W-Torres — Palmeiras, Santos e outros', conta:'W-Torres', bu:'Esportivo', resp:'Definir'},
+  {cat:'Contas', plano:'Mateus Andreazza', conta:'Mateus Andreazza', bu:'—', resp:'Definir'},
+  {cat:'Contas', plano:'Edinho — usinas para demanda irmão dele', conta:'Edinho', bu:'Industrial', resp:'Definir'},
+  {cat:'Contas', plano:'Desenvolvimento de Oportunidade', conta:'Petrobras', bu:'Industrial', resp:'Definir'},
+  {cat:'Contas', plano:'Qualificação / validação de interesse', conta:'Ajinomoto', bu:'Industrial', resp:'Definir'},
+  {cat:'Contas', plano:'Qualificação / validação de interesse', conta:'Optima', bu:'Industrial', resp:'Definir'},
+  {cat:'Contas', plano:'Coamo — crédito via Sicredi (deságio 32% x pix)', conta:'Coamo', bu:'Industrial', resp:'Definir'},
+  {cat:'Contas', plano:'Desenvolvimento de Oportunidade', conta:'Cacau Park', bu:'Industrial', resp:'Definir'},
+  {cat:'Contas', plano:'Prospecção / mapeamento', conta:'Laticínio Carolina', bu:'Industrial', resp:'Definir'},
+];
+
+// ── CHECK & COMMENT STATE ──
+let checkState = {};
+let commentState = {};
+let lastAuthor = '';
+
+try {
+  const saved = localStorage.getItem('silicon_pr03_checks');
+  if (saved) checkState = JSON.parse(saved);
+} catch(e) {}
+try {
+  const saved = localStorage.getItem('silicon_pr03_comments');
+  if (saved) commentState = JSON.parse(saved);
+} catch(e) {}
+try {
+  const saved = localStorage.getItem('silicon_pr03_author');
+  if (saved) lastAuthor = saved;
+} catch(e) {}
+
+function toggleCheck(cardId) {
+  checkState[cardId] = !checkState[cardId];
+  try { localStorage.setItem('silicon_pr03_checks', JSON.stringify(checkState)); } catch(e) {}
+  const card = document.getElementById('card-' + cardId);
+  const btn = card ? card.querySelector('.check-btn') : null;
+  if (card) card.classList.toggle('done', checkState[cardId]);
+  if (btn) {
+    btn.classList.toggle('checked', checkState[cardId]);
+    btn.title = checkState[cardId] ? 'Desmarcar' : 'Marcar como concluído';
+  }
+}
+
+function toggleComments(cardId) {
+  const section = document.getElementById('comments-' + cardId);
+  if (!section) return;
+  section.classList.toggle('open');
+  if (section.classList.contains('open')) {
+    const input = document.getElementById('cinput-' + cardId);
+    if (input) setTimeout(() => input.focus(), 260);
+  }
+}
+
+function addComment(cardId) {
+  const input = document.getElementById('cinput-' + cardId);
+  const nameInput = document.getElementById('cname-' + cardId);
+  if (!input) return;
+  const text = input.value.trim();
+  if (!text) return;
+  const author = (nameInput && nameInput.value.trim()) || 'Anônimo';
+  lastAuthor = author;
+  try { localStorage.setItem('silicon_pr03_author', author); } catch(e) {}
+  if (!commentState[cardId]) commentState[cardId] = [];
+  const now = new Date();
+  const date = now.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}) + ' ' + now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+  commentState[cardId].push({ author, text, date });
+  try { localStorage.setItem('silicon_pr03_comments', JSON.stringify(commentState)); } catch(e) {}
+  input.value = '';
+  // Update comment list
+  const list = document.getElementById('clist-' + cardId);
+  if (list) {
+    const c = commentState[cardId][commentState[cardId].length - 1];
+    const idx = commentState[cardId].length - 1;
+    list.insertAdjacentHTML('beforeend', `
+      <div class="comment-item">
+        <div class="comment-meta">
+          <span class="comment-author">${c.author}</span>
+          <span class="comment-date">${c.date}</span>
+          <button class="comment-del" onclick="deleteComment('${cardId}', ${idx})" title="Remover">✕</button>
+        </div>
+        <div class="comment-text">${c.text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+      </div>`);
+  }
+  updateCommentToggle(cardId);
+}
+
+function deleteComment(cardId, idx) {
+  if (!commentState[cardId]) return;
+  commentState[cardId].splice(idx, 1);
+  try { localStorage.setItem('silicon_pr03_comments', JSON.stringify(commentState)); } catch(e) {}
+  // Re-render comment list
+  const list = document.getElementById('clist-' + cardId);
+  if (list) {
+    list.innerHTML = commentState[cardId].map((c, i) => `
+      <div class="comment-item">
+        <div class="comment-meta">
+          <span class="comment-author">${c.author}</span>
+          <span class="comment-date">${c.date}</span>
+          <button class="comment-del" onclick="deleteComment('${cardId}', ${i})" title="Remover">✕</button>
+        </div>
+        <div class="comment-text">${c.text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+      </div>`).join('');
+  }
+  updateCommentToggle(cardId);
+}
+
+function updateCommentToggle(cardId) {
+  const label = document.getElementById('ct-label-' + cardId);
+  if (!label) return;
+  const count = (commentState[cardId] || []).length;
+  label.textContent = count > 0 ? count + ' comentário' + (count > 1 ? 's' : '') : 'Comentar';
+}
+
+// ── STATE ──
+let activeBU = 'all';
+let activeArea = 'all';
+
+// ── RENDER ──
+function getFaseBadge(fase) {
+  const f = (fase||'').toLowerCase();
+  if (f.includes('negociação')) return `<span class="fase-badge fase-negociacao">${fase}</span>`;
+  if (f.includes('fechamento') || f.includes('fechado')) return `<span class="fase-badge fase-fechamento">${fase}</span>`;
+  if (f.includes('desenvolvimento')) return `<span class="fase-badge fase-desenvolvimento">${fase}</span>`;
+  if (f.includes('potencial')) return `<span class="fase-badge fase-potencial">${fase}</span>`;
+  if (f.includes('revisão')) return `<span class="fase-badge fase-revisao">${fase}</span>`;
+  if (f.includes('abertura')) return `<span class="fase-badge fase-abertura">${fase}</span>`;
+  if (f.includes('sem op') || f.includes('—') || f==='') return `<span class="fase-badge fase-sem">—</span>`;
+  return `<span class="fase-badge fase-potencial">${fase}</span>`;
+}
+function getAreaTag(area) {
+  const a = area.toLowerCase();
+  if (a.includes('comercial') && !a.includes('eng')) return `<span class="area-tag area-comercial">${area}</span>`;
+  if (a.includes('marketing')) return `<span class="area-tag area-marketing">${area}</span>`;
+  if (a.includes('eng')) return `<span class="area-tag area-eng">${area}</span>`;
+  if (a.includes('financeiro')) return `<span class="area-tag area-financeiro">${area}</span>`;
+  return `<span class="area-tag area-comercial">${area}</span>`;
+}
+function getStatusTag(status) {
+  const s = status.toLowerCase();
+  if (s.includes('aguardando')) return `<span class="status-tag status-aguardando">Aguardando</span>`;
+  if (s.includes('andamento')) return `<span class="status-tag status-andamento">Em andamento</span>`;
+  if (s.includes('finalizado')) return `<span class="status-tag status-finalizado">Finalizado</span>`;
+  if (s.includes('stanby') || s.includes('standby')) return `<span class="status-tag status-stanby">Stanby</span>`;
+  return `<span class="status-tag status-aguardando">${status}</span>`;
+}
+function formatValor(v) {
+  if (!v) return '<span class="valor-cell none">—</span>';
+  if (v >= 10000000) return `<span class="valor-cell big">R$ ${(v/1000000).toFixed(1)}M</span>`;
+  if (v >= 1000000) return `<span class="valor-cell">R$ ${(v/1000000).toFixed(2)}M</span>`;
+  return `<span class="valor-cell">R$ ${v.toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:0})}</span>`;
+}
+function getBUPill(bu) {
+  const b = bu.toLowerCase();
+  if (b==='industrial') return `<span class="bu-pill bu-industrial">Ind</span>`;
+  if (b==='esportivo') return `<span class="bu-pill bu-esportivo">Esp</span>`;
+  if (b==='cidades') return `<span class="bu-pill bu-cidades">Cid</span>`;
+  return `<span class="bu-pill bu-industrial">${bu}</span>`;
+}
+
+function renderAcoes() {
+  const container = document.getElementById('acoes-cards');
+  const areaMap = {comercial:'comercial', marketing:'marketing', eng:'eng. comercial', financeiro:'financeiro'};
+
+  let filtered = acoesData.filter(r => {
+    const buMatch = activeBU === 'all' || r.bu.toLowerCase() === activeBU;
+    const areaMatch = activeArea === 'all' || r.area.toLowerCase().includes(areaMap[activeArea]||'');
+    return buMatch && areaMatch;
+  });
+
+  document.getElementById('acoes-count').textContent = filtered.length + ' ações';
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<div class="empty-state">Nenhuma ação encontrada para este filtro.</div>`;
+    return;
+  }
+
+  // Group by conta (preserving order)
+  const groups = [];
+  const keyMap = new Map();
+  filtered.forEach(r => {
+    const key = r.bu + '|' + r.conta;
+    if (!keyMap.has(key)) {
+      const g = {key, bu:r.bu, conta:r.conta, tipo:r.tipo, valor:r.valor, items:[]};
+      keyMap.set(key, g);
+      groups.push(g);
+    }
+    keyMap.get(key).items.push(r);
+  });
+
+  const fmtV = v => typeof v === 'number'
+    ? `<span class="conta-group-valor${v>=10000000?' big':''}">${v>=1000000?'R$'+(v/1e6).toFixed(1)+'M':'R$'+(v/1000).toFixed(0)+'k'}</span>`
+    : '';
+
+  container.innerHTML = groups.map(g => {
+    const cards = g.items.map(r => {
+      const cardId = 'acao-' + r.n;
+      const isDone = checkState[cardId] || false;
+      const comments = commentState[cardId] || [];
+      const commentCount = comments.length;
+      const commentsHTML = comments.map((c, i) => `
+        <div class="comment-item">
+          <div class="comment-meta">
+            <span class="comment-author">${c.author}</span>
+            <span class="comment-date">${c.date}</span>
+            <button class="comment-del" onclick="deleteComment('${cardId}', ${i})" title="Remover">✕</button>
+          </div>
+          <div class="comment-text">${c.text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+        </div>`).join('');
+      return `
+      <div class="acao-card${isDone?' done':''}" id="card-${cardId}">
+        <div style="display:flex;gap:12px;align-items:flex-start;width:100%">
+          <button class="check-btn${isDone?' checked':''}" onclick="toggleCheck('${cardId}')" title="${isDone?'Desmarcar':'Marcar como concluído'}">
+            <svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 5L4.5 8.5L11 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="acao-card-body" style="flex:1">
+            <div class="acao-card-text">${r.acao.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+            <div class="acao-card-meta">
+              ${getAreaTag(r.area)}
+              <span class="owner-pill">${r.owner}</span>
+              ${getStatusTag(r.status)}
+              <button class="comments-toggle" onclick="toggleComments('${cardId}')">
+                <span class="ct-icon">💬</span>
+                <span id="ct-label-${cardId}">${commentCount > 0 ? commentCount + ' comentário' + (commentCount>1?'s':'') : 'Comentar'}</span>
+              </button>
+            </div>
+          </div>
+          <div class="acao-card-side">
+            <span class="acao-num">#${r.n}</span>
+            <span class="prazo-badge"><span class="prazo-label">Prazo</span>${r.prazo}</span>
+          </div>
+        </div>
+        <div class="comments-section" id="comments-${cardId}">
+          <div class="comments-list" id="clist-${cardId}">${commentsHTML}</div>
+          <div class="comment-name-row">
+            <span class="comment-name-label">Seu nome:</span>
+            <input class="comment-name-input" id="cname-${cardId}" type="text" placeholder="Ex: Pilato" value="${lastAuthor}">
+          </div>
+          <div class="comment-input-row">
+            <textarea class="comment-input" id="cinput-${cardId}" placeholder="Adicionar comentário..." rows="2"></textarea>
+            <button class="comment-send" onclick="addComment('${cardId}')">Enviar</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `<div class="conta-group">
+      <div class="conta-group-header">
+        ${getBUPill(g.bu)}
+        <span class="conta-group-name">${g.conta}</span>
+        <span class="tipo-tag ${g.tipo.toLowerCase()}">${g.tipo}</span>
+        ${fmtV(g.valor)}
+      </div>
+      ${cards}
+    </div>`;
+  }).join('');
+}
+
+function renderGestao() {
+  const grid = document.getElementById('gestao-grid');
+  const catClass = {Inovação:'cat-inovacao', Outros:'cat-outros', Contas:'cat-contas'};
+  grid.innerHTML = gestaoData.map(g => `
+    <div class="gestao-card">
+      <span class="gestao-cat ${catClass[g.cat]||'cat-outros'}">${g.cat}</span>
+      <div class="gestao-plano">${g.plano}</div>
+      <div class="gestao-meta">
+        ${g.conta!=='—'?`<span style="color:var(--accent);font-size:11px">↗ ${g.conta}</span>`:''}
+        ${getBUPill(g.bu)}
+        <span style="color:var(--muted);font-size:10px">Owner: <strong style="color:var(--text)">${g.resp}</strong></span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── DIAGNÓSTICO DINÂMICO ──
+const fmt = v => v >= 1000000 ? 'R$'+(v/1000000).toFixed(1)+'M' : 'R$'+(v/1000).toFixed(0)+'k';
+
+function faixaContas(buKey, minVal, maxVal) {
+  const seen = new Set();
+  return acoesData.filter(r => {
+    if (buKey !== 'all' && r.bu.toLowerCase() !== buKey) return false;
+    const key = r.bu+'|'+r.conta;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return typeof r.valor === 'number' && r.valor >= minVal && r.valor < maxVal;
+  });
+}
+function semValorContas(buKey) {
+  const seen = new Set();
+  return acoesData.filter(r => {
+    if (buKey !== 'all' && r.bu.toLowerCase() !== buKey) return false;
+    const key = r.bu+'|'+r.conta;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return typeof r.valor !== 'number' || r.valor === null;
+  });
+}
+
+function renderDiagFaixa(bu) {
+  const buList = ['industrial','esportivo','cidades'];
+  const buLabel = {industrial:'Ind', esportivo:'Esp', cidades:'Cid'};
+  const buColor = {industrial:'var(--ind)', esportivo:'var(--esp)', cidades:'var(--cid)'};
+
+  const colHeaders = bu === 'all'
+    ? buList.map(b=>`<div class="diag-val ${b==='industrial'?'ind':b==='esportivo'?'esp':'cid'}" style="font-size:9px;font-weight:700;letter-spacing:0.06em">${buLabel[b]}</div>`).join('')
+    : `<div class="diag-val" style="color:${buColor[bu]||'var(--accent)'};font-size:9px;font-weight:700">${bu.charAt(0).toUpperCase()+bu.slice(1)}</div>`;
+
+  function makeRow(label, minVal, maxVal) {
+    const list = faixaContas(bu, minVal, maxVal);
+    const soma = list.reduce((s,r)=>s+r.valor,0);
+    if (bu !== 'all') {
+      return `<div class="diag-row">
+        <div class="diag-row-label">${label}</div>
+        <div class="diag-val total">${list.length||'—'}</div>
+        <div class="diag-val" style="color:${buColor[bu]};font-family:'DM Mono',monospace;font-size:10px;min-width:60px;text-align:right">${list.length?fmt(soma):'—'}</div>
+      </div>`;
+    }
+    const cols = buList.map(b=>{
+      const n = faixaContas(b,minVal,maxVal).length;
+      return `<div class="diag-val ${b==='industrial'?'ind':b==='esportivo'?'esp':'cid'}">${n||'—'}</div>`;
+    }).join('');
+    return `<div class="diag-row">
+      <div class="diag-row-label">${label}</div>
+      <div class="diag-val total">${faixaContas('all',minVal,maxVal).length||'—'}</div>
+      ${cols}
+    </div>`;
+  }
+
+  function makeSemRow() {
+    const n = semValorContas(bu).length;
+    if (bu !== 'all') {
+      return `<div class="diag-row">
+        <div class="diag-row-label" style="color:var(--orange)">Valor não mapeado</div>
+        <div class="diag-val total">${n||'—'}</div>
+        <div class="diag-val muted" style="color:var(--muted);font-size:10px;min-width:60px;text-align:right">${n} conta${n!==1?'s':''}</div>
+      </div>`;
+    }
+    const cols = buList.map(b=>{
+      const x = semValorContas(b).length;
+      return `<div class="diag-val ${b==='industrial'?'ind':b==='esportivo'?'esp':'cid'} muted">${x||'—'}</div>`;
+    }).join('');
+    return `<div class="diag-row">
+      <div class="diag-row-label" style="color:var(--orange)">Valor não mapeado</div>
+      <div class="diag-val total">${semValorContas('all').length}</div>
+      ${cols}
+    </div>`;
+  }
+
+  const totalMapeado = (()=>{
+    const seen = new Set();
+    return acoesData.filter(r=>{
+      if (bu!=='all' && r.bu.toLowerCase()!==bu) return false;
+      const key=r.bu+'|'+r.conta;
+      if(seen.has(key)) return false;
+      seen.add(key);
+      return typeof r.valor==='number';
+    }).reduce((s,r)=>s+r.valor,0);
+  })();
+
+  document.getElementById('diag-faixa-head').textContent = 'Pipeline por Faixa de Valor';
+  document.getElementById('diag-faixa-content').innerHTML = `
+    <div class="diag-row" style="padding-bottom:6px;border-bottom:1px solid var(--border2)">
+      <div class="diag-row-label" style="font-size:9px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Faixa</div>
+      <div class="diag-val" style="font-size:9px;color:var(--muted);font-weight:600">Qtd</div>
+      ${colHeaders}
+    </div>
+    <div class="diag-row">
+      <div class="diag-row-label highlight">Valor total mapeado</div>
+      <div class="diag-val money" style="font-size:11px">${fmt(totalMapeado)}</div>
+    </div>
+    ${makeRow('Acima de R$ 10M', 10000000, Infinity)}
+    ${makeRow('Entre R$ 1M–10M', 1000000, 10000000)}
+    ${makeRow('Abaixo de R$ 1M', 0, 1000000)}
+    ${makeSemRow()}
+  `;
+}
+
+function renderDiagArea(bu) {
+  const buList = ['industrial','esportivo','cidades'];
+  const buLabel = {industrial:'Ind', esportivo:'Esp', cidades:'Cid'};
+  const buColor = {industrial:'var(--ind)', esportivo:'var(--esp)', cidades:'var(--cid)'};
+  const areas = ['Comercial','Marketing','Eng. Comercial','Financeiro','RH','Operações','Enablement'];
+
+  const countArea = (buKey, area) => acoesData.filter(r =>
+    (buKey==='all'||r.bu.toLowerCase()===buKey) && r.area.toLowerCase().includes(area.toLowerCase())
+  ).length;
+
+  const totalAll = bu==='all' ? acoesData.length : acoesData.filter(r=>r.bu.toLowerCase()===bu).length;
+
+  const colHeaders = bu === 'all'
+    ? buList.map(b=>`<div class="diag-val ${b==='industrial'?'ind':b==='esportivo'?'esp':'cid'}" style="font-size:9px;font-weight:700;letter-spacing:0.06em">${buLabel[b]}</div>`).join('')
+    : '';
+
+  const rows = areas.map(a => {
+    if (bu !== 'all') {
+      const n = countArea(bu, a);
+      return `<div class="diag-row"><div class="diag-row-label"${!n?' style="color:var(--muted)"':''}>${a}</div><div class="diag-val total"${!n?' style="color:var(--muted)"':''}>${n}</div></div>`;
+    }
+    const total = countArea('all', a);
+    const cols = buList.map(b=>{
+      const n = countArea(b,a);
+      return `<div class="diag-val ${b==='industrial'?'ind':b==='esportivo'?'esp':'cid'}"${!n?' style="opacity:0.35"':''}>${n||'0'}</div>`;
+    }).join('');
+    return `<div class="diag-row"><div class="diag-row-label"${!total?' style="color:var(--muted)"':''}>${a}</div><div class="diag-val total"${!total?' style="color:var(--muted)"':''}>${total}</div>${cols}</div>`;
+  }).join('');
+
+  const totalCols = bu==='all'
+    ? buList.map(b=>`<div class="diag-val ${b==='industrial'?'ind':b==='esportivo'?'esp':'cid'}">${acoesData.filter(r=>r.bu.toLowerCase()===b).length}</div>`).join('')
+    : '';
+
+  document.getElementById('diag-area-head').textContent = 'Distribuição por Área';
+  document.getElementById('diag-area-content').innerHTML = `
+    <div class="diag-row" style="padding-bottom:6px;border-bottom:1px solid var(--border2)">
+      <div class="diag-row-label" style="font-size:9px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Área</div>
+      <div class="diag-val" style="font-size:9px;color:var(--muted);font-weight:600">Total</div>
+      ${colHeaders}
+    </div>
+    <div class="diag-row"><div class="diag-row-label highlight">Total de planos</div><div class="diag-val total">${totalAll}</div>${totalCols}</div>
+    ${rows}
+  `;
+}
+
+
+
+// Para cada área, somamos o valorRef (valor da conta na primeira linha que o registra)
+// das ações que pertencem à BU ativa. Isso evita dupla contagem entre ações da mesma conta.
+function calcPipelineByArea(bu) {
+  const areaKeys = ['all','comercial','marketing','eng','financeiro'];
+  const areaMatch = {comercial:'comercial', marketing:'marketing', eng:'eng. comercial', financeiro:'financeiro'};
+
+  areaKeys.forEach(aKey => {
+    const filtered = acoesData.filter(r => {
+      const buMatch = bu === 'all' || r.bu.toLowerCase() === bu;
+      const aMatch = aKey === 'all' || r.area.toLowerCase().includes(areaMatch[aKey]||'');
+      return buMatch && aMatch && typeof r.valorRef === 'number';
+    });
+    const total = filtered.reduce((s, r) => s + r.valorRef, 0);
+    const el = document.getElementById('apipe-' + aKey);
+    if (el) el.textContent = total > 0 ? fmtPipe(total) : '';
+  });
+}
+
+function fmtPipe(v) {
+  if (v >= 1000000) return 'R$ ' + (v/1000000).toFixed(1) + 'M em oport.';
+  if (v >= 1000) return 'R$ ' + (v/1000).toFixed(0) + 'k em oport.';
+  return 'R$ ' + v.toLocaleString('pt-BR');
+}
+const kpiData = {
+  all:       { pipeline:'R$ 148,8M', pipelinesub:'todas as BUs', contas:'42', contassub:'37 clientes · 5 parceiros', planos:'51', planossub:'em todas as áreas', dez:'7', dezsub:'oportunidades grandes' },
+  industrial:{ pipeline:'R$ 33,9M',  pipelinesub:'BU Industrial', contas:'19', contassub:'14 clientes · 5 parceiros', planos:'27', planossub:'ações na BU', dez:'2', dezsub:'oportunidades grandes' },
+  esportivo: { pipeline:'R$ 27,3M',  pipelinesub:'BU Esportivo', contas:'11', contassub:'11 clientes · 0 parceiros', planos:'13', planossub:'ações na BU', dez:'1', dezsub:'oportunidade grande' },
+  cidades:   { pipeline:'R$ 87,6M',  pipelinesub:'BU Cidades', contas:'12', contassub:'12 clientes · 0 parceiros', planos:'11', planossub:'ações na BU', dez:'4', dezsub:'oportunidades grandes' },
+};
+
+function setFilter(bu) {
+  activeBU = bu;
+  // sidebar style
+  ['all','industrial','esportivo','cidades'].forEach(b => {
+    const el = document.getElementById('filter-'+b);
+    el.classList.remove('active','all','ind','esp','cid');
+  });
+  const classMap = {all:'all',industrial:'ind',esportivo:'esp',cidades:'cid'};
+  const el = document.getElementById('filter-'+bu);
+  el.classList.add('active', classMap[bu]);
+
+  // KPIs
+  const d = kpiData[bu];
+  document.getElementById('kpi-pipeline').textContent = d.pipeline;
+  document.getElementById('kpi-pipeline-sub').textContent = d.pipelinesub;
+  document.getElementById('kpi-contas').textContent = d.contas;
+  document.getElementById('kpi-contas-sub').textContent = d.contassub;
+  document.getElementById('kpi-planos').textContent = d.planos;
+  document.getElementById('kpi-planos-sub').textContent = d.planossub;
+  document.getElementById('kpi-10m').textContent = d.dez;
+  document.getElementById('kpi-10m-sub').textContent = d.dezsub;
+
+  // pipeline bar
+  const rows = document.querySelectorAll('.p-bar-row');
+  rows.forEach(r => {
+    if (bu === 'all') { r.style.opacity = '1'; }
+    else { r.style.opacity = r.dataset.bu === bu ? '1' : '0.25'; }
+  });
+
+  renderAcoes();
+  calcPipelineByArea(bu);
+  renderDiagArea(bu);
+  renderDiagFaixa(bu);
+}
+
+function setArea(area) {
+  activeArea = area;
+  ['all','comercial','marketing','eng','financeiro'].forEach(a => {
+    document.getElementById('area-'+a).classList.remove('active');
+  });
+  document.getElementById('area-'+area).classList.add('active');
+  renderAcoes();
+}
+
+function setTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── INIT ──
+renderAcoes();
+renderGestao();
+calcPipelineByArea('all');
+renderDiagArea('all');
+renderDiagFaixa('all');
+</script>
+</body>
+</html>
