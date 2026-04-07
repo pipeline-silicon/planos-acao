@@ -1,0 +1,30 @@
+name: Deploy dashboard
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'index.html'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar StatiCrypt
+        run: npm install -g staticrypt
+
+      - name: Criptografar HTML
+        run: |
+          staticrypt index.html \
+            --password ${{ secrets.STATICRYPT_PASSWORD }} \
+            --template .staticrypt/login-template.html \
+            --output index.html
+
+      - name: Publicar no GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          include_files: index.html
