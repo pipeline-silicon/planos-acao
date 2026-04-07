@@ -18,12 +18,18 @@ jobs:
       - name: Instalar StatiCrypt
         run: npm install -g staticrypt
 
+      - name: Criar pasta de saída
+        run: mkdir -p encrypted
+
       - name: Criptografar HTML
         run: |
           staticrypt index.html \
             --password ${{ secrets.STATICRYPT_PASSWORD }} \
             --template .staticrypt/login-template.html \
-            --output encrypted/index.html
+            --directory encrypted
+
+      - name: Verificar arquivo gerado
+        run: ls -la encrypted/
 
       - name: Publicar no GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
