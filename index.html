@@ -465,6 +465,45 @@
     font-size: 13px;
   }
 
+  .acao-fup {
+    margin-top: 8px;
+    padding: 10px 12px;
+    background: rgba(118,184,82,0.07);
+    border-left: 3px solid #76B852;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+    color: #aec99a;
+    line-height: 1.6;
+    white-space: pre-line;
+  }
+  .acao-fup-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #76B852;
+    margin-bottom: 4px;
+  }
+
+  /* ── PR LABEL CARDS ── */
+  .acao-pr-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+  .acao-pr-label span { color: var(--text); }
+  .pr2-label { color: #76B852; }
+  .pr2-label span { color: #a3d977; }
+  .pr2-card {
+    background: rgba(118,184,82,0.05);
+    border-left: 3px solid #76B852 !important;
+  }
+  .pr2-card .acao-card-text { color: #aec99a; }
+  .fup-num { color: #76B852 !important; }
+
   /* ── ACTION CARDS ── */
   .conta-group { margin-bottom: 16px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
   .conta-group-header {
@@ -487,10 +526,10 @@
   .acao-card {
     background: var(--surface);
     border-top: 1px solid var(--border);
-    padding: 14px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    padding: 16px 18px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
     transition: background 0.12s;
   }
   .acao-card:first-of-type { border-top: none; }
@@ -508,7 +547,6 @@
     flex-wrap: wrap;
     gap: 6px;
     align-items: center;
-    margin-bottom: 0;
   }
   .owner-pill {
     font-size: 10px;
@@ -561,155 +599,6 @@
     margin-bottom: 1px;
   }
 
-  /* ── CHECK BUTTON ── */
-  .check-btn {
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    border: 2px solid var(--border2);
-    background: transparent;
-    cursor: pointer;
-    flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.18s;
-    padding: 0;
-    outline: none;
-  }
-  .check-btn:hover { border-color: var(--green); }
-  .check-btn svg { display: none; width: 12px; height: 12px; }
-  .check-btn.checked {
-    background: var(--green);
-    border-color: var(--green);
-  }
-  .check-btn.checked svg { display: block; }
-  .acao-card.done { opacity: 0.55; }
-  .acao-card.done .acao-card-text { text-decoration: line-through; color: var(--muted); }
-
-  /* ── COMMENTS ── */
-  .comments-section {
-    border-top: 1px solid var(--border);
-    background: var(--bg);
-    padding: 0;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.25s ease, padding 0.25s ease;
-  }
-  .comments-section.open {
-    max-height: 600px;
-    padding: 12px 18px 14px;
-  }
-  .comments-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 10px;
-    font-weight: 600;
-    color: var(--orange);
-    cursor: pointer;
-    background: rgba(249,115,22,0.08);
-    border: 1px solid rgba(249,115,22,0.3);
-    border-radius: 6px;
-    padding: 3px 9px;
-    font-family: 'Sora', sans-serif;
-    margin-top: 0;
-    transition: all 0.15s;
-    outline: none;
-    letter-spacing: 0.04em;
-  }
-  .comments-toggle:hover { background: rgba(249,115,22,0.15); border-color: var(--orange); }
-  .comments-toggle .ct-icon { display: none; }
-  .comments-toggle .ct-count {
-    background: rgba(249,115,22,0.15);
-    padding: 1px 5px;
-    border-radius: 8px;
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    color: var(--orange);
-  }
-  .comments-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
-  .comment-item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    padding: 8px 10px;
-    font-size: 11.5px;
-    color: var(--text);
-    line-height: 1.5;
-    position: relative;
-  }
-  .comment-meta {
-    display: flex; align-items: center; gap: 8px;
-    margin-bottom: 4px;
-  }
-  .comment-author {
-    font-size: 10px; font-weight: 600;
-    color: var(--accent);
-  }
-  .comment-date {
-    font-size: 9px; color: var(--muted);
-    font-family: 'DM Mono', monospace;
-  }
-  .comment-del {
-    margin-left: auto;
-    background: none; border: none;
-    color: var(--muted); cursor: pointer;
-    font-size: 11px; padding: 0;
-    opacity: 0.5; transition: opacity 0.15s;
-  }
-  .comment-del:hover { opacity: 1; color: var(--red); }
-  .comment-text { color: #c4cdd9; }
-  .comment-input-row {
-    display: flex; gap: 8px; align-items: flex-start;
-  }
-  .comment-input {
-    flex: 1;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    padding: 8px 10px;
-    font-size: 12px;
-    color: var(--text);
-    font-family: 'Sora', sans-serif;
-    resize: none;
-    outline: none;
-    min-height: 36px;
-    transition: border-color 0.15s;
-    line-height: 1.5;
-  }
-  .comment-input::placeholder { color: var(--muted); }
-  .comment-input:focus { border-color: var(--border2); }
-  .comment-send {
-    background: var(--accent2);
-    border: none;
-    border-radius: 7px;
-    padding: 8px 14px;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: 'Sora', sans-serif;
-    transition: background 0.15s;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .comment-send:hover { background: var(--accent); }
-  .comment-name-row {
-    display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
-  }
-  .comment-name-input {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 5px 8px;
-    font-size: 11px;
-    color: var(--text);
-    font-family: 'Sora', sans-serif;
-    outline: none;
-    width: 140px;
-    transition: border-color 0.15s;
-  }
-  .comment-name-input:focus { border-color: var(--border2); }
-  .comment-name-label { font-size: 10px; color: var(--muted); }
-
   /* scrollbar */
   ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
@@ -723,14 +612,13 @@
     <div style="height:32px;display:flex;align-items:center"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 700" height="28" style="display:block"><defs><linearGradient id="lg" x1="224.51" y1="611.21" x2="994.75" y2="166.51" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f6c847"/><stop offset=".07" stop-color="#f5c244"/><stop offset=".15" stop-color="#f5b13c"/><stop offset=".25" stop-color="#f4962f"/><stop offset=".36" stop-color="#f2701d"/><stop offset=".47" stop-color="#f04107"/><stop offset=".5" stop-color="#f03200"/><stop offset=".54" stop-color="#e33311"/><stop offset=".65" stop-color="#bf3740"/><stop offset=".75" stop-color="#a33a66"/><stop offset=".85" stop-color="#8f3d81"/><stop offset=".93" stop-color="#833e92"/><stop offset="1" stop-color="#7f3f98"/></linearGradient></defs><path fill="url(#lg)" d="m339.73,595.83c-133.03,0-241.25-108.22-241.25-241.25,0-73.63,29.76-139.55,81.67-180.85,16.48-13.06,40.48-10.38,53.64,6.11,13.12,16.49,10.38,40.52-6.11,53.64-33.1,26.32-52.85,71.6-52.85,121.1,0,90.93,73.99,164.92,164.92,164.92s164.9-73.99,164.9-164.92c0-49.5-19.76-94.79-52.85-121.1-16.49-13.12-19.23-37.14-6.11-53.64,13.16-16.49,37.14-19.23,53.64-6.11,51.9,41.3,81.67,107.22,81.67,180.85,0,133.03-108.22,241.25-241.24,241.25Zm-.92-500c-30.75,0-55.67,24.93-55.67,55.68s24.93,55.67,55.67,55.67,55.68-24.93,55.68-55.67-24.93-55.68-55.68-55.68h0Zm371.98,451.41v-197.03c0-86.68,70.52-157.2,157.2-157.2s157.2,70.52,157.2,157.2v196.19c0,21.08,17.09,38.17,38.17,38.17s38.17-17.09,38.17-38.17v-196.19c0-128.78-104.76-233.54-233.54-233.54s-233.54,104.76-233.54,233.54v197.03c0,21.08,17.09,38.17,38.17,38.17s38.17-17.09,38.17-38.17Z"/></svg></div>
     <div>
       <div class="logo-text">Planos de Ação</div>
-      <div class="logo-sub">Pipeline Review · PR</div>
+      <div class="logo-sub">Pipeline Review · 08/04</div>
     </div>
   </div>
+
   <div class="header-meta">
-    <strong>25 mar 2026</strong><br>
-    Próximo prazo geral: <strong>08/04</strong>
+    Próxima Pipeline Review: <strong>22/04</strong>
   </div>
-</header>
 
 <div class="layout">
 
@@ -740,12 +628,12 @@
     <div class="filter-opt active all" onclick="setFilter('all')" id="filter-all">
       <div class="bu-dot" style="background:var(--all-color)"></div>
       Todas as BUs
-      <span class="filter-count">51</span>
+      <span class="filter-count">58</span>
     </div>
     <div class="filter-opt" onclick="setFilter('industrial')" id="filter-industrial">
       <div class="bu-dot" style="background:var(--ind)"></div>
       Industrial
-      <span class="filter-count">27</span>
+      <span class="filter-count">33</span>
     </div>
     <div class="filter-opt" onclick="setFilter('esportivo')" id="filter-esportivo">
       <div class="bu-dot" style="background:var(--esp)"></div>
@@ -755,7 +643,7 @@
     <div class="filter-opt" onclick="setFilter('cidades')" id="filter-cidades">
       <div class="bu-dot" style="background:var(--cid)"></div>
       Cidades
-      <span class="filter-count">11</span>
+      <span class="filter-count">12</span>
     </div>
     <div class="filter-opt" style="opacity:0.4;cursor:not-allowed" title="Nenhuma Pipeline Review realizada para USA">
       <div class="bu-dot" style="background:#6366f1"></div>
@@ -786,18 +674,6 @@
       <div class="area-item" onclick="setArea('financeiro')" id="area-financeiro">
         <div class="area-item-row"><div class="area-dot"></div><span>Financeiro</span></div>
         <span class="area-pipeline" id="apipe-financeiro"></span>
-      </div>
-      <div class="area-item" onclick="setArea('inovacao')" id="area-inovacao">
-        <div class="area-item-row"><div class="area-dot"></div><span>Inovação</span></div>
-        <span class="area-pipeline" id="apipe-inovacao"></span>
-      </div>
-      <div class="area-item" onclick="setArea('rh')" id="area-rh">
-        <div class="area-item-row"><div class="area-dot"></div><span>RH</span></div>
-        <span class="area-pipeline" id="apipe-rh"></span>
-      </div>
-      <div class="area-item" onclick="setArea('operacoes')" id="area-operacoes">
-        <div class="area-item-row"><div class="area-dot"></div><span>Operações</span></div>
-        <span class="area-pipeline" id="apipe-operacoes"></span>
       </div>
     </div>
   </aside>
@@ -850,8 +726,8 @@
         <div class="pipeline-bars">
           <div class="p-bar-row" data-bu="industrial">
             <div class="p-bar-label">Industrial</div>
-            <div class="p-bar-track"><div class="p-bar-fill" style="width:23%; background:var(--ind)"></div></div>
-            <div class="p-bar-val" style="color:var(--ind)">R$ 33,9M</div>
+            <div class="p-bar-track"><div class="p-bar-fill" style="width:22%; background:var(--ind)"></div></div>
+            <div class="p-bar-val" style="color:var(--ind)">R$ 33,4M</div>
           </div>
           <div class="p-bar-row" data-bu="esportivo">
             <div class="p-bar-label">Esportivo</div>
@@ -876,8 +752,8 @@
           <div class="diag-head">Composição da Carteira</div>
           <div class="diag-row">
             <div class="diag-row-label highlight">Contas discutidas</div>
-            <div class="diag-val total" data-total="42" data-ind="19" data-esp="11" data-cid="12">42</div>
-            <div class="diag-val ind" data-type="ind" data-total="42" data-ind="19" data-esp="11" data-cid="12">Ind 19</div>
+            <div class="diag-val total" data-total="41" data-ind="18" data-esp="11" data-cid="12">41</div>
+            <div class="diag-val ind" data-type="ind" data-total="41" data-ind="18" data-esp="11" data-cid="12">Ind 19</div>
             <div class="diag-val esp" data-type="esp" data-total="42" data-ind="19" data-esp="11" data-cid="12">Esp 11</div>
             <div class="diag-val cid" data-type="cid" data-total="42" data-ind="19" data-esp="11" data-cid="12">Cid 12</div>
           </div>
@@ -968,17 +844,17 @@
         </div>
         <div class="kpi green">
           <div class="kpi-label">Concluídas</div>
-          <div class="kpi-value" style="color:var(--green)">3</div>
-          <div class="kpi-sub">Facchini, MaxFort, Atlas Schindler</div>
+          <div class="kpi-value" style="color:var(--green)">2</div>
+          <div class="kpi-sub">Facchini, SINCOL</div>
         </div>
         <div class="kpi amber">
           <div class="kpi-label">Em Andamento</div>
-          <div class="kpi-value" style="color:var(--yellow)">11</div>
-          <div class="kpi-sub">22% em execução</div>
+          <div class="kpi-value" style="color:var(--yellow)">23</div>
+          <div class="kpi-sub">40% em execução</div>
         </div>
         <div class="kpi blue">
           <div class="kpi-label">Aguardando / Stanby</div>
-          <div class="kpi-value ind">37</div>
+          <div class="kpi-value ind">33</div>
           <div class="kpi-sub">pendentes de início</div>
         </div>
       </div>
@@ -986,12 +862,12 @@
       <div class="monitor-grid">
         <div class="monitor-card">
           <div class="monitor-area">Comercial — Industrial</div>
-          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:10%; background:var(--ind)"></div></div>
+          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:6%; background:var(--ind)"></div></div>
           <div class="monitor-stats">
-            <div class="monitor-stat"><div class="monitor-stat-val">10</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">5</div><div class="monitor-stat-label">Andamento</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val">16</div><div class="monitor-stat-label">Total</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val amber">9</div><div class="monitor-stat-label">Andamento</div></div>
             <div class="monitor-stat"><div class="monitor-stat-val green">1</div><div class="monitor-stat-label">Concluídas</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--ind)">10%</div><div class="monitor-stat-label">% Concl.</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--ind)">6,3%</div><div class="monitor-stat-label">% Concl.</div></div>
           </div>
         </div>
         <div class="monitor-card">
@@ -999,7 +875,7 @@
           <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:0%"></div></div>
           <div class="monitor-stats">
             <div class="monitor-stat"><div class="monitor-stat-val">12</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">0</div><div class="monitor-stat-label">Andamento</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val amber">1</div><div class="monitor-stat-label">Andamento</div></div>
             <div class="monitor-stat"><div class="monitor-stat-val green">0</div><div class="monitor-stat-label">Concluídas</div></div>
             <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--muted)">0%</div><div class="monitor-stat-label">% Concl.</div></div>
           </div>
@@ -1016,20 +892,20 @@
         </div>
         <div class="monitor-card">
           <div class="monitor-area" style="color:var(--all-color)">Marketing</div>
-          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:25%; background:var(--all-color)"></div></div>
+          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:11%; background:var(--all-color)"></div></div>
           <div class="monitor-stats">
-            <div class="monitor-stat"><div class="monitor-stat-val">8</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">5</div><div class="monitor-stat-label">Andamento</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val green">2</div><div class="monitor-stat-label">Concluídas</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--all-color)">25%</div><div class="monitor-stat-label">% Concl.</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val">9</div><div class="monitor-stat-label">Total</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val amber">8</div><div class="monitor-stat-label">Andamento</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val green">1</div><div class="monitor-stat-label">Concluídas</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--all-color)">11,1%</div><div class="monitor-stat-label">% Concl.</div></div>
           </div>
         </div>
         <div class="monitor-card">
           <div class="monitor-area" style="color:var(--esp)">Eng. Comercial</div>
           <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:0%; background:var(--esp)"></div></div>
           <div class="monitor-stats">
-            <div class="monitor-stat"><div class="monitor-stat-val">6</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">0</div><div class="monitor-stat-label">Andamento</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val">5</div><div class="monitor-stat-label">Total</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val amber">3</div><div class="monitor-stat-label">Andamento</div></div>
             <div class="monitor-stat"><div class="monitor-stat-val green">0</div><div class="monitor-stat-label">Concluídas</div></div>
             <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--muted)">0%</div><div class="monitor-stat-label">% Concl.</div></div>
           </div>
@@ -1038,8 +914,18 @@
           <div class="monitor-area" style="color:var(--cid)">Financeiro</div>
           <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:0%; background:var(--cid)"></div></div>
           <div class="monitor-stats">
-            <div class="monitor-stat"><div class="monitor-stat-val">3</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">1</div><div class="monitor-stat-label">Andamento</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val">2</div><div class="monitor-stat-label">Total</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val amber">2</div><div class="monitor-stat-label">Andamento</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val green">0</div><div class="monitor-stat-label">Concluídas</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--muted)">0%</div><div class="monitor-stat-label">% Concl.</div></div>
+          </div>
+        </div>
+                <div class="monitor-card">
+          <div class="monitor-area" style="color:#c4b5fd">Inovação</div>
+          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:0%; background:#a78bfa"></div></div>
+          <div class="monitor-stats">
+            <div class="monitor-stat"><div class="monitor-stat-val">2</div><div class="monitor-stat-label">Total</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val amber">0</div><div class="monitor-stat-label">Andamento</div></div>
             <div class="monitor-stat"><div class="monitor-stat-val green">0</div><div class="monitor-stat-label">Concluídas</div></div>
             <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--muted)">0%</div><div class="monitor-stat-label">% Concl.</div></div>
           </div>
@@ -1048,10 +934,10 @@
           <div class="monitor-area">TOTAL GERAL</div>
           <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:2%"></div></div>
           <div class="monitor-stats">
-            <div class="monitor-stat"><div class="monitor-stat-val">51</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">11</div><div class="monitor-stat-label">Andamento</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val green">3</div><div class="monitor-stat-label">Concluídas</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val accent">5,9%</div><div class="monitor-stat-label">% Concl.</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val">58</div><div class="monitor-stat-label">Total</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val amber">23</div><div class="monitor-stat-label">Andamento</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val green">2</div><div class="monitor-stat-label">Concluídas</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val accent">3,4%</div><div class="monitor-stat-label">% Concl.</div></div>
           </div>
         </div>
       </div>
@@ -1063,62 +949,68 @@
 
 <script>
 // ── DATA ──
-// valorRef = valor da oportunidade na primeira linha da conta (evita dupla contagem).
-// valor = valor da conta exibido em todas as linhas dela.
+// col 'acao' = Pipe Review 25/03 | col 'fup' = Pipe Review 08/04
 const acoesData = [
-  {n:1, bu:'Industrial', conta:'OCLE', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:752919.56, valorRef:752919.56, status:'Aguardando início', acao:"Ações de relacionamento (ex: almoços, levar a jogos) com Bruno da OCLE para descobrir informações estratégicas da empresa: \n\n• Faturamento;\n• Donos/hierarquia;\n• Mercados:  parceiros e clientes preferenciais com quem a OCLE ganha mais obras;\n• Inovação: Entender se eles têm alguma \"dor\" ou se precisam de algum produto específico que a empresa possa desenvolver e fornecer para ajudá-los;\n• Número de funcionários;\n• Principais parceiros;\n• Volume de luminárias compradas no ano passado.\n• Terceirizados: Visitar uma obra da OCLE para descobrir quem são os terceiros (empreiteiros) que eles contratam para a execução, também servirá como pesquisa de mercado para avaliar se a própria empresa poderia pivotar no futuro e atuar gerindo obras de forma parecida com o que a OCLE faz."},
-  {n:2, bu:'Industrial', conta:'LOG', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:1128808.89, valorRef:1128808.89, status:'Aguardando início', acao:"Verificar se a luminária Highbay de 120W com 5 anos de garantia tem preço competitivo para vencer o leilão. Considerar visitar uma obra executada pelos concorrentes para medir se eles realmente entregam a luminosidade (lux) prometida."},
-  {n:3, bu:'Industrial', conta:'LOG', tipo:'Cliente', area:'Marketing', owner:'Mychael', prazo:'08/04', valor:null, valorRef:null, status:'Em andamento', acao:"Realizar levantamento de informações e análise competitiva sobre a Luther e a ILumen no contexto da indústria."},
-  {n:4, bu:'Industrial', conta:'Sabor & Arte', tipo:'Cliente', area:'Financeiro', owner:'Rodrygo', prazo:'08/04', valor:175000.22, valorRef:175000.22, status:'Em andamento', acao:"1 entrada de sinal, e + 4 parcelas. Equipe financeira buscando uma maneira de financiar o cliente."},
-  {n:5, bu:'Industrial', conta:'Electrolux', tipo:'Cliente', area:'Marketing', owner:'Rebeca', prazo:'08/04', valor:132850.71, valorRef:132850.71, status:'Em andamento', acao:"Criar um programa institucional de relacionamento chamado \"Jogando Junto\", conduzido pelo Marketing, para viabilizar ações com contas estratégicas que possuem restrições de compliance, evitando que a abordagem seja feita diretamente pelo time comercial."},
-  {n:6, bu:'Industrial', conta:'Magnera', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:11000000, valorRef:11000000, status:'Aguardando início', acao:"Mapeamento de Decisor: investigar e encontrar o tomador de decisão final/CFO da Magneira para direcionar a comunicação estratégica diretamente a ele e acelerar a oportunidade.\n\nModelagem Financeira e Business Case: Utilizar os insights de mercado colhidos com especialistas (como a visão do CFO do Banco CNH) para estruturar opções financeiras robustas (como leasing) e avaliando precificação com planilha aberta ou redução estratégica de margem em equipamentos, com o objetivo de apresentar um payback altamente atrativo (abaixo de 5 anos) que justifique o investimento.\n\nAtendimento Consultivo (Opções Técnicas Integradas): Substituir o discurso padrão de venda de produtos por uma abordagem de reengenharia. Como a iluminação atual deles (da marca GE) começou a queimar e eles possuem metas de redução de energia, a equipe deve desenhar e apresentar o pacote completo unindo Usina Solar + Retrofit de LED, comprovando o impacto direto no fluxo de caixa da indústria."},
-  {n:7, bu:'Industrial', conta:'Facchini', tipo:'Cliente', area:'Marketing', owner:'Rebeca', prazo:'30/03', valor:341737.2, valorRef:341737.2, status:'Finalizado', acao:"Encantamento na entrega: Para combater a desconfiança do cliente em relação à eficiência prometida, a equipe deve focar em \"encantar\" a entrega dessas 10 unidades. A ação envolve enviá-las em uma embalagem especial acompanhada de um cartão com uma mensagem"},
-  {n:8, bu:'Industrial', conta:'Facchini', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:null, valorRef:null, status:'Aguardando início', acao:"Acompanhamento Técnico (Suporte): A equipe deve perguntar ao cliente exatamente quais critérios serão testados e disponibilizar alguém da engenharia comercial para ir até o local apoiar e acompanhar esse teste. Também ficou acordado que o Thiago (vendedor) deve fazer uma visita presencial lá"},
-  {n:9, bu:'Industrial', conta:'CONFAB', tipo:'Cliente', area:'Marketing', owner:'Rebeca', prazo:'30/03', valor:1268542, valorRef:1268542, status:'Stanby', acao:"Aguardar o tempo do cliente para o envio do pedido. Para quebrar o gelo e acelerar as próximas áreas, enviar uma camiseta da Seleção Brasileira para o contato."},
-  {n:10, bu:'Industrial', conta:'SINCOL', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:64003.82, valorRef:64003.82, status:'Em andamento', acao:"Desconversar sobre automação neste momento e focar na qualidade superior da luminária. Tentar descobrir se o cliente tem um potencial de compra maior do que os R$ 64.000 orçados"},
-  {n:11, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:2075463, valorRef:2075463, status:'Em andamento', acao:"Aproximar-se de Edmilson (convidá-lo ao escritório, dar camiseta da Seleção Brasileira)."},
-  {n:12, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:null, valorRef:null, status:'Aguardando início', acao:"Fazer uma análise/perícia preventiva da fábrica junto à Segurança do Trabalho para patrocinar a troca de toda a planta (reprojeto)."},
-  {n:13, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Marketing', owner:'Rebeca', prazo:'08/04', valor:null, valorRef:null, status:'Em andamento', acao:"Criar um Business Case (vídeos/depoimentos) sobre a durabilidade de 8 anos do produto. Abrir a oportunidade de projeto RGB na área externa"},
-  {n:14, bu:'Industrial', conta:'Caterpillar Piracicaba', tipo:'Cliente', area:'Inovação', owner:'Victor Piovezan', prazo:'08/04', valor:3834803.14, valorRef:3834803.14, status:'Em andamento', acao:"Mapear três níveis de automação de mercado (básico, intermediário e top/chinês de ponta) com três grandes empresas de mercado:\n- Lutron\n- Crestron\n- Pesquisar alguma empresa chinesa.\nApresentar internamente antes de levar ao cliente num prazo de um mês."},
-  {n:15, bu:'Industrial', conta:'Caterpillar Piracicaba', tipo:'Cliente', area:'Comercial', owner:'Jeff', prazo:'08/04', valor:null, valorRef:null, status:'Aguardando início', acao:"Trazer o CFO do Banco CNH (Diogo) para dar insights sobre modelagem financeira e payback para indústrias."},
-  {n:16, bu:'Industrial', conta:'Sulfibra', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:458390.07, valorRef:458390.07, status:'Em andamento', acao:"Elaborar um laudo comparativo dos diferenciais técnicos em relação aos concorrentes A, B e C."},
-  {n:17, bu:'Industrial', conta:'Sulfibra', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:null, valorRef:null, status:'Standby', acao:"Revisar a precificação (pricing) para ser mais agressivo/ousado."},
-  {n:18, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:11220589.78, valorRef:11220589.78, status:'Aguardando início', acao:"Estruturar opções técnicas como BESS (baterias), oferecer opções financeiras (leasing) e ajustar o modelo de negócios (precificação com planilha aberta/redução de margem em equipamentos)"},
-  {n:19, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:null, valorRef:null, status:'Finalizado', acao:"Descobrir o nome do diretor em férias."},
-  {n:20, bu:'Industrial', conta:'Laticínio Carolina / ICMS', tipo:'Cliente', area:'Financeiro', owner:'Rodrygo', prazo:'08/04', valor:null, valorRef:null, status:'Aguardando início', acao:"Passar a investigação da regra tributária para o Rod (área fiscal)."},
-  {n:21, bu:'Industrial', conta:'Laticínio Carolina / ICMS', tipo:'Cliente', area:'Financeiro', owner:'Rodrygo', prazo:'08/04', valor:null, valorRef:null, status:'Aguardando início', acao:"Tentar aproximação com os decisores do laticínio através do irmão do Felipinho"},
-  {n:22, bu:'Industrial', conta:'Ledvance', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:null, valorRef:null, status:'Aguardando início', acao:"Realizar uma reunião para alinhar diretrizes de comissionamento caso a empresa decida atuar como parceira que \"pina\" (especifica) o projeto para que a Ledvance fature direto"},
-  {n:23, bu:'Industrial', conta:'Emergent Cold (Negociação via Óptima)', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:null, valorRef:null, status:'Em andamento', acao:"Aceitar a divisão 50/50 do lucro, mas com a condição de contabilizar e descontar todos os custos de viagem e engenharia antes da divisão. Exigir também que, caso o negócio não feche, o prejuízo das visitas seja dividido por dois"},
-  {n:24, bu:'Industrial', conta:'Ajinomoto', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:null, valorRef:null, status:'Em andamento', acao:"Perguntar ao contato interno (LB) se o tomador de decisão do projeto grande tem relação direta com essa associação (ex: se ele joga bola lá). Se sim, o projeto pequeno ganha prioridade estratégica"},
-  {n:25, bu:'Industrial', conta:'MaxFort', tipo:'Cliente', area:'Marketing', owner:'Rebeca', prazo:'05/04', valor:2147121.98, valorRef:2147121.98, status:'Finalizado', acao:"Levar o Beto Kirsch e família para jogo do Grêmio x Remo e presentear com camisa."},
-  {n:26, bu:'Industrial', conta:'Hollos', tipo:'Cliente', area:'Marketing', owner:'Mychael', prazo:'08/04', valor:65423.11, valorRef:65423.11, status:'Em andamento', acao:"Criar um One Pager para entender as dores da Hollos na mesma modelagem da OCLE"},
-  {n:27, bu:'Industrial', conta:'Engemase', tipo:'Cliente', area:'Marketing', owner:'Mychael', prazo:'08/04', valor:null, valorRef:null, status:'Em andamento', acao:"Criar um One Pager para entender as dores da parceira Engemasi na mesma modelagem da OCLE"},
-  {n:28, bu:'Esportivo', conta:'Vila Belmiro', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:null, valorRef:null, status:'Aguardando início', acao:"Agendar reunião presencial (um jantar/relacionamento) em São Paulo com Roger Antunes da WTorres. Este contato é a chave para destravar a obra da Vila Belmiro e oportunidades de iluminação RGB no Allianz Parque."},
-  {n:29, bu:'Esportivo', conta:'Barretos', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:1547045.6, valorRef:1547045.6, status:'Aguardando início', acao:"Michel deve focar em trazer o decisor Geromim para Curitiba para proporcionar uma experiência exclusiva (ex: show de luzes no estádio), já que presentes tradicionais não funcionam com o perfil dele.\n"},
-  {n:30, bu:'Esportivo', conta:'Náutico', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:640555.4, valorRef:640555.4, status:'Aguardando início', acao:"Ligar para os contatos Gabriel e Fabinho para entender os riscos internos do negócio, fazer uma contraproposta aumentando a entrada para R$ 350 mil, e revisar o contrato para incluir multas altas, como a retirada dos refletores em caso de 60 dias de atraso.\n\nMandamos presente como pós-venda."},
-  {n:31, bu:'Esportivo', conta:'Mobit', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:784000, valorRef:784000, status:'Aguardando início', acao:"Ficar próximo do cliente para evitar que busquem alternativas e mapear a conta para possíveis ações de relacionamento"},
-  {n:32, bu:'Esportivo', conta:'Barbalhão (Mangueirão / OCC)', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:1400000, valorRef:1400000, status:'Aguardando início', acao:"Aguardar a antecipação da minuta do contrato prevista para a mesma semana e tratar diretamente com a gerente Paula, evitando envolver o diretor geral Marco Aurélio na negociação"},
-  {n:33, bu:'Esportivo', conta:'Arena Pantanal', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:4000000, valorRef:4000000, status:'Aguardando início', acao:"Atualizar e garantir a documentação de acervo técnico com projetos que unam iluminação esportiva e cênica para criar um diferencial"},
-  {n:34, bu:'Esportivo', conta:'Arena Pernambuco', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:3393324.21, valorRef:3393324.21, status:'Aguardando início', acao:"Intensificar os contatos e focar a aproximação na Ângela, que lidera administrativamente o processo"},
-  {n:35, bu:'Esportivo', conta:'Sarasate', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:1000000, valorRef:1000000, status:'Aguardando início', acao:"Manter o relacionamento ativo e aguardar, com possibilidade de ações presenciais no futuro"},
-  {n:36, bu:'Esportivo', conta:'SEJEL', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:5957030, valorRef:5957030, status:'Aguardando início', acao:"Fazer uma ligação de alinhamento com o contato Luquinha"},
-  {n:37, bu:'Esportivo', conta:'SEJEL', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:null, valorRef:null, status:'Aguardando início', acao:"O Pedro deve entregar a conclusão do projeto de engenharia, enquanto o José constrói e compila toda a documentação administrativa exigida, visto que a verba de R$ 1 milhão já está disponível"},
-  {n:38, bu:'Esportivo', conta:'Palotina', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'30/03', valor:2500000, valorRef:2500000, status:'Aguardando início', acao:"Montar toda a documentação do zero e acompanhar de perto o processo da prefeitura para a contratação do engenheiro Fábio (o mesmo de Maringá), que será feita por dispensa de licitação\n"},
-  {n:39, bu:'Esportivo', conta:'Sergipe', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:4900000, valorRef:4900000, status:'Aguardando início', acao:"Aguardar a definição da reunião. Se houver a mudança para semi-integrada, será preciso voltar para a prancheta e refazer as alterações nos documentos. Além disso, foi sugerido aproveitar a boa relação com a secretária Mariana para mapear o estado inteiro em busca de novas oportunidades"},
-  {n:40, bu:'Esportivo', conta:'Operário', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:1200000, valorRef:1200000, status:'Aguardando início', acao:"Revisar orçamentos e simular um financiamento com parcela atrativa (ex: R$ 33 mil). Usar o valor da parcela como \"isca\" para trazer o presidente ao escritório."},
-  {n:41, bu:'Cidades', conta:'Londrina / Projeto Atlas', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:11000000, valorRef:11000000, status:'Aguardando início', acao:"Agendar e realizar a reunião inicial com o prefeito para apresentar o projeto."},
-  {n:42, bu:'Cidades', conta:'Lupa', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:25000000, valorRef:25000000, status:'Aguardando início', acao:"Conta classificada como \"Tipo 1\". Fazer apenas acompanhamento macro e aguardar movimentações, sem ação imediata de fechamento."},
-  {n:43, bu:'Cidades', conta:'Brusque', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:15000000, valorRef:15000000, status:'Aguardando início', acao:"Receber o cliente, apresentar os estudos de energia gerados pelo Andrei e validar juridicamente (com parceiros como Pironte) o status da lei de PPP no município"},
-  {n:44, bu:'Cidades', conta:'Maringá (Eixos Will Davis e Catedral)', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:4600000, valorRef:4600000, status:'Aguardando início', acao:"Tentar falar diretamente com o CEO/Prefeito para \"tirar da jogada\" o dono da Poste Luz que travou a comunicação, e ajudar na contratação do engenheiro."},
-  {n:45, bu:'Cidades', conta:'Ibiporã', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:12000000, valorRef:12000000, status:'Aguardando início', acao:"Ligar para IAT e prefeitura para assumir a burocracia e encontrar o Cadastro Ambiental Rural (CAR) do terreno que sumiu nos órgãos públicos."},
-  {n:46, bu:'Cidades', conta:'Umuarama', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:4500000, valorRef:4500000, status:'Aguardando início', acao:"Agilizar a engenharia comercial para readequar o tamanho dos projetos e planilhas orçamentárias à nova realidade do terreno"},
-  {n:47, bu:'Cidades', conta:'Arapoti', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:3000000, valorRef:3000000, status:'Aguardando início', acao:"Finalizar o termo de referência e pedir ao contato \"Marine\" para ajudar a destravar a prioridade dentro da secretaria"},
-  {n:48, bu:'Cidades', conta:'USP (São Carlos)', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:5500000, valorRef:5500000, status:'Aguardando início', acao:"Como estão ignorando prazos, buscar via Lucas Flores ou cruzar dados partidários do prefeito (PL) para tentar contato direto com o Reitor em São Carlos."},
-  {n:49, bu:'Cidades', conta:'Docas', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:3000000, valorRef:3000000, status:'Aguardando início', acao:"Alinhar com consórcio (Fábio da FIP) para garantir medições e faturamentos parciais focados apenas no que for entregue (exigirá importação por falta de estoque)"},
-  {n:50, bu:'Cidades', conta:'Campo Mourão', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:1300000, valorRef:1300000, status:'Aguardando início', acao:"Resolver pendências antigas (retirada de abelhas dos postes e roubo de cabos). Marcar visita presencial via Marília para falar com o Douglas e destravar o novo aditivo."},
-  {n:51, bu:'Cidades', conta:'Guarapuava e Cascavel', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:null, valorRef:null, status:'Aguardando início', acao:"Agendar conversas iniciais com os prefeitos"},
-  {n:52, bu:'Cidades', conta:'Itaquaquecetuba', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:2700000, valorRef:2700000, status:'Aguardando início', acao:"O projeto e a documentação já foram totalmente entregues ao cliente. Ação atual é apenas aguardar a publicação."}
+  {n:1, bu:'Industrial', conta:'OCLE', tipo:'Parceiro', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:752919.56, valorRef:752919.56, status:'Em andamento', acao:'Ações de relacionamento (ex: almoços, levar a jogos) com Bruno da OCLE para descobrir informações estratégicas da empresa', fup:'Trazer o contato Bruno para uma reunião no escritório (com a presença do Jeff e Andre) e, em seguida, levá-lo ao jogo do Santos no Couto Pereira no dia 13/05.' },
+  {n:2, bu:'Industrial', conta:'OCLE', tipo:'Parceiro', area:'Marketing', owner:'Mychael', prazo:'08/04', valor:752919.56, valorRef:null, status:'Em andamento', acao:'Criar uma One pager de parceiro com as informações:\n\n• Faturamento;\n• Donos/hierarquia;\n• Mercados:  parceiros e clientes preferenciais com quem a OCLE ganha mais obras;\n• Inovação: Entender se eles têm alguma "dor" ou se precisam de algum produto específico que a empresa possa desenvolver e fornecer para ajudá-los;\n• Número de funcionários;\n• Principais parceiros;\n• Volume de luminárias compradas no ano passado.\n• Terceirizados: Visitar uma obra da OCLE para descobrir quem são os terceiros (empreiteiros) que eles contratam para a execução, também servirá como pesquisa de mercado para avaliar se a própria empresa poderia pivotar no futuro e atuar gerindo obras de forma parecida com o que a OCLE faz.', fup:'Prazo de entrega V1 One Pager: 10/04' },
+  {n:3, bu:'Industrial', conta:'LOG', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:1128808.89, valorRef:1128808.89, status:'Em andamento', acao:'Verificar se a luminária Highbay de 120W com 5 anos de garantia tem preço competitivo para vencer o leilão. Considerar visitar uma obra executada pelos concorrentes para medir se eles realmente entregam a luminosidade (lux) prometida.', fup:'O Pilato vai verificar com o Pablo quais foram as últimas unidades inauguradas da Log para agendar uma visita noturna (idealmente com um consultor ou engenheiro) e auditar a entrega de luminosidade real das concorrentes.' },
+  {n:4, bu:'Industrial', conta:'LOG', tipo:'Cliente', area:'Marketing', owner:'Mychael', prazo:'08/04', valor:1128808.89, valorRef:null, status:'Em andamento', acao:'Realizar levantamento de informações e análise competitiva sobre a Luther e a ILumen no contexto da indústria.', fup:'Listar produtos que precisam ser verificados para Mycha levantar ASAP' },
+  {n:5, bu:'Industrial', conta:'Sabor & Arte', tipo:'Cliente', area:'Financeiro', owner:'Rodrygo', prazo:'08/04', valor:175000.22, valorRef:175000.22, status:'Em andamento', acao:'1 entrada de sinal, e + 4 parcelas. Equipe financeira buscando uma maneira de financiar o cliente.', fup:'Solicitar ao Rodrygo (Financeiro) para gerar um link de pagamento e absorver a taxa de 3% da maquininha, visando finalizar a venda sem mais desgaste.' },
+  {n:6, bu:'Industrial', conta:'Electrolux', tipo:'Cliente', area:'Marketing', owner:'Rebeca', prazo:'08/04', valor:132850.71, valorRef:132850.71, status:'Em andamento', acao:'Criar um programa institucional de relacionamento chamado "Jogando Junto", conduzido pelo Marketing, para viabilizar ações com contas estratégicas que possuem restrições de compliance, evitando que a abordagem seja feita diretamente pelo time comercial.', fup:'A Rebeca enviou o rascunho da campanha "Jogando Junto" no dia 07/04 para a validação do Pilato, visando destravar o relacionamento com a conta' },
+  {n:7, bu:'Industrial', conta:'Magnera', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:null, valorRef:null, status:'Em andamento', acao:'Mapeamento de Decisor: investigar e encontrar o tomador de decisão final/CFO da Magneira para direcionar a comunicação estratégica diretamente a ele e acelerar a oportunidade.\n\nModelagem Financeira: Utilizar os insights de mercado colhidos com especialistas (como a visão do CFO do Banco CNH) para estruturar opções financeiras robustas (como leasing) e avaliando precificação com planilha aberta ou redução estratégica de margem em equipamentos, com o objetivo de apresentar um payback altamente atrativo (abaixo de 5 anos) que justifique o investimento.\n\nAtendimento Consultivo (Opções Técnicas Integradas): Substituir o discurso padrão de venda de produtos por uma abordagem de reengenharia. Como a iluminação atual deles (da marca GE) começou a queimar e eles possuem metas de redução de energia, a equipe deve desenhar e apresentar o pacote completo unindo Usina Solar + Retrofit de LED, comprovando o impacto direto no fluxo de caixa da indústria.', fup:'A equipe enviou os dados para a parceira Green Yellow no dia 07/04 e está aguardando o retorno com a modelagem financeira do projeto. Assim que receberem, o objetivo é levar o pacote de leasing para o  Ivo e pedir para ele envolver o Diretor/CFO na conversa, com participção do Jeff.' },
+  {n:8, bu:'Industrial', conta:'Facchini', tipo:'Cliente', area:'Marketing', owner:'Rebeca', prazo:'08/04', valor:341737.2, valorRef:341737.2, status:'Finalizado', acao:'Encantamento na entrega: Para combater a desconfiança do cliente em relação à eficiência prometida, a equipe deve focar em "encantar" a entrega dessas 10 unidades. A ação envolve enviá-las em uma embalagem especial acompanhada de um cartão com uma mensagem', fup:'Enviado dia 01/04' },
+  {n:9, bu:'Industrial', conta:'Facchini', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:341737.2, valorRef:null, status:'Em andamento', acao:'Acompanhamento Técnico (Suporte): A equipe deve perguntar ao cliente exatamente quais critérios serão testados e disponibilizar alguém da engenharia comercial para ir até o local apoiar e acompanhar esse teste. Também ficou acordado que o Thiago (vendedor) deve fazer uma visita presencial lá', fup:'O Thiago vai auxiliar nos testes à distância e fará uma visita presencial durante a feira Agrishow para buscar o equipamento e tentar bater o martelo.' },
+  {n:10, bu:'Industrial', conta:'SINCOL', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:64003.82, valorRef:64003.82, status:'Finalizado', acao:'Desconversar sobre automação neste momento e focar na qualidade superior da luminária. Tentar descobrir se o cliente tem um potencial de compra maior do que os R$ 64.000 orçados', fup:'Pedro fez a reunião, desconversou sobre a automação e confirmou que a empresa troca cerca de 100 pontos por mês, mas é estritamente focada em preço baixo. A orientação agora é apenas fazer visitas de manutenção quando o consultor estiver na região.' },
+  {n:11, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:2075463.0, valorRef:2075463.0, status:'Em andamento', acao:'Aproximar-se de Edmilson e convidá-lo para uma reunião no escritório', fup:'Aguardando a compra da camisa da seleção para formalizar o convite.' },
+  {n:12, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Marketing', owner:'Rebeca', prazo:'08/04', valor:2075463.0, valorRef:null, status:'Em andamento', acao:'Presentear o Edimilson com uma camisa da Seleção Brasileira', fup:'Buscando o tamanho ideal, com apoio do Thiago, para realizar a compra da camisa.' },
+  {n:13, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:2075463.0, valorRef:null, status:'Em andamento', acao:'Fazer uma análise/perícia preventiva da fábrica junto à Segurança do Trabalho para patrocinar a troca de toda a planta (reprojeto).', fup:'Foi decidido não envolver a Segurança do Trabalho agora para não colocar o Edmilson em uma posição desconfortável. O novo plano é o Thiago pegar a planta da fábrica para que a engenharia comercial faça um projeto/desenho preventivo.' },
+  {n:14, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Marketing', owner:'Rebeca', prazo:'08/04', valor:2075463.0, valorRef:null, status:'Em andamento', acao:'Criar um Business Case (vídeos/depoimentos) sobre a durabilidade de 8 anos do produto. Abrir a oportunidade de projeto RGB na área externa', fup:'Thiago está em contato com o cliente para coletar a aprovação para a captação.' },
+  {n:15, bu:'Industrial', conta:'Caterpillar Piracicaba', tipo:'Cliente', area:'Inovação', owner:'Victor Piovezan', prazo:'08/04', valor:3834803.14, valorRef:3834803.14, status:'Aguardando início', acao:'Mapear três níveis de automação de mercado (básico, intermediário e top/chinês de ponta) com três grandes empresas de mercado:\n- Lutron\n- Crestron\n- Pesquisar alguma empresa chinesa.\nApresentar internamente antes de levar ao cliente num prazo de um mês.', fup:'Demanda enviada para o Victor Piovezan finalizar o levantamento técnico de automação sem fio. Prazo: 25/04' },
+  {n:16, bu:'Industrial', conta:'Caterpillar Piracicaba', tipo:'Cliente', area:'Comercial', owner:'Jeff', prazo:'08/04', valor:3834803.14, valorRef:null, status:'Aguardando início', acao:'Trazer o CFO do Banco CNH (Diogo) para dar insights sobre modelagem financeira e payback para indústrias.', fup:'Jeff deve contatar o Diogo (CFO do Banco CNH) para apoiar com os insights de modelagem financeira para esse cliente.' },
+  {n:17, bu:'Industrial', conta:'Sulfibra', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:458390.07, valorRef:458390.07, status:'Em andamento', acao:'Elaborar um laudo comparativo dos diferenciais técnicos em relação aos concorrentes A, B e C.', fup:'Folda já enviou o laudo técnico comparativo para o cliente no dia 07/04.' },
+  {n:18, bu:'Industrial', conta:'Sulfibra', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:458390.07, valorRef:null, status:'Standby', acao:'Revisar a precificação (pricing) para ser mais agressivo/ousado.', fup:'A revisão de precificação para ser mais agressiva entrou em standby, pois a equipe já está trabalhando com uma margem muito baixa nesse negócio.' },
+  {n:19, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:11220589.78, valorRef:11220589.78, status:'Em andamento', acao:'Ajustar o modelo de negócios (precificação com planilha aberta/redução de margem em equipamentos)', fup:'Modelo da planilha aberta feito e enviado para validação do Jeff, após validação será detalhada a precificação na planilha.\nEstimativa dia 17/04/26.' },
+  {n:20, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:11220589.78, valorRef:null, status:'Em andamento', acao:'Oferecer opções financeiras (leasing)', fup:'Leasing direcionado para o comercial (Alinhamento feito com o Pilato);' },
+  {n:21, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Inovação', owner:'Victor Piovezan', prazo:'08/04', valor:11220589.78, valorRef:null, status:'Aguardando início', acao:'Estruturar opções técnicas como BESS (baterias)', fup:'BESS direcionado para o Victor Piovezan (Inovação);' },
+  {n:22, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Comercial', owner:'Jeff', prazo:'08/04', valor:11220589.78, valorRef:null, status:'Em andamento', acao:'Descobrir o nome do diretor em férias.', fup:'JP tem a missão de conseguir a agenda com o Diretor Financeiro (que já retornou de férias)' },
+  {n:23, bu:'Industrial', conta:'Laticínio Carolina / ICMS', tipo:'Parceiro', area:'Financeiro', owner:'Rodrygo', prazo:'08/04', valor:null, valorRef:null, status:'Em andamento', acao:'Passar a investigação da regra tributária para a área fiscal.', fup:'ICSM foi mapeado como OKR do time financeiro no Q2.' },
+  {n:24, bu:'Industrial', conta:'Ledvance', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:null, valorRef:null, status:'Em andamento', acao:'Realizar uma reunião para alinhar diretrizes de comissionamento caso a empresa decida atuar como parceira que "pina" (especifica) o projeto para que a Ledvance fature direto', fup:'Agendar uma reunião com o Guilherme Profeta (gerente da Ledvance). É indispensável que o Jeff participe dessa conversa junto com o José Lucas para definirem as diretrizes de comissionamento.\nEstimativa dia 24/04/26.' },
+  {n:25, bu:'Industrial', conta:'Emergent Cold (Negociação via Óptima)', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:null, valorRef:null, status:'Standby', acao:'Aceitar a divisão 50/50 do lucro, mas com a condição de contabilizar e descontar todos os custos de viagem e engenharia antes da divisão. Exigir também que, caso o negócio não feche, o prejuízo das visitas seja dividido por dois', fup:'O negócio está em standby por um erro na importação. A fornecedora chinesa produziu as lentes e adesivos incorretamente devido a uma falha de comunicação da equipe. O plano de ação atual é tentar trocar as lentes internamente usando o estoque local para não furar o prazo de entrega com o cliente, ou acionar uma justificativa contratual (força maior) se o prazo for impactad' },
+  {n:26, bu:'Industrial', conta:'Ajinomoto', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:null, valorRef:null, status:'Em andamento', acao:'Perguntar ao contato interno (LB) se o tomador de decisão do projeto grande tem relação direta com essa associação (ex: se ele joga bola lá). Se sim, o projeto pequeno ganha prioridade estratégica', fup:'Aguardar o retorno do contato Luiz Bruno (LB). Ele precisa confirmar se o executivo japonês (tomador de decisão da planta) realmente joga futebol na associação de funcionários onde a pequena usina solar foi solicitada' },
+  {n:27, bu:'Industrial', conta:'MaxFort', tipo:'Cliente', area:'Marketing', owner:'Rebeca', prazo:'08/04', valor:2147121.98, valorRef:2147121.98, status:'Em andamento', acao:'Levar o Beto Kirsch e família para jogo do Grêmio x Remo e presentear com camisa.', fup:'O consultor Jean fez uma visita altamente consultiva que agradou muito o decisor (Beto). A ação decisiva será uma reunião agendada para sexta-feira, onde a equipe apresentará as opções e o Beto escolherá qual caminho técnico seguir para o fechamento' },
+  {n:28, bu:'Industrial', conta:'Hollos', tipo:'Parceiro', area:'Marketing', owner:'Mychael', prazo:'08/04', valor:65423.11, valorRef:65423.11, status:'Em andamento', acao:'Criar um One Pager para entender as dores da Hollos na mesma modelagem da OCLE', fup:'Prazo de entrega V1 One Pager: 10/04' },
+  {n:29, bu:'Industrial', conta:'Engemase', tipo:'Parceiro', area:'Marketing', owner:'Mychael', prazo:'08/04', valor:null, valorRef:null, status:'Em andamento', acao:'Criar um One Pager para entender as dores da parceira Engemasi na mesma modelagem da OCLE', fup:'Prazo de entrega V1 One Pager: 10/04' },
+  {n:30, bu:'Industrial', conta:'Fama (Londrina)', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:1570456.92, valorRef:1570456.92, status:'Aguardando início', acao:'Não abordado', fup:'Pedir para a Green Yellow revisar e ajustar a modelagem financeira para garantir que a conta do cliente fique sempre no "zero a zero" ou positiva (sem necessidade de desembolso futuro)' },
+  {n:31, bu:'Industrial', conta:'Scherer', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:null, valorRef:null, status:'Aguardando início', acao:'Não abordado', fup:'Envolver o Dan para investigar opções de terrenos (especialmente no Paraná) que já possuam parecer de acesso (GD1) para arrendar ou vender ao cliente. Em paralelo, abrir o projeto com a Engenharia Comercial e agendar rapidamente uma visita presencial ao cliente em Joaçaba para esquentar o relacionamento.' },
+  {n:32, bu:'Industrial', conta:'Nexa', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:11673.58, valorRef:11673.58, status:'Aguardando início', acao:'Não abordado', fup:'Pilato deve descobrir de qual concorrente a Nexa compra atualmente para coletar dados de eficiência, garantia e vida útil. O objetivo é montar um comparativo provando que a luminária atual sai mais cara a longo prazo, para então convencê-los a aceitar os produtos de demonstração' },
+  {n:33, bu:'Industrial', conta:'Porto Ponta do Félix', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:46210.5, valorRef:46210.5, status:'Aguardando início', acao:'Não abordado', fup:'Agendar uma visita presencial ao cliente logo após bater o martelo da venda atual em andamento' },
+  {n:34, bu:'Esportivo', conta:'Vila Belmiro', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:null, valorRef:null, status:'Em andamento', acao:'Agendar reunião presencial (um jantar/relacionamento) em São Paulo com Roger Antunes da WTorres. Este contato é a chave para destravar a obra da Vila Belmiro e oportunidades de iluminação RGB no Allianz Parque.', fup:'Michel e Bruno estão em viagem nesta semana (a partir do dia 06) para colocar em prática o plano de ação definido na pipeline review de 25/03.' },
+  {n:35, bu:'Esportivo', conta:'Barretos', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:1547045.6, valorRef:1547045.6, status:'Aguardando início', acao:'Michel deve focar em trazer o decisor Geromim para Curitiba para proporcionar uma experiência exclusiva (ex: show de luzes no estádio), já que presentes tradicionais não funcionam com o perfil dele.', fup:'' },
+  {n:36, bu:'Esportivo', conta:'Náutico', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:640555.4, valorRef:640555.4, status:'Aguardando início', acao:'Ligar para os contatos Gabriel e Fabinho para entender os riscos internos do negócio, fazer uma contraproposta aumentando a entrada para R$ 350 mil, e revisar o contrato para incluir multas altas, como a retirada dos refletores em caso de 60 dias de atraso.\n\nMandamos presente como pós-venda.', fup:'' },
+  {n:37, bu:'Esportivo', conta:'Mobit', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:784000.0, valorRef:784000.0, status:'Aguardando início', acao:'Ficar próximo do cliente para evitar que busquem alternativas e mapear a conta para possíveis ações de relacionamento', fup:'' },
+  {n:38, bu:'Esportivo', conta:'Barbalhão (Mangueirão / OCC)', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:1400000.0, valorRef:1400000.0, status:'Aguardando início', acao:'Aguardar a antecipação da minuta do contrato prevista para a mesma semana e tratar diretamente com a gerente Paula, evitando envolver o diretor geral Marco Aurélio na negociação', fup:'' },
+  {n:39, bu:'Esportivo', conta:'Arena Pantanal', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:4000000.0, valorRef:4000000.0, status:'Aguardando início', acao:'Atualizar e garantir a documentação de acervo técnico com projetos que unam iluminação esportiva e cênica para criar um diferencial', fup:'' },
+  {n:40, bu:'Esportivo', conta:'Arena Pernambuco', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:3393324.21, valorRef:3393324.21, status:'Aguardando início', acao:'Intensificar os contatos e focar a aproximação na Ângela, que lidera administrativamente o processo', fup:'' },
+  {n:41, bu:'Esportivo', conta:'Sarasate', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:1000000.0, valorRef:1000000.0, status:'Aguardando início', acao:'Manter o relacionamento ativo e aguardar, com possibilidade de ações presenciais no futuro', fup:'' },
+  {n:42, bu:'Esportivo', conta:'SEJEL', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:5957030.0, valorRef:5957030.0, status:'Aguardando início', acao:'Fazer uma ligação de alinhamento com o contato Luquinha', fup:'' },
+  {n:43, bu:'Esportivo', conta:'SEJEL', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:5957030.0, valorRef:null, status:'Aguardando início', acao:'O Pedro deve entregar a conclusão do projeto de engenharia, enquanto o José constrói e compila toda a documentação administrativa exigida, visto que a verba de R$ 1 milhão já está disponível', fup:'FUP com o Michel para que seja formalizado e esclarecido o que o time de eng. comercial deve fazer.\nSem estimativa de conclusão.' },
+  {n:44, bu:'Esportivo', conta:'Palotina', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:2500000.0, valorRef:2500000.0, status:'Aguardando início', acao:'Montar toda a documentação do zero e acompanhar de perto o processo da prefeitura para a contratação do engenheiro Fábio (o mesmo de Maringá), que será feita por dispensa de licitação', fup:'' },
+  {n:45, bu:'Esportivo', conta:'Sergipe', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:4900000.0, valorRef:4900000.0, status:'Aguardando início', acao:'Aguardar a definição da reunião. Se houver a mudança para semi-integrada, será preciso voltar para a prancheta e refazer as alterações nos documentos. Além disso, foi sugerido aproveitar a boa relação com a secretária Mariana para mapear o estado inteiro em busca de novas oportunidades', fup:'' },
+  {n:46, bu:'Esportivo', conta:'Operário', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:1200000.0, valorRef:1200000.0, status:'Aguardando início', acao:'Revisar orçamentos e simular um financiamento com parcela atrativa (ex: R$ 33 mil). Usar o valor da parcela como "isca" para trazer o presidente ao escritório.', fup:'' },
+  {n:47, bu:'Cidades', conta:'Londrina / Projeto Atlas ', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:11000000.0, valorRef:11000000.0, status:'Aguardando início', acao:'Agendar e realizar a reunião inicial com o prefeito para apresentar o projeto.', fup:'' },
+  {n:48, bu:'Cidades', conta:'Lupa', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:25000000.0, valorRef:25000000.0, status:'Aguardando início', acao:'Conta classificada como "Tipo 1". Fazer apenas acompanhamento macro e aguardar movimentações, sem ação imediata de fechamento.', fup:'' },
+  {n:49, bu:'Cidades', conta:'Brusque', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:15000000.0, valorRef:15000000.0, status:'Aguardando início', acao:'Receber o cliente, apresentar os estudos de energia gerados pelo Andrei e validar juridicamente (com parceiros como Pironte) o status da lei de PPP no município', fup:'' },
+  {n:50, bu:'Cidades', conta:'Maringá (Eixos Will Davis e Catedral)', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:4600000.0, valorRef:4600000.0, status:'Aguardando início', acao:'Tentar falar diretamente com o CEO/Prefeito para "tirar da jogada" o dono da Poste Luz que travou a comunicação, e ajudar na contratação do engenheiro.', fup:'' },
+  {n:51, bu:'Cidades', conta:'Ibiporã', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:12000000.0, valorRef:12000000.0, status:'Aguardando início', acao:'Ligar para IAT e prefeitura para assumir a burocracia e encontrar o Cadastro Ambiental Rural (CAR) do terreno que sumiu nos órgãos públicos.', fup:'' },
+  {n:52, bu:'Cidades', conta:'Umuarama', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:4500000.0, valorRef:4500000.0, status:'Aguardando início', acao:'Agilizar a engenharia comercial para readequar o tamanho dos projetos e planilhas orçamentárias à nova realidade do terreno', fup:'' },
+  {n:53, bu:'Cidades', conta:'Arapoti', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:3000000.0, valorRef:3000000.0, status:'Aguardando início', acao:'Finalizar o termo de referência e pedir ao contato "Marine" para ajudar a destravar a prioridade dentro da secretaria', fup:'' },
+  {n:54, bu:'Cidades', conta:'USP (São Carlos)', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:5500000.0, valorRef:5500000.0, status:'Aguardando início', acao:'Como estão ignorando prazos, buscar via Lucas Flores ou cruzar dados partidários do prefeito (PL) para tentar contato direto com o Reitor em São Carlos.', fup:'' },
+  {n:55, bu:'Cidades', conta:'Docas', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:3000000.0, valorRef:3000000.0, status:'Aguardando início', acao:'Alinhar com consórcio (Fábio da FIP) para garantir medições e faturamentos parciais focados apenas no que for entregue (exigirá importação por falta de estoque)', fup:'' },
+  {n:56, bu:'Cidades', conta:'Campo Mourão', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:1300000.0, valorRef:1300000.0, status:'Aguardando início', acao:'Resolver pendências antigas (retirada de abelhas dos postes e roubo de cabos). Marcar visita presencial via Marília para falar com o Douglas e destravar o novo aditivo.', fup:'' },
+  {n:57, bu:'Cidades', conta:'Guarapuava e Cascavel', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:null, valorRef:null, status:'Aguardando início', acao:'Agendar conversas iniciais com os prefeitos', fup:'' },
+  {n:58, bu:'Cidades', conta:'Itaquaquecetuba', tipo:'Cliente', area:'Comercial', owner:'Michel', prazo:'08/04', valor:2700000.0, valorRef:2700000.0, status:'Aguardando início', acao:'O projeto e a documentação já foram totalmente entregues ao cliente. Ação atual é apenas aguardar a publicação.', fup:'' },
 ];
+
 
 
 
@@ -1143,124 +1035,6 @@ const gestaoData = [
   {cat:'Contas', plano:'Prospecção / mapeamento', conta:'Laticínio Carolina', bu:'Industrial', resp:'Definir'},
 ];
 
-// ── CHECK & COMMENT STATE ──
-const SHEETS_API = 'https://script.google.com/a/macros/silicon.ind.br/s/AKfycbyJbU9yU44XYPNcu2mSWKXRgVThHFFAKxkEPOi1egA5E7eM1I561YmXAa-nTztKnNqF/exec';
-
-let checkState = {};
-let commentState = {};
-let lastAuthor = '';
-
-try {
-  const saved = localStorage.getItem('silicon_pr03_checks');
-  if (saved) checkState = JSON.parse(saved);
-} catch(e) {}
-try {
-  const saved = localStorage.getItem('silicon_pr03_author');
-  if (saved) lastAuthor = saved;
-} catch(e) {}
-
-async function carregarComentarios() {
-  try {
-    const resp = await fetch(SHEETS_API + '?action=listar');
-    const data = await resp.json();
-    commentState = data || {};
-    document.querySelectorAll('[id^="clist-"]').forEach(el => {
-      const cardId = el.id.replace('clist-', '');
-      renderCommentList(cardId);
-      updateCommentToggle(cardId);
-    });
-  } catch(e) {
-    console.warn('Erro ao carregar comentários:', e);
-  }
-}
-
-function toggleCheck(cardId) {
-  checkState[cardId] = !checkState[cardId];
-  try { localStorage.setItem('silicon_pr03_checks', JSON.stringify(checkState)); } catch(e) {}
-  const card = document.getElementById('card-' + cardId);
-  const btn = card ? card.querySelector('.check-btn') : null;
-  if (card) card.classList.toggle('done', checkState[cardId]);
-  if (btn) {
-    btn.classList.toggle('checked', checkState[cardId]);
-    btn.title = checkState[cardId] ? 'Desmarcar' : 'Marcar como concluído';
-  }
-}
-
-function toggleComments(cardId) {
-  const section = document.getElementById('comments-' + cardId);
-  if (!section) return;
-  section.classList.toggle('open');
-  if (section.classList.contains('open')) {
-    const input = document.getElementById('cinput-' + cardId);
-    if (input) setTimeout(() => input.focus(), 260);
-  }
-}
-
-async function addComment(cardId) {
-  const input = document.getElementById('cinput-' + cardId);
-  const nameInput = document.getElementById('cname-' + cardId);
-  if (!input) return;
-  const text = input.value.trim();
-  if (!text) return;
-  const author = (nameInput && nameInput.value.trim()) || 'Anônimo';
-  lastAuthor = author;
-  try { localStorage.setItem('silicon_pr03_author', author); } catch(e) {}
-
-  const btn = document.getElementById('csend-' + cardId);
-  if (btn) { btn.disabled = true; btn.textContent = '...'; }
-
-  try {
-    const url = `${SHEETS_API}?action=salvar&cardId=${encodeURIComponent(cardId)}&author=${encodeURIComponent(author)}&text=${encodeURIComponent(text)}`;
-    await fetch(url);
-
-    if (!commentState[cardId]) commentState[cardId] = [];
-    const now = new Date();
-    const date = now.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}) + ' ' + now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-    commentState[cardId].push({ author, text, date });
-    input.value = '';
-    renderCommentList(cardId);
-    updateCommentToggle(cardId);
-  } catch(e) {
-    alert('Erro ao salvar comentário.');
-  } finally {
-    if (btn) { btn.disabled = false; btn.textContent = 'Enviar'; }
-  }
-}
-
-async function deleteComment(cardId, idx) {
-  try {
-    const url = `${SHEETS_API}?action=deletar&cardId=${encodeURIComponent(cardId)}&idx=${idx}`;
-    await fetch(url);
-    if (commentState[cardId]) commentState[cardId].splice(idx, 1);
-    renderCommentList(cardId);
-    updateCommentToggle(cardId);
-  } catch(e) {
-    alert('Erro ao deletar comentário.');
-  }
-}
-
-function renderCommentList(cardId) {
-  const list = document.getElementById('clist-' + cardId);
-  if (!list) return;
-  const comments = commentState[cardId] || [];
-  list.innerHTML = comments.map((c, i) => `
-    <div class="comment-item">
-      <div class="comment-meta">
-        <span class="comment-author">${c.author}</span>
-        <span class="comment-date">${c.date}</span>
-        <button class="comment-del" onclick="deleteComment('${cardId}', ${i})" title="Remover">✕</button>
-      </div>
-      <div class="comment-text">${String(c.text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
-    </div>`).join('');
-}
-
-function updateCommentToggle(cardId) {
-  const label = document.getElementById('ct-label-' + cardId);
-  if (!label) return;
-  const count = (commentState[cardId] || []).length;
-  label.textContent = count > 0 ? count + ' comentário' + (count > 1 ? 's' : '') : 'Comentar';
-}
-
 // ── STATE ──
 let activeBU = 'all';
 let activeArea = 'all';
@@ -1281,7 +1055,7 @@ function getAreaTag(area) {
   const a = area.toLowerCase();
   if (a.includes('comercial') && !a.includes('eng')) return `<span class="area-tag area-comercial">${area}</span>`;
   if (a.includes('marketing')) return `<span class="area-tag area-marketing">${area}</span>`;
-  if (a.includes('eng') || a.includes('engenharia')) return `<span class="area-tag area-eng">${area}</span>`;
+  if (a.includes('eng')) return `<span class="area-tag area-eng">${area}</span>`;
   if (a.includes('financeiro')) return `<span class="area-tag area-financeiro">${area}</span>`;
   return `<span class="area-tag area-comercial">${area}</span>`;
 }
@@ -1309,7 +1083,7 @@ function getBUPill(bu) {
 
 function renderAcoes() {
   const container = document.getElementById('acoes-cards');
-  const areaMap = {comercial:'comercial', marketing:'marketing', eng:'engenharia comercial', financeiro:'financeiro', inovacao:'inovação', rh:'rh', operacoes:'operações'};
+  const areaMap = {comercial:'comercial', marketing:'marketing', eng:'eng. comercial', financeiro:'financeiro'};
 
   let filtered = acoesData.filter(r => {
     const buMatch = activeBU === 'all' || r.bu.toLowerCase() === activeBU;
@@ -1341,58 +1115,41 @@ function renderAcoes() {
     ? `<span class="conta-group-valor${v>=10000000?' big':''}">${v>=1000000?'R$'+(v/1e6).toFixed(1)+'M':'R$'+(v/1000).toFixed(0)+'k'}</span>`
     : '';
 
+  const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+  const meta = r => `
+    <div class="acao-card-meta">
+      ${getAreaTag(r.area)}
+      <span class="owner-pill">${r.owner}</span>
+      ${getStatusTag(r.status)}
+    </div>`;
+
   container.innerHTML = groups.map(g => {
     const cards = g.items.map(r => {
-      const cardId = 'acao-' + r.n;
-      const isDone = checkState[cardId] || false;
-      const comments = commentState[cardId] || [];
-      const commentCount = comments.length;
-      const commentsHTML = comments.map((c, i) => `
-        <div class="comment-item">
-          <div class="comment-meta">
-            <span class="comment-author">${c.author}</span>
-            <span class="comment-date">${c.date}</span>
-            <button class="comment-del" onclick="deleteComment('${cardId}', ${i})" title="Remover">✕</button>
-          </div>
-          <div class="comment-text">${c.text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
-        </div>`).join('');
-      return `
-      <div class="acao-card${isDone?' done':''}" id="card-${cardId}">
-        <div style="display:flex;gap:12px;align-items:flex-start;width:100%">
-          <button class="check-btn${isDone?' checked':''}" onclick="toggleCheck('${cardId}')" title="${isDone?'Desmarcar':'Marcar como concluído'}">
-            <svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 5L4.5 8.5L11 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-          <div class="acao-card-body" style="flex:1">
-            <div class="acao-card-text">${r.acao.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
-            <div class="acao-card-meta">
-              ${getAreaTag(r.area)}
-              <span class="owner-pill">${r.owner}</span>
-              ${getStatusTag(r.status)}
-              <button class="comments-toggle" onclick="toggleComments('${cardId}')">
-                <span class="ct-icon">💬</span>
-                <span id="ct-label-${cardId}">${commentCount > 0 ? commentCount + ' comentário' + (commentCount>1?'s':'') : 'Comentar'}</span>
-              </button>
-            </div>
+      const pr1 = `
+        <div class="acao-card pr1-card">
+          <div class="acao-card-body">
+            <div class="acao-pr-label">Pipe Review <span>25/03</span></div>
+            <div class="acao-card-text">${esc(r.acao)}</div>
+            ${meta(r)}
           </div>
           <div class="acao-card-side">
             <span class="acao-num">#${r.n}</span>
-            <span class="prazo-badge"><span class="prazo-label">Prazo</span>${r.prazo}</span>
           </div>
-        </div>
-        <div class="comments-section" id="comments-${cardId}">
-          <div class="comments-list" id="clist-${cardId}">${commentsHTML}</div>
-          <div class="comment-name-row">
-            <span class="comment-name-label">Seu nome:</span>
-            <input class="comment-name-input" id="cname-${cardId}" type="text" placeholder="Ex: Pilato" value="${lastAuthor}">
+        </div>`;
+
+      const pr2 = r.fup ? `
+        <div class="acao-card pr2-card">
+          <div class="acao-card-body">
+            <div class="acao-pr-label pr2-label">Pipe Review <span>08/04</span></div>
+            <div class="acao-card-text">${esc(r.fup)}</div>
           </div>
-          <div class="comment-input-row">
-            <textarea class="comment-input" id="cinput-${cardId}" placeholder="Adicionar comentário..." rows="2"></textarea>
-            <button class="comment-send" id="csend-${cardId}" onclick="addComment('${cardId}')">Enviar</button>
+          <div class="acao-card-side">
+            <span class="acao-num fup-num">#${r.n}</span>
           </div>
-        </div>
-      </div>`;
+        </div>` : '';
+
+      return pr1 + pr2;
     }).join('');
 
     return `<div class="conta-group">
@@ -1530,7 +1287,7 @@ function renderDiagArea(bu) {
   const buList = ['industrial','esportivo','cidades'];
   const buLabel = {industrial:'Ind', esportivo:'Esp', cidades:'Cid'};
   const buColor = {industrial:'var(--ind)', esportivo:'var(--esp)', cidades:'var(--cid)'};
-  const areas = ['Comercial','Marketing','Engenharia Comercial','Financeiro','Inovação','RH','Operações'];
+  const areas = ['Comercial','Marketing','Eng. Comercial','Financeiro','Inovação','RH','Operações','Enablement'];
 
   const countArea = (buKey, area) => acoesData.filter(r =>
     (buKey==='all'||r.bu.toLowerCase()===buKey) && r.area.toLowerCase().includes(area.toLowerCase())
@@ -1576,8 +1333,8 @@ function renderDiagArea(bu) {
 // Para cada área, somamos o valorRef (valor da conta na primeira linha que o registra)
 // das ações que pertencem à BU ativa. Isso evita dupla contagem entre ações da mesma conta.
 function calcPipelineByArea(bu) {
-  const areaKeys = ['all','comercial','marketing','eng','financeiro','inovacao','rh','operacoes'];
-  const areaMatch = {comercial:'comercial', marketing:'marketing', eng:'engenharia comercial', financeiro:'financeiro', inovacao:'inovação', rh:'rh', operacoes:'operações'};
+  const areaKeys = ['all','comercial','marketing','eng','financeiro'];
+  const areaMatch = {comercial:'comercial', marketing:'marketing', eng:'eng. comercial', financeiro:'financeiro'};
 
   areaKeys.forEach(aKey => {
     const filtered = acoesData.filter(r => {
@@ -1597,10 +1354,10 @@ function fmtPipe(v) {
   return 'R$ ' + v.toLocaleString('pt-BR');
 }
 const kpiData = {
-  all:       { pipeline:'R$ 148,8M', pipelinesub:'todas as BUs', contas:'42', contassub:'37 clientes · 5 parceiros', planos:'51', planossub:'em todas as áreas', dez:'7', dezsub:'oportunidades grandes' },
-  industrial:{ pipeline:'R$ 33,9M',  pipelinesub:'BU Industrial', contas:'19', contassub:'14 clientes · 5 parceiros', planos:'27', planossub:'ações na BU', dez:'2', dezsub:'oportunidades grandes' },
+  all:       { pipeline:'R$ 148,3M', pipelinesub:'todas as BUs', contas:'41', contassub:'37 clientes · 4 parceiros', planos:'58', planossub:'em todas as áreas', dez:'7', dezsub:'oportunidades grandes' },
+  industrial:{ pipeline:'R$ 33,4M',  pipelinesub:'BU Industrial', contas:'18', contassub:'14 clientes · 4 parceiros', planos:'33', planossub:'ações na BU', dez:'2', dezsub:'oportunidades grandes' },
   esportivo: { pipeline:'R$ 27,3M',  pipelinesub:'BU Esportivo', contas:'11', contassub:'11 clientes · 0 parceiros', planos:'13', planossub:'ações na BU', dez:'1', dezsub:'oportunidade grande' },
-  cidades:   { pipeline:'R$ 87,6M',  pipelinesub:'BU Cidades', contas:'12', contassub:'12 clientes · 0 parceiros', planos:'11', planossub:'ações na BU', dez:'4', dezsub:'oportunidades grandes' },
+  cidades:   { pipeline:'R$ 87,6M',  pipelinesub:'BU Cidades', contas:'12', contassub:'12 clientes · 0 parceiros', planos:'12', planossub:'ações na BU', dez:'4', dezsub:'oportunidades grandes' },
 };
 
 function setFilter(bu) {
@@ -1640,7 +1397,7 @@ function setFilter(bu) {
 
 function setArea(area) {
   activeArea = area;
-  ['all','comercial','marketing','eng','financeiro','inovacao','rh','operacoes'].forEach(a => {
+  ['all','comercial','marketing','eng','financeiro'].forEach(a => {
     document.getElementById('area-'+a).classList.remove('active');
   });
   document.getElementById('area-'+area).classList.add('active');
@@ -1660,7 +1417,6 @@ renderGestao();
 calcPipelineByArea('all');
 renderDiagArea('all');
 renderDiagFaixa('all');
-carregarComentarios();
 </script>
 </body>
 </html>
