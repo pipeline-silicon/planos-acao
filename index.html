@@ -1205,13 +1205,17 @@ function faixaContas(buKey, minVal, maxVal) {
   });
 }
 function semValorContas(buKey) {
+  const comValor = new Set();
+  acoesData.forEach(r => {
+    if (typeof r.valor === 'number' && r.valor !== null) comValor.add(r.bu+'|'+r.conta);
+  });
   const seen = new Set();
   return acoesData.filter(r => {
     if (buKey !== 'all' && r.bu.toLowerCase() !== buKey) return false;
     const key = r.bu+'|'+r.conta;
     if (seen.has(key)) return false;
     seen.add(key);
-    return typeof r.valor !== 'number' || r.valor === null;
+    return !comValor.has(key);
   });
 }
 
