@@ -612,13 +612,12 @@
     <div style="height:32px;display:flex;align-items:center"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 700" height="28" style="display:block"><defs><linearGradient id="lg" x1="224.51" y1="611.21" x2="994.75" y2="166.51" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f6c847"/><stop offset=".07" stop-color="#f5c244"/><stop offset=".15" stop-color="#f5b13c"/><stop offset=".25" stop-color="#f4962f"/><stop offset=".36" stop-color="#f2701d"/><stop offset=".47" stop-color="#f04107"/><stop offset=".5" stop-color="#f03200"/><stop offset=".54" stop-color="#e33311"/><stop offset=".65" stop-color="#bf3740"/><stop offset=".75" stop-color="#a33a66"/><stop offset=".85" stop-color="#8f3d81"/><stop offset=".93" stop-color="#833e92"/><stop offset="1" stop-color="#7f3f98"/></linearGradient></defs><path fill="url(#lg)" d="m339.73,595.83c-133.03,0-241.25-108.22-241.25-241.25,0-73.63,29.76-139.55,81.67-180.85,16.48-13.06,40.48-10.38,53.64,6.11,13.12,16.49,10.38,40.52-6.11,53.64-33.1,26.32-52.85,71.6-52.85,121.1,0,90.93,73.99,164.92,164.92,164.92s164.9-73.99,164.9-164.92c0-49.5-19.76-94.79-52.85-121.1-16.49-13.12-19.23-37.14-6.11-53.64,13.16-16.49,37.14-19.23,53.64-6.11,51.9,41.3,81.67,107.22,81.67,180.85,0,133.03-108.22,241.25-241.24,241.25Zm-.92-500c-30.75,0-55.67,24.93-55.67,55.68s24.93,55.67,55.67,55.67,55.68-24.93,55.68-55.67-24.93-55.68-55.68-55.68h0Zm371.98,451.41v-197.03c0-86.68,70.52-157.2,157.2-157.2s157.2,70.52,157.2,157.2v196.19c0,21.08,17.09,38.17,38.17,38.17s38.17-17.09,38.17-38.17v-196.19c0-128.78-104.76-233.54-233.54-233.54s-233.54,104.76-233.54,233.54v197.03c0,21.08,17.09,38.17,38.17,38.17s38.17-17.09,38.17-38.17Z"/></svg></div>
     <div>
       <div class="logo-text">Planos de Ação</div>
-      <div class="logo-sub">Pipeline Review · 08/04</div>
+      <div class="logo-sub">Pipeline Review</div>
     </div>
   </div>
 
-  <div class="header-meta">
-    Próxima Pipeline Review: <strong>22/04</strong>
-  </div>
+
+</header>
 
 <div class="layout">
 
@@ -650,6 +649,11 @@
       USA
       <span class="filter-count">—</span>
     </div>
+    <div class="filter-opt" style="opacity:0.4;cursor:not-allowed" title="Nenhuma Pipeline Review realizada para Grow">
+      <div class="bu-dot" style="background:#ec4899"></div>
+      Grow
+      <span class="filter-count">—</span>
+    </div>
 
     <div class="divider"></div>
 
@@ -675,6 +679,16 @@
         <div class="area-item-row"><div class="area-dot"></div><span>Financeiro</span></div>
         <span class="area-pipeline" id="apipe-financeiro"></span>
       </div>
+      <div class="area-item" onclick="setArea('inovacao')" id="area-inovacao">
+        <div class="area-item-row"><div class="area-dot"></div><span>Inovação</span></div>
+        <span class="area-pipeline" id="apipe-inovacao"></span>
+      </div>
+      <div class="area-item" style="opacity:0.45;cursor:not-allowed" title="Nenhum plano de ação cadastrado">
+        <div class="area-item-row"><div class="area-dot"></div><span>RH</span></div>
+      </div>
+      <div class="area-item" style="opacity:0.45;cursor:not-allowed" title="Nenhum plano de ação cadastrado">
+        <div class="area-item-row"><div class="area-dot"></div><span>Operações</span></div>
+      </div>
     </div>
   </aside>
 
@@ -695,17 +709,17 @@
       <div class="kpi-grid" id="kpi-area">
         <div class="kpi cyan">
           <div class="kpi-label">Pipeline Total</div>
-          <div class="kpi-value small accent" id="kpi-pipeline">R$ 106,1M</div>
+          <div class="kpi-value small accent" id="kpi-pipeline">R$ 148,3M</div>
           <div class="kpi-sub" id="kpi-pipeline-sub">todas as BUs</div>
         </div>
         <div class="kpi blue">
           <div class="kpi-label">Contas Discutidas</div>
           <div class="kpi-value accent" id="kpi-contas">41</div>
-          <div class="kpi-sub" id="kpi-contas-sub">14 clientes · 5 parceiros</div>
+          <div class="kpi-sub" id="kpi-contas-sub">37 clientes · 4 parceiros</div>
         </div>
         <div class="kpi purple">
           <div class="kpi-label">Planos de Ação</div>
-          <div class="kpi-value all" id="kpi-planos">50</div>
+          <div class="kpi-value all" id="kpi-planos">58</div>
           <div class="kpi-sub" id="kpi-planos-sub">em todas as áreas</div>
         </div>
         <div class="kpi amber">
@@ -715,8 +729,8 @@
         </div>
         <div class="kpi green">
           <div class="kpi-label">Taxa Conclusão</div>
-          <div class="kpi-value" style="color:var(--green)">2%</div>
-          <div class="kpi-sub">1 finalizado · 3 em andamento</div>
+          <div class="kpi-value" style="color:var(--green)">3,4%</div>
+          <div class="kpi-sub">2 finalizados · 23 em andamento</div>
         </div>
       </div>
 
@@ -808,11 +822,8 @@
           <div class="diag-row" style="flex-direction:column; align-items:flex-start; gap:6px">
             <div style="font-size:11px; color:var(--red); font-weight:500">⚠ Laticínio Carolina sem cadastro no SF</div>
             <div style="font-size:11px; color: var(--orange)">⚠ Ajinomoto sem valor de oportunidade</div>
-            <div style="font-size:11px; color:var(--yellow)">⚠ 9 contas com valor não mapeado</div>
-            <div style="font-size:11px; color:var(--muted)">ℹ Cidades: 7 contas sem valor definido</div>
             <div style="font-size:11px; color:var(--muted)">ℹ Esportivo concentra maior ticket médio</div>
             <div style="font-size:11px; color:var(--green); margin-top:4px">✓ 1 plano finalizado (Facchini / encantamento)</div>
-            <div style="font-size:11px; color:var(--green)">✓ 3 planos em andamento (Marketing)</div>
           </div>
         </div>
       </div>
@@ -969,9 +980,9 @@ const acoesData = [
   {n:16, bu:'Industrial', conta:'Caterpillar Piracicaba', tipo:'Cliente', area:'Comercial', owner:'Jeff', prazo:'08/04', valor:3834803.14, valorRef:null, status:'Aguardando início', acao:'Trazer o CFO do Banco CNH (Diogo) para dar insights sobre modelagem financeira e payback para indústrias.', fup:'Jeff deve contatar o Diogo (CFO do Banco CNH) para apoiar com os insights de modelagem financeira para esse cliente.' },
   {n:17, bu:'Industrial', conta:'Sulfibra', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:458390.07, valorRef:458390.07, status:'Em andamento', acao:'Elaborar um laudo comparativo dos diferenciais técnicos em relação aos concorrentes A, B e C.', fup:'Folda já enviou o laudo técnico comparativo para o cliente no dia 07/04.' },
   {n:18, bu:'Industrial', conta:'Sulfibra', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:458390.07, valorRef:null, status:'Standby', acao:'Revisar a precificação (pricing) para ser mais agressivo/ousado.', fup:'A revisão de precificação para ser mais agressiva entrou em standby, pois a equipe já está trabalhando com uma margem muito baixa nesse negócio.' },
-  {n:19, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:11220589.78, valorRef:11220589.78, status:'Em andamento', acao:'Ajustar o modelo de negócios (precificação com planilha aberta/redução de margem em equipamentos)', fup:'Modelo da planilha aberta feito e enviado para validação do Jeff, após validação será detalhada a precificação na planilha.\nEstimativa dia 17/04/26.' },
+  {n:19, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:11220589.78, valorRef:null, status:'Em andamento', acao:'Ajustar o modelo de negócios (precificação com planilha aberta/redução de margem em equipamentos)', fup:'Modelo da planilha aberta feito e enviado para validação do Jeff, após validação será detalhada a precificação na planilha.\nEstimativa dia 17/04/26.' },
   {n:20, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:11220589.78, valorRef:null, status:'Em andamento', acao:'Oferecer opções financeiras (leasing)', fup:'Leasing direcionado para o comercial (Alinhamento feito com o Pilato);' },
-  {n:21, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Inovação', owner:'Victor Piovezan', prazo:'08/04', valor:11220589.78, valorRef:null, status:'Aguardando início', acao:'Estruturar opções técnicas como BESS (baterias)', fup:'BESS direcionado para o Victor Piovezan (Inovação);' },
+  {n:21, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Inovação', owner:'Victor Piovezan', prazo:'08/04', valor:11220589.78, valorRef:11220589.78, status:'Aguardando início', acao:'Estruturar opções técnicas como BESS (baterias)', fup:'BESS direcionado para o Victor Piovezan (Inovação);' },
   {n:22, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Comercial', owner:'Jeff', prazo:'08/04', valor:11220589.78, valorRef:null, status:'Em andamento', acao:'Descobrir o nome do diretor em férias.', fup:'JP tem a missão de conseguir a agenda com o Diretor Financeiro (que já retornou de férias)' },
   {n:23, bu:'Industrial', conta:'Laticínio Carolina / ICMS', tipo:'Parceiro', area:'Financeiro', owner:'Rodrygo', prazo:'08/04', valor:null, valorRef:null, status:'Em andamento', acao:'Passar a investigação da regra tributária para a área fiscal.', fup:'ICSM foi mapeado como OKR do time financeiro no Q2.' },
   {n:24, bu:'Industrial', conta:'Ledvance', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:null, valorRef:null, status:'Em andamento', acao:'Realizar uma reunião para alinhar diretrizes de comissionamento caso a empresa decida atuar como parceira que "pina" (especifica) o projeto para que a Ledvance fature direto', fup:'Agendar uma reunião com o Guilherme Profeta (gerente da Ledvance). É indispensável que o Jeff participe dessa conversa junto com o José Lucas para definirem as diretrizes de comissionamento.\nEstimativa dia 24/04/26.' },
@@ -1083,7 +1094,7 @@ function getBUPill(bu) {
 
 function renderAcoes() {
   const container = document.getElementById('acoes-cards');
-  const areaMap = {comercial:'comercial', marketing:'marketing', eng:'eng. comercial', financeiro:'financeiro'};
+  const areaMap = {comercial:'comercial', marketing:'marketing', eng:'eng. comercial', financeiro:'financeiro', inovacao:'inovação'};
 
   let filtered = acoesData.filter(r => {
     const buMatch = activeBU === 'all' || r.bu.toLowerCase() === activeBU;
@@ -1333,16 +1344,34 @@ function renderDiagArea(bu) {
 // Para cada área, somamos o valorRef (valor da conta na primeira linha que o registra)
 // das ações que pertencem à BU ativa. Isso evita dupla contagem entre ações da mesma conta.
 function calcPipelineByArea(bu) {
-  const areaKeys = ['all','comercial','marketing','eng','financeiro'];
-  const areaMatch = {comercial:'comercial', marketing:'marketing', eng:'eng. comercial', financeiro:'financeiro'};
+  const areaKeys = ['all','comercial','marketing','eng','financeiro','inovacao'];
+  const areaMatch = {comercial:'comercial', marketing:'marketing', eng:'eng. comercial', financeiro:'financeiro', inovacao:'inovação'};
 
   areaKeys.forEach(aKey => {
     const filtered = acoesData.filter(r => {
       const buMatch = bu === 'all' || r.bu.toLowerCase() === bu;
-      const aMatch = aKey === 'all' || r.area.toLowerCase().includes(areaMatch[aKey]||'');
-      return buMatch && aMatch && typeof r.valorRef === 'number';
+      const aMatch = aKey === 'all'
+        ? typeof r.valorRef === 'number'
+        : r.area.toLowerCase().includes(areaMatch[aKey]||'§');
+      return buMatch && aMatch;
     });
-    const total = filtered.reduce((s, r) => s + r.valorRef, 0);
+    // Deduplicate by conta — sum valor once per conta that has this area
+    const seen = new Set();
+    let total = 0;
+    filtered.forEach(r => {
+      const key = r.bu + '|' + r.conta;
+      if (!seen.has(key) && typeof r.valor === 'number') {
+        seen.add(key);
+        total += r.valor;
+      }
+    });
+    // For 'all', use valorRef dedup instead to avoid cross-area double count
+    if (aKey === 'all') {
+      total = acoesData.filter(r => {
+        const buMatch = bu === 'all' || r.bu.toLowerCase() === bu;
+        return buMatch && typeof r.valorRef === 'number';
+      }).reduce((s, r) => s + r.valorRef, 0);
+    }
     const el = document.getElementById('apipe-' + aKey);
     if (el) el.textContent = total > 0 ? fmtPipe(total) : '';
   });
