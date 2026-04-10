@@ -599,6 +599,10 @@
     margin-bottom: 1px;
   }
 
+
+  /* ── DISTRIBUIÇÃO ── */
+  #dist-preview { cursor: text; }
+
   /* scrollbar */
   ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
@@ -700,6 +704,7 @@
       <div class="tab active" onclick="setTab('acoes')">Planos de Ação</div>
       <div class="tab" onclick="setTab('diagnostico')">Diagnóstico</div>
       <div class="tab" onclick="setTab('monitoramento')">Monitoramento</div>
+      <div class="tab" onclick="setTab('distribuicao')">Distribuição</div>
     </div>
 
     <!-- TAB: DIAGNÓSTICO -->
@@ -976,13 +981,13 @@ const acoesData = [
   {n:12, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Marketing', owner:'Rebeca', prazo:'08/04', valor:2075463.0, valorRef:null, status:'Em andamento', acao:'Presentear o Edimilson com uma camisa da Seleção Brasileira', fup:'Buscando o tamanho ideal, com apoio do Thiago, para realizar a compra da camisa.' },
   {n:13, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:2075463.0, valorRef:null, status:'Em andamento', acao:'Fazer uma análise/perícia preventiva da fábrica junto à Segurança do Trabalho para patrocinar a troca de toda a planta (reprojeto).', fup:'Foi decidido não envolver a Segurança do Trabalho agora para não colocar o Edmilson em uma posição desconfortável. O novo plano é o Thiago pegar a planta da fábrica para que a engenharia comercial faça um projeto/desenho preventivo.' },
   {n:14, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Marketing', owner:'Rebeca', prazo:'08/04', valor:2075463.0, valorRef:null, status:'Em andamento', acao:'Criar um Business Case (vídeos/depoimentos) sobre a durabilidade de 8 anos do produto. Abrir a oportunidade de projeto RGB na área externa', fup:'Thiago está em contato com o cliente para coletar a aprovação para a captação.' },
-  {n:15, bu:'Industrial', conta:'Caterpillar Piracicaba', tipo:'Cliente', area:'Inovação', owner:'Victor Piovezan', prazo:'08/04', valor:3834803.14, valorRef:3834803.14, status:'Aguardando início', acao:'Mapear três níveis de automação de mercado (básico, intermediário e top/chinês de ponta) com três grandes empresas de mercado:\n- Lutron\n- Crestron\n- Pesquisar alguma empresa chinesa.\nApresentar internamente antes de levar ao cliente num prazo de um mês.', fup:'Demanda enviada para o Victor Piovezan finalizar o levantamento técnico de automação sem fio. Prazo: 25/04' },
+  {n:15, bu:'Industrial', conta:'Caterpillar Piracicaba', tipo:'Cliente', area:'Inovação', owner:'Victor Piovezan', prazo:'08/04', valor:3834803.14, valorRef:3834803.14, status:'Aguardando início', acao:'A fábrica da Caterpillar em Piracicaba está com a iluminação atual (Alufone) no fim da vida útil e aberta a testar novas tecnologias, especialmente automação sem fio. O cliente quer testar a melhor solução do mercado em um barracão de 56.000 m² antes de escalar para toda a planta, com prioridade total em tecnologia (não preço). Já foi implementado o sistema Quantum da Lutron em Campo Largo (~R$1M), considerado referência máxima técnica.', fup:'Área de inovação deve mapear 3 níveis de solução de mercado (básico, intermediário e top), com foco em benchmarking das líderes globais como Lutron e Crestron. Mapear também uma fabricante chinesa premium que concorra em tecnologia com essas líderes, mas com potencial de melhor custo-benefício.\n\nEntregáveis: detalhar funcionamento das soluções, faixas de preço e diferenciais técnicos claros para cada nível para apresentação ao Jeff até o dia 25/04.' },
   {n:16, bu:'Industrial', conta:'Caterpillar Piracicaba', tipo:'Cliente', area:'Comercial', owner:'Jeff', prazo:'08/04', valor:3834803.14, valorRef:null, status:'Aguardando início', acao:'Trazer o CFO do Banco CNH (Diogo) para dar insights sobre modelagem financeira e payback para indústrias.', fup:'Jeff deve contatar o Diogo (CFO do Banco CNH) para apoiar com os insights de modelagem financeira para esse cliente.' },
   {n:17, bu:'Industrial', conta:'Sulfibra', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:458390.07, valorRef:458390.07, status:'Em andamento', acao:'Elaborar um laudo comparativo dos diferenciais técnicos em relação aos concorrentes A, B e C.', fup:'Folda já enviou o laudo técnico comparativo para o cliente no dia 07/04.' },
   {n:18, bu:'Industrial', conta:'Sulfibra', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:458390.07, valorRef:null, status:'Standby', acao:'Revisar a precificação (pricing) para ser mais agressivo/ousado.', fup:'A revisão de precificação para ser mais agressiva entrou em standby, pois a equipe já está trabalhando com uma margem muito baixa nesse negócio.' },
   {n:19, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:11220589.78, valorRef:null, status:'Em andamento', acao:'Ajustar o modelo de negócios (precificação com planilha aberta/redução de margem em equipamentos)', fup:'Modelo da planilha aberta feito e enviado para validação do Jeff, após validação será detalhada a precificação na planilha.\nEstimativa dia 17/04/26.' },
   {n:20, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Comercial', owner:'Pilato', prazo:'08/04', valor:11220589.78, valorRef:null, status:'Em andamento', acao:'Oferecer opções financeiras (leasing)', fup:'Leasing direcionado para o comercial (Alinhamento feito com o Pilato);' },
-  {n:21, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Inovação', owner:'Victor Piovezan', prazo:'08/04', valor:11220589.78, valorRef:11220589.78, status:'Aguardando início', acao:'A fábrica está no momento ideal de troca pois a iluminação deles tem mais de 10 anos (da marca GE) e alguns pontos já começaram a queimar e a equipe vê isso como uma excelente oportunidade comercial. A oportunidade resultaria em um projeto de R$ 11,2 milhões, no entanto, a Engenharia detectou que, se eles implementarem 100% dessa carga, a rede elétrica da fábrica vai sofrer cortes/limitações de energia. Como solução, recomenda-se a inclusão de um sistema de baterias (BESS) para garantir estabilidade e viabilizar o projeto.', fup:'A Engenharia Comercial encaminhou o plano de ação para o time de Inovação, e a demanda foi oficialmente recebida pelo Victor em 10/04.' },
+  {n:21, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Inovação', owner:'Victor Piovezan', prazo:'08/04', valor:11220589.78, valorRef:11220589.78, status:'Aguardando início', acao:'A fábrica está no momento ideal de troca pois a iluminação deles tem mais de 10 anos (da marca GE) e alguns pontos já começaram a queimar e a equipe vê isso como uma excelente oportunidade comercial. A oportunidade resultaria em um projeto de R$ 11,2 milhões, no entanto, a Engenharia detectou que, se eles implementarem 100% dessa carga, a rede elétrica da fábrica vai sofrer cortes/limitações de energia.', fup:'Como solução, vamos propor BESS para garantir estabilidade e viabilizar o projeto. A demanda foi encaminhada pela Engenharia Comercial ao time de Inovação, e aguardamos o prazo para definição de como o BESS será estruturado e viabilizado para este caso.' },
   {n:22, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Comercial', owner:'Jeff', prazo:'08/04', valor:11220589.78, valorRef:null, status:'Em andamento', acao:'Descobrir o nome do diretor em férias.', fup:'JP tem a missão de conseguir a agenda com o Diretor Financeiro (que já retornou de férias)' },
   {n:23, bu:'Industrial', conta:'Laticínio Carolina / ICMS', tipo:'Parceiro', area:'Financeiro', owner:'Rodrygo', prazo:'08/04', valor:null, valorRef:null, status:'Em andamento', acao:'Passar a investigação da regra tributária para a área fiscal.', fup:'ICSM foi mapeado como OKR do time financeiro no Q2.' },
   {n:24, bu:'Industrial', conta:'Ledvance', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', prazo:'08/04', valor:null, valorRef:null, status:'Em andamento', acao:'Realizar uma reunião para alinhar diretrizes de comissionamento caso a empresa decida atuar como parceira que "pina" (especifica) o projeto para que a Ledvance fature direto', fup:'Agendar uma reunião com o Guilherme Profeta (gerente da Ledvance). É indispensável que o Jeff participe dessa conversa junto com o José Lucas para definirem as diretrizes de comissionamento.\nEstimativa dia 24/04/26.' },
@@ -1444,12 +1449,131 @@ function setTab(tab) {
   event.target.classList.add('active');
 }
 
+
+// ── DISTRIBUIÇÃO ──
+let modoAtual = 'pr';
+
+function initDistribuicao() {
+  const owners = [...new Set(acoesData.map(r => r.owner))].filter(Boolean).sort();
+  const sel = document.getElementById('owner-select');
+  if (!sel) return;
+  owners.forEach(o => {
+    const opt = document.createElement('option');
+    opt.value = o; opt.textContent = o;
+    sel.appendChild(opt);
+  });
+}
+
+function setModo(modo) {
+  modoAtual = modo;
+  const prBtn  = document.getElementById('modo-pr');
+  const fupBtn = document.getElementById('modo-fup');
+  if (modo === 'pr') {
+    prBtn.style.background  = 'var(--accent)'; prBtn.style.color = '#000';
+    fupBtn.style.background = 'var(--surface2)'; fupBtn.style.color = 'var(--muted)';
+  } else {
+    fupBtn.style.background = '#76B852'; fupBtn.style.color = '#000';
+    prBtn.style.background  = 'var(--surface2)'; prBtn.style.color = 'var(--muted)';
+  }
+  renderDist();
+}
+
+function renderDist() {
+  const owner = document.getElementById('owner-select')?.value;
+  const pr    = document.getElementById('pr-select')?.value;
+  const pre   = document.getElementById('dist-preview');
+  const info  = document.getElementById('dist-info');
+  if (!pre || !info) return;
+
+  if (!owner) {
+    pre.textContent = 'Selecione um owner para gerar a mensagem.';
+    info.innerHTML  = '—';
+    return;
+  }
+
+  const planos = acoesData.filter(r => r.owner === owner);
+  const prField = pr === '08/04' ? 'fup' : 'acao';
+
+  if (modoAtual === 'pr') {
+    // ── Mensagem pós-PR ──
+    const itens = planos.filter(r => r[prField] && r[prField].trim());
+    let msg = `Olá, ${owner.split(' ')[0]}! 👋\n\n`;
+    msg += `Seguem os planos de ação definidos na *Pipeline Review ${pr}* que são de sua responsabilidade:\n\n`;
+
+    const byBU = {};
+    itens.forEach(r => {
+      if (!byBU[r.bu]) byBU[r.bu] = [];
+      byBU[r.bu].push(r);
+    });
+
+    Object.entries(byBU).forEach(([bu, rows]) => {
+      msg += `*${bu.toUpperCase()}*\n`;
+      rows.forEach(r => {
+        const texto = r[prField].replace(/\\n/g, ' ').trim();
+        msg += `• *${r.conta}* — ${texto}\n`;
+      });
+      msg += '\n';
+    });
+
+    msg += `Qualquer dúvida, me chama aqui! 🙌`;
+
+    pre.textContent = msg;
+    info.innerHTML  = `<strong style="color:var(--text)">${owner}</strong><br>${itens.length} plano${itens.length!==1?'s':''}<br>PR ${pr}`;
+
+  } else {
+    // ── Mensagem FUP ──
+    const abertos = planos.filter(r => {
+      const texto = r[prField] && r[prField].trim();
+      return texto && r.status !== 'Finalizado';
+    });
+
+    let msg = `Olá, ${owner.split(' ')[0]}! 👋\n\n`;
+    msg += `Passando para fazer um *FUP rápido* dos planos de ação em aberto:\n\n`;
+
+    const byBU = {};
+    abertos.forEach(r => {
+      if (!byBU[r.bu]) byBU[r.bu] = [];
+      byBU[r.bu].push(r);
+    });
+
+    Object.entries(byBU).forEach(([bu, rows]) => {
+      msg += `*${bu.toUpperCase()}*\n`;
+      rows.forEach(r => {
+        const texto = r[prField].replace(/\\n/g, ' ').trim();
+        const statusIcon = r.status === 'Em andamento' ? '🟡' : r.status === 'Standby' || r.status === 'Stanby' ? '⏸' : '⬜';
+        msg += `${statusIcon} *${r.conta}* — ${texto}\n`;
+      });
+      msg += '\n';
+    });
+
+    msg += `Responde aqui na thread com o status de cada um. Obrigada! 🙏`;
+
+    pre.textContent = msg;
+    info.innerHTML  = `<strong style="color:var(--text)">${owner}</strong><br>${abertos.length} plano${abertos.length!==1?'s':''} em aberto<br>PR ${pr}`;
+  }
+}
+
+function copiarMensagem() {
+  const pre = document.getElementById('dist-preview');
+  const btn = document.getElementById('btn-copiar');
+  if (!pre || !pre.textContent.trim()) return;
+  navigator.clipboard.writeText(pre.textContent).then(() => {
+    btn.textContent = '✓ Copiado!';
+    btn.style.background = 'rgba(118,184,82,0.3)';
+    setTimeout(() => {
+      btn.textContent = 'Copiar mensagem';
+      btn.style.background = 'rgba(118,184,82,0.15)';
+    }, 2000);
+  });
+}
+
 // ── INIT ──
 renderAcoes();
 renderGestao();
 calcPipelineByArea('all');
 renderDiagArea('all');
 renderDiagFaixa('all');
+initDistribuicao();
 </script>
 </body>
 </html>
