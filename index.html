@@ -738,6 +738,13 @@
         </div>
         <span class="area-pipeline" style="color:#76B852">Follow-up</span>
       </div>
+      <div class="area-item" onclick="setData('PR 22/04')" id="data-pr-2204">
+        <div class="area-item-row">
+          <div class="area-dot" style="background:#f59e0b"></div>
+          <span>PR 22/04</span>
+        </div>
+        <span class="area-pipeline" style="color:#f59e0b">Industrial</span>
+      </div>
     </div>
   </aside>
 
@@ -1214,11 +1221,13 @@ function renderAcoes() {
   const container = document.getElementById('acoes-cards');
   const areaMap = {comercial:'comercial', marketing:'marketing', eng:'eng. comercial', financeiro:'financeiro', inovacao:'inovação'};
 
+  const contas2204 = ['magnera', 'facchini', 'sulfibra', 'atlas schindler', 'fama', 'scherer', 'confab'];
   let filtered = acoesData.filter(r => {
     const buMatch = activeBU === 'all' || r.bu.toLowerCase() === activeBU;
     const areaMatch = activeArea === 'all' || r.area.toLowerCase().includes(areaMap[activeArea]||'§');
-    const dataMatch = activeData === 'all' || r.data === activeData;
-    return buMatch && areaMatch && dataMatch;
+    const dataMatch = activeData === 'all' || r.data === activeData ||
+      (activeData === 'PR 22/04' && r.bu === 'Industrial' && contas2204.some(c => r.conta.toLowerCase().includes(c)));
+    return buMatch && areaMatch && (activeData === 'PR 22/04' ? dataMatch : (dataMatch && r.data !== 'PR 22/04'));
   });
 
   document.getElementById('acoes-count').textContent = filtered.length + ' ações';
@@ -1552,13 +1561,13 @@ function setArea(area) {
 
 function setData(data) {
   activeData = data;
-  ['all','pr-2503','pr-0804','pr-1504','fup-1604','fup-2004'].forEach(id => {
+  ['all','pr-2503','pr-0804','pr-1504','fup-1604','fup-2004','pr-2204'].forEach(id => {
     const el = document.getElementById('data-'+id);
     if (el) el.classList.remove('active');
   });
   const idMap = {
     'all':'all', 'PR 25/03':'pr-2503', 'PR 08/04':'pr-0804',
-    'PR 15/04':'pr-1504', 'FUP 16/04':'fup-1604', 'FUP 20/04':'fup-2004'
+    'PR 15/04':'pr-1504', 'FUP 16/04':'fup-1604', 'FUP 20/04':'fup-2004', 'PR 22/04':'pr-2204'
   };
   const el = document.getElementById('data-'+idMap[data]);
   if (el) el.classList.add('active');
