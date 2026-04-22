@@ -668,7 +668,7 @@
   <div class="logo">
     <div style="height:32px;display:flex;align-items:center"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 700" height="28" style="display:block"><defs><linearGradient id="lg" x1="224.51" y1="611.21" x2="994.75" y2="166.51" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f6c847"/><stop offset=".07" stop-color="#f5c244"/><stop offset=".15" stop-color="#f5b13c"/><stop offset=".25" stop-color="#f4962f"/><stop offset=".36" stop-color="#f2701d"/><stop offset=".47" stop-color="#f04107"/><stop offset=".5" stop-color="#f03200"/><stop offset=".54" stop-color="#e33311"/><stop offset=".65" stop-color="#bf3740"/><stop offset=".75" stop-color="#a33a66"/><stop offset=".85" stop-color="#8f3d81"/><stop offset=".93" stop-color="#833e92"/><stop offset="1" stop-color="#7f3f98"/></linearGradient></defs><path fill="url(#lg)" d="m339.73,595.83c-133.03,0-241.25-108.22-241.25-241.25,0-73.63,29.76-139.55,81.67-180.85,16.48-13.06,40.48-10.38,53.64,6.11,13.12,16.49,10.38,40.52-6.11,53.64-33.1,26.32-52.85,71.6-52.85,121.1,0,90.93,73.99,164.92,164.92,164.92s164.9-73.99,164.9-164.92c0-49.5-19.76-94.79-52.85-121.1-16.49-13.12-19.23-37.14-6.11-53.64,13.16-16.49,37.14-19.23,53.64-6.11,51.9,41.3,81.67,107.22,81.67,180.85,0,133.03-108.22,241.25-241.24,241.25Zm-.92-500c-30.75,0-55.67,24.93-55.67,55.68s24.93,55.67,55.67,55.67,55.68-24.93,55.68-55.67-24.93-55.68-55.68-55.68h0Zm371.98,451.41v-197.03c0-86.68,70.52-157.2,157.2-157.2s157.2,70.52,157.2,157.2v196.19c0,21.08,17.09,38.17,38.17,38.17s38.17-17.09,38.17-38.17v-196.19c0-128.78-104.76-233.54-233.54-233.54s-233.54,104.76-233.54,233.54v197.03c0,21.08,17.09,38.17,38.17,38.17s38.17-17.09,38.17-38.17Z"/></svg></div>
     <div>
-      <div class="logo-text">Planos de Ação</div>
+      <div class="logo-text" onclick="setTab('acoes')" style="cursor:pointer">Planos de Ação</div>
       <div class="logo-sub">Pipeline Review</div>
     </div>
   </div>
@@ -692,6 +692,10 @@
     <div class="bu-nav-item" style="opacity:0.35;cursor:not-allowed;border:none;background:none;padding:4px 10px" title="Nenhuma Pipeline Review realizada para USA">
       <div class="bu-dot" style="background:#6366f1"></div>USA
     </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0">
+    <div id="header-tab-diagnostico" onclick="setTab('diagnostico')" style="padding:6px 16px;font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;border-radius:6px;border:1px solid var(--accent);background:rgba(0,194,255,0.08);transition:all 0.15s;white-space:nowrap" onmouseover="this.style.background='rgba(0,194,255,0.16)'" onmouseout="if(!this.classList.contains('htab-active')){this.style.background='rgba(0,194,255,0.08)'}">Diagnóstico</div>
+    <div id="header-tab-monitoramento" onclick="setTab('monitoramento')" style="padding:6px 16px;font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;border-radius:6px;border:1px solid var(--accent);background:rgba(0,194,255,0.08);transition:all 0.15s;white-space:nowrap" onmouseover="this.style.background='rgba(0,194,255,0.16)'" onmouseout="if(!this.classList.contains('htab-active')){this.style.background='rgba(0,194,255,0.08)'}">Monitoramento</div>
   </div>
   </div>
 
@@ -821,13 +825,6 @@
   <!-- MAIN -->
   <main>
 
-    <!-- TABS -->
-    <div class="tabs">
-      <div class="tab active" onclick="setTab('acoes')">Planos de Ação</div>
-      <div class="tab" onclick="setTab('diagnostico')">Diagnóstico</div>
-      <div class="tab" onclick="setTab('monitoramento')">Monitoramento</div>
-    </div>
-
     <!-- TAB: DIAGNÓSTICO -->
     <div class="tab-content" id="tab-diagnostico">
 
@@ -835,17 +832,17 @@
       <div class="kpi-grid" id="kpi-area">
         <div class="kpi cyan">
           <div class="kpi-label">Pipeline Total</div>
-          <div class="kpi-value small accent" id="kpi-pipeline">R$ 148,3M</div>
+          <div class="kpi-value small accent" id="kpi-pipeline">R$ 146,3M</div>
           <div class="kpi-sub" id="kpi-pipeline-sub">todas as BUs</div>
         </div>
         <div class="kpi blue">
           <div class="kpi-label">Contas Discutidas</div>
-          <div class="kpi-value accent" id="kpi-contas">41</div>
-          <div class="kpi-sub" id="kpi-contas-sub">37 clientes · 4 parceiros</div>
+          <div class="kpi-value accent" id="kpi-contas">54</div>
+          <div class="kpi-sub" id="kpi-contas-sub">50 clientes · 4 parceiros</div>
         </div>
         <div class="kpi purple">
           <div class="kpi-label">Planos de Ação</div>
-          <div class="kpi-value all" id="kpi-planos">58</div>
+          <div class="kpi-value all" id="kpi-planos">115</div>
           <div class="kpi-sub" id="kpi-planos-sub">em todas as áreas</div>
         </div>
         <div class="kpi amber">
@@ -855,8 +852,8 @@
         </div>
         <div class="kpi green">
           <div class="kpi-label">Taxa Conclusão</div>
-          <div class="kpi-value" style="color:var(--green)">3,4%</div>
-          <div class="kpi-sub">2 finalizados · 23 em andamento</div>
+          <div class="kpi-value" style="color:var(--green)">22,5%</div>
+          <div class="kpi-sub">25 finalizados · 64 em andamento</div>
         </div>
       </div>
 
@@ -866,8 +863,8 @@
         <div class="pipeline-bars">
           <div class="p-bar-row" data-bu="industrial">
             <div class="p-bar-label">Industrial</div>
-            <div class="p-bar-track"><div class="p-bar-fill" style="width:22%; background:var(--ind)"></div></div>
-            <div class="p-bar-val" style="color:var(--ind)">R$ 33,4M</div>
+            <div class="p-bar-track"><div class="p-bar-fill" style="width:20%; background:var(--ind)"></div></div>
+            <div class="p-bar-val" style="color:var(--ind)">R$ 31,1M</div>
           </div>
           <div class="p-bar-row" data-bu="esportivo">
             <div class="p-bar-label">Esportivo</div>
@@ -892,17 +889,17 @@
           <div class="diag-head">Composição da Carteira</div>
           <div class="diag-row">
             <div class="diag-row-label highlight">Contas discutidas</div>
-            <div class="diag-val total" data-total="41" data-ind="18" data-esp="11" data-cid="12">41</div>
-            <div class="diag-val ind" data-type="ind" data-total="41" data-ind="18" data-esp="11" data-cid="12">Ind 19</div>
-            <div class="diag-val esp" data-type="esp" data-total="42" data-ind="19" data-esp="11" data-cid="12">Esp 11</div>
-            <div class="diag-val cid" data-type="cid" data-total="42" data-ind="19" data-esp="11" data-cid="12">Cid 12</div>
+            <div class="diag-val total" data-total="54" data-ind="23" data-esp="12" data-cid="12">54</div>
+            <div class="diag-val ind" data-type="ind" data-total="54" data-ind="23" data-esp="12" data-cid="12">Ind 23</div>
+            <div class="diag-val esp" data-type="esp" data-total="54" data-ind="23" data-esp="12" data-cid="12">Esp 12</div>
+            <div class="diag-val cid" data-type="cid" data-total="54" data-ind="23" data-esp="12" data-cid="12">Cid 12</div>
           </div>
           <div class="diag-row">
             <div class="diag-row-label">Clientes</div>
-            <div class="diag-val total" data-total="36" data-ind="14" data-esp="11" data-cid="11">36</div>
-            <div class="diag-val ind">14</div>
-            <div class="diag-val esp">11</div>
-            <div class="diag-val cid">11</div>
+            <div class="diag-val total">50</div>
+            <div class="diag-val ind">19</div>
+            <div class="diag-val esp">12</div>
+            <div class="diag-val cid">12</div>
           </div>
           <div class="diag-row">
             <div class="diag-row-label">Parceiros</div>
@@ -972,7 +969,7 @@
       <div class="kpi-grid" style="margin-bottom:24px">
         <div class="kpi cyan">
           <div class="kpi-label">Total de Ações</div>
-          <div class="kpi-value accent">51</div>
+          <div class="kpi-value accent">111</div>
           <div class="kpi-sub">em todas as áreas</div>
         </div>
         <div class="kpi green">
@@ -982,8 +979,8 @@
         </div>
         <div class="kpi amber">
           <div class="kpi-label">Em Andamento</div>
-          <div class="kpi-value" style="color:var(--yellow)">62</div>
-          <div class="kpi-sub">57% em execução</div>
+          <div class="kpi-value" style="color:var(--yellow)">64</div>
+          <div class="kpi-sub">58% em execução</div>
         </div>
         <div class="kpi blue">
           <div class="kpi-label">Aguardando / Stanby</div>
@@ -1015,7 +1012,7 @@
         </div>
         <div class="monitor-card">
           <div class="monitor-area">Comercial — Cidades</div>
-          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:0%"></div></div>
+          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:0%; background:var(--cid)"></div></div>
           <div class="monitor-stats">
             <div class="monitor-stat"><div class="monitor-stat-val">12</div><div class="monitor-stat-label">Total</div></div>
             <div class="monitor-stat"><div class="monitor-stat-val amber">8</div><div class="monitor-stat-label">Andamento</div></div>
@@ -1035,7 +1032,7 @@
         </div>
         <div class="monitor-card">
           <div class="monitor-area" style="color:var(--esp)">Eng. Comercial</div>
-          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:0%; background:var(--esp)"></div></div>
+          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:80%; background:var(--esp)"></div></div>
           <div class="monitor-stats">
             <div class="monitor-stat"><div class="monitor-stat-val">10</div><div class="monitor-stat-label">Total</div></div>
             <div class="monitor-stat"><div class="monitor-stat-val amber">8</div><div class="monitor-stat-label">Andamento</div></div>
@@ -1055,10 +1052,10 @@
         </div>
                 <div class="monitor-card">
           <div class="monitor-area" style="color:#c4b5fd">Inovação</div>
-          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:0%; background:#a78bfa"></div></div>
+          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:100%; background:#a78bfa"></div></div>
           <div class="monitor-stats">
-            <div class="monitor-stat"><div class="monitor-stat-val">2</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">2</div><div class="monitor-stat-label">Andamento</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val">4</div><div class="monitor-stat-label">Total</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val amber">4</div><div class="monitor-stat-label">Andamento</div></div>
             <div class="monitor-stat"><div class="monitor-stat-val green">0</div><div class="monitor-stat-label">Concluídas</div></div>
             <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--muted)">0%</div><div class="monitor-stat-label">% Concl.</div></div>
           </div>
@@ -1075,12 +1072,12 @@
         </div>
         <div class="monitor-card" style="border-color:var(--border2); opacity:0.5">
           <div class="monitor-area">TOTAL GERAL</div>
-          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:2%"></div></div>
+          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:22.5%; background:var(--accent)"></div></div>
           <div class="monitor-stats">
-            <div class="monitor-stat"><div class="monitor-stat-val">109</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">62</div><div class="monitor-stat-label">Andamento</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val">111</div><div class="monitor-stat-label">Total</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val amber">64</div><div class="monitor-stat-label">Andamento</div></div>
             <div class="monitor-stat"><div class="monitor-stat-val green">25</div><div class="monitor-stat-label">Concluídas</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val accent">22,9%</div><div class="monitor-stat-label">% Concl.</div></div>
+            <div class="monitor-stat"><div class="monitor-stat-val accent">22,5%</div><div class="monitor-stat-label">% Concl.</div></div>
           </div>
         </div>
       </div>
@@ -1209,16 +1206,22 @@ const acoesData = [
   {n:113, bu:'Grow', conta:'EUCALIPTO MUDA - Viveiro Vimac', tipo:'Cliente', area:'Comercial', owner:'Arthur', valor:6300.0, valorRef:6300.0, data:'PR 15/04', status:'Pendente', acao:'Após solicitação de redução, a proposta revisada foi enviada, mas o cliente interrompeu o contato e o follow-up entrou em “modo cobrança”, com baixa efetividade.\n\nPróximos passos:\n- Reposicionar o follow-up com uma abordagem mais estratégica e criativa, evitando tom de cobrança.\n- Trazer elementos novos para a conversa (ex: ajuste de escopo, nova hipótese de ganho, piloto) em vez de apenas reforçar a proposta enviada.\n- Conduzir a reaproximação de forma consultiva, buscando entender o momento e possíveis objeções não explicitadas.' },
   {n:114, bu:'Grow', conta:'CAFÉ MUDA - Viveiro Real Conilon', tipo:'Cliente', area:'Comercial', owner:'Arthur', valor:5995.0, valorRef:5995.0, data:'PR 15/04', status:'Pendente', acao:'Projeto inicial de R$43.000 gerou fricção, levando à redução da proposta. Na nova etapa, o cliente solicitou desconto sobre o valor de R$6.100.\n\nPróximos passos:\n- Conduzir a reunião com foco em fechamento, trabalhando o valor final de R$5.995 de forma estratégica, preservando margem.\n- Reforçar o custo-benefício e o racional do investimento, reduzindo sensibilidade a preço.\n- Evoluir a abordagem de follow-up com mais criatividade e valor agregado, evitando dependência de descontos para avanço.' },
   {n:115, bu:'Grow', conta:'CAFÉ MUDA - Viveiro Real Conilon', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:5995.0, valorRef:null, data:'PR 15/04', status:'Em andamento', acao:'Imprimir o manual de instalação e o "guia de acompanhamento" (protocolo de medição de dados) e enviar em uma pasta física junto com o produto. Isso facilitará a vida do produtor em campo (que não pode usar notebook no meio da lavoura).' },
+
+
+
+
+
+
+
+
+
+
+  {n:116, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:11220589.78, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'Previsão da Planilha para dia 23/04/26 (Priorização para orçamentos da SECID)' },
+  {n:117, bu:'Esportivo', conta:'SEJEL', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:5957030.0, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'Ainda não recebemos as informações para executar a tarefa, acredito que por conta da SECID, isso não se tornou uma prioridade do comercial.' },
+
+  {n:116, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:11220589.78, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'Previsão da Planilha para dia 23/04/26 (Priorização para orçamentos da SECID)' },
+  {n:117, bu:'Esportivo', conta:'SEJEL', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:5957030.0, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'Ainda não recebemos as informações para executar a tarefa, acredito que por conta da SECID, isso não se tornou uma prioridade do comercial.' },
 ];
-
-
-
-
-
-
-
-
-
 const gestaoData = [
   {cat:'Inovação', plano:'Rodar pesquisa de som para estádios', conta:'—', bu:'Esportivo', resp:'Definir'},
   {cat:'Inovação', plano:'Luminária solar — Google Ads', conta:'—', bu:'Marketing', resp:'Kauana'},
@@ -1583,9 +1586,9 @@ function fmtPipe(v) {
   return 'R$ ' + v.toLocaleString('pt-BR');
 }
 const kpiData = {
-  all:       { pipeline:'R$ 148,3M', pipelinesub:'todas as BUs', contas:'41', contassub:'37 clientes · 4 parceiros', planos:'113', planossub:'em todas as áreas', dez:'7', dezsub:'oportunidades grandes' },
-  industrial:{ pipeline:'R$ 33,4M',  pipelinesub:'BU Industrial', contas:'18', contassub:'14 clientes · 4 parceiros', planos:'33', planossub:'ações na BU', dez:'2', dezsub:'oportunidades grandes' },
-  esportivo: { pipeline:'R$ 27,3M',  pipelinesub:'BU Esportivo', contas:'11', contassub:'11 clientes · 0 parceiros', planos:'13', planossub:'ações na BU', dez:'1', dezsub:'oportunidade grande' },
+  all:       { pipeline:'R$ 146,3M', pipelinesub:'todas as BUs', contas:'54', contassub:'50 clientes · 4 parceiros', planos:'115', planossub:'em todas as áreas', dez:'5', dezsub:'oportunidades grandes' },
+  industrial:{ pipeline:'R$ 31,1M',  pipelinesub:'BU Industrial', contas:'23', contassub:'19 clientes · 4 parceiros', planos:'74', planossub:'ações na BU', dez:'2', dezsub:'oportunidades grandes' },
+  esportivo: { pipeline:'R$ 27,3M',  pipelinesub:'BU Esportivo', contas:'12', contassub:'12 clientes · 0 parceiros', planos:'21', planossub:'ações na BU', dez:'1', dezsub:'oportunidade grande' },
   cidades:   { pipeline:'R$ 87,6M',  pipelinesub:'BU Cidades', contas:'12', contassub:'12 clientes · 0 parceiros', planos:'12', planossub:'ações na BU', dez:'4', dezsub:'oportunidades grandes' },
   grow:      { pipeline:'R$ 274k',   pipelinesub:'BU Grow', contas:'7', contassub:'7 clientes · 0 parceiros', planos:'8', planossub:'ações na BU', dez:'0', dezsub:'oportunidades grandes' },
 };
@@ -1676,10 +1679,30 @@ function setData(data) {
 }
 
 function setTab(tab) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
   document.getElementById('tab-'+tab).classList.add('active');
-  event.target.classList.add('active');
+  // Update header tab styles
+  ['diagnostico','monitoramento'].forEach(t => {
+    const el = document.getElementById('header-tab-'+t);
+    if (!el) return;
+    el.classList.remove('htab-active');
+    el.style.color = 'var(--muted)';
+    el.style.background = 'none';
+    el.style.borderBottom = 'none';
+  });
+  const active = document.getElementById('header-tab-'+tab);
+  if (active) {
+    active.classList.add('htab-active');
+    active.style.color = 'var(--accent)';
+    active.style.background = 'none';
+    active.style.borderBottom = '2px solid var(--accent)';
+    active.style.borderRadius = '0';
+    active.style.paddingBottom = '4px';
+  }
+  // Show/hide acoes tab — clicking Diagnóstico or Monitoramento hides planos
+  if (tab === 'acoes') {
+    document.getElementById('tab-acoes').classList.add('active');
+  }
 }
 
 
