@@ -184,6 +184,51 @@
   .tab-content { display: none; }
   .tab-content.active { display: block; }
 
+  /* ── BU NAV BAR ── */
+  .bu-nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .bu-nav-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+  .bu-nav-sep {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    min-width: 16px;
+    max-width: 40px;
+  }
+  .bu-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: all 0.15s;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .bu-nav-item:hover { color: var(--text); border-color: var(--border2); }
+  .bu-nav-item.active.all  { color: var(--all-color); border-color: var(--all-color); background: rgba(167,139,250,0.08); }
+  .bu-nav-item.active.ind  { color: var(--ind); border-color: var(--ind); background: rgba(59,130,246,0.08); }
+  .bu-nav-item.active.esp  { color: var(--esp); border-color: var(--esp); background: rgba(245,158,11,0.08); }
+  .bu-nav-item.active.cid  { color: var(--cid); border-color: var(--cid); background: rgba(16,185,129,0.08); }
+  .bu-nav-item.active.grow { color: #ec4899; border-color: #ec4899; background: rgba(236,72,153,0.08); }
+
   /* ── KPI CARDS ── */
   .kpi-grid {
     display: grid;
@@ -613,6 +658,7 @@
 <body>
 
 <header>
+  <div style="display:flex;align-items:center;gap:24px;flex:1">
   <div class="logo">
     <div style="height:32px;display:flex;align-items:center"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 700" height="28" style="display:block"><defs><linearGradient id="lg" x1="224.51" y1="611.21" x2="994.75" y2="166.51" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f6c847"/><stop offset=".07" stop-color="#f5c244"/><stop offset=".15" stop-color="#f5b13c"/><stop offset=".25" stop-color="#f4962f"/><stop offset=".36" stop-color="#f2701d"/><stop offset=".47" stop-color="#f04107"/><stop offset=".5" stop-color="#f03200"/><stop offset=".54" stop-color="#e33311"/><stop offset=".65" stop-color="#bf3740"/><stop offset=".75" stop-color="#a33a66"/><stop offset=".85" stop-color="#8f3d81"/><stop offset=".93" stop-color="#833e92"/><stop offset="1" stop-color="#7f3f98"/></linearGradient></defs><path fill="url(#lg)" d="m339.73,595.83c-133.03,0-241.25-108.22-241.25-241.25,0-73.63,29.76-139.55,81.67-180.85,16.48-13.06,40.48-10.38,53.64,6.11,13.12,16.49,10.38,40.52-6.11,53.64-33.1,26.32-52.85,71.6-52.85,121.1,0,90.93,73.99,164.92,164.92,164.92s164.9-73.99,164.9-164.92c0-49.5-19.76-94.79-52.85-121.1-16.49-13.12-19.23-37.14-6.11-53.64,13.16-16.49,37.14-19.23,53.64-6.11,51.9,41.3,81.67,107.22,81.67,180.85,0,133.03-108.22,241.25-241.24,241.25Zm-.92-500c-30.75,0-55.67,24.93-55.67,55.68s24.93,55.67,55.67,55.67,55.68-24.93,55.68-55.67-24.93-55.68-55.68-55.68h0Zm371.98,451.41v-197.03c0-86.68,70.52-157.2,157.2-157.2s157.2,70.52,157.2,157.2v196.19c0,21.08,17.09,38.17,38.17,38.17s38.17-17.09,38.17-38.17v-196.19c0-128.78-104.76-233.54-233.54-233.54s-233.54,104.76-233.54,233.54v197.03c0,21.08,17.09,38.17,38.17,38.17s38.17-17.09,38.17-38.17Z"/></svg></div>
     <div>
@@ -620,7 +666,28 @@
       <div class="logo-sub">Pipeline Review</div>
     </div>
   </div>
-
+  <div style="display:flex;align-items:center;gap:8px;flex:1">
+    <div style="width:1px;height:20px;background:var(--border);flex-shrink:0"></div>
+    <div class="bu-nav-item active all" onclick="setFilter('all')" id="filter-all" style="border:none;background:none;padding:4px 10px">
+      <div class="bu-dot" style="background:var(--all-color)"></div>Todas
+    </div>
+    <div class="bu-nav-item" onclick="setFilter('industrial')" id="filter-industrial" style="border:none;background:none;padding:4px 10px">
+      <div class="bu-dot" style="background:var(--ind)"></div>Industrial
+    </div>
+    <div class="bu-nav-item" onclick="setFilter('esportivo')" id="filter-esportivo" style="border:none;background:none;padding:4px 10px">
+      <div class="bu-dot" style="background:var(--esp)"></div>Esportivo
+    </div>
+    <div class="bu-nav-item" onclick="setFilter('cidades')" id="filter-cidades" style="border:none;background:none;padding:4px 10px">
+      <div class="bu-dot" style="background:var(--cid)"></div>Cidades
+    </div>
+    <div class="bu-nav-item" onclick="setFilter('grow')" id="filter-grow" style="border:none;background:none;padding:4px 10px">
+      <div class="bu-dot" style="background:#ec4899"></div>Grow
+    </div>
+    <div class="bu-nav-item" style="opacity:0.35;cursor:not-allowed;border:none;background:none;padding:4px 10px" title="Nenhuma Pipeline Review realizada para USA">
+      <div class="bu-dot" style="background:#6366f1"></div>USA
+    </div>
+  </div>
+  </div>
 
 </header>
 
@@ -628,40 +695,6 @@
 
   <!-- SIDEBAR -->
   <aside>
-    <div class="filter-label">Filtro por BU</div>
-    <div class="filter-opt active all" onclick="setFilter('all')" id="filter-all">
-      <div class="bu-dot" style="background:var(--all-color)"></div>
-      Todas as BUs
-      
-    </div>
-    <div class="filter-opt" onclick="setFilter('industrial')" id="filter-industrial">
-      <div class="bu-dot" style="background:var(--ind)"></div>
-      Industrial
-      
-    </div>
-    <div class="filter-opt" onclick="setFilter('esportivo')" id="filter-esportivo">
-      <div class="bu-dot" style="background:var(--esp)"></div>
-      Esportivo
-      
-    </div>
-    <div class="filter-opt" onclick="setFilter('cidades')" id="filter-cidades">
-      <div class="bu-dot" style="background:var(--cid)"></div>
-      Cidades
-      
-    </div>
-    <div class="filter-opt" onclick="setFilter('grow')" id="filter-grow">
-      <div class="bu-dot" style="background:#ec4899"></div>
-      Grow
-      
-    </div>
-    <div class="filter-opt" style="opacity:0.4;cursor:not-allowed" title="Nenhuma Pipeline Review realizada para USA">
-      <div class="bu-dot" style="background:#6366f1"></div>
-      USA
-      
-    </div>
-
-    <div class="divider"></div>
-
     <div class="sidebar-section">
       <div class="filter-label">Filtro por Área</div>
       <div class="area-item active" onclick="setArea('all')" id="area-all">
@@ -693,6 +726,37 @@
       </div>
       <div class="area-item" style="opacity:0.45;cursor:not-allowed" title="Nenhum plano de ação cadastrado">
         <div class="area-item-row"><div class="area-dot"></div><span>Operações</span></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="sidebar-section">
+      <div class="filter-label">Filtro por Status</div>
+      <div class="area-item active" onclick="setStatus('all')" id="status-all">
+        <div class="area-item-row"><div class="area-dot"></div><span>Todos</span></div>
+        <span class="area-pipeline" id="status-count-all"></span>
+      </div>
+      <div class="area-item" onclick="setStatus('Em andamento')" id="status-andamento">
+        <div class="area-item-row">
+          <div class="area-dot" style="background:var(--yellow)"></div>
+          <span>Em andamento</span>
+        </div>
+        <span class="area-pipeline" style="color:var(--yellow)" id="status-count-andamento"></span>
+      </div>
+      <div class="area-item" onclick="setStatus('Finalizado')" id="status-finalizado">
+        <div class="area-item-row">
+          <div class="area-dot" style="background:var(--green)"></div>
+          <span>Finalizado</span>
+        </div>
+        <span class="area-pipeline" style="color:var(--green)" id="status-count-finalizado"></span>
+      </div>
+      <div class="area-item" onclick="setStatus('Pendente')" id="status-pendente">
+        <div class="area-item-row">
+          <div class="area-dot" style="background:var(--muted)"></div>
+          <span>Pendente</span>
+        </div>
+        <span class="area-pipeline" style="color:var(--muted)" id="status-count-pendente"></span>
       </div>
     </div>
 
@@ -747,36 +811,7 @@
       </div>
     </div>
 
-    <div class="divider"></div>
 
-    <div class="sidebar-section">
-      <div class="filter-label">Filtro por Status</div>
-      <div class="area-item active" onclick="setStatus('all')" id="status-all">
-        <div class="area-item-row"><div class="area-dot"></div><span>Todos</span></div>
-        <span class="area-pipeline" id="status-count-all"></span>
-      </div>
-      <div class="area-item" onclick="setStatus('Em andamento')" id="status-andamento">
-        <div class="area-item-row">
-          <div class="area-dot" style="background:var(--yellow)"></div>
-          <span>Em andamento</span>
-        </div>
-        <span class="area-pipeline" style="color:var(--yellow)" id="status-count-andamento"></span>
-      </div>
-      <div class="area-item" onclick="setStatus('Finalizado')" id="status-finalizado">
-        <div class="area-item-row">
-          <div class="area-dot" style="background:var(--green)"></div>
-          <span>Finalizado</span>
-        </div>
-        <span class="area-pipeline" style="color:var(--green)" id="status-count-finalizado"></span>
-      </div>
-      <div class="area-item" onclick="setStatus('Pendente')" id="status-pendente">
-        <div class="area-item-row">
-          <div class="area-dot" style="background:var(--muted)"></div>
-          <span>Pendente</span>
-        </div>
-        <span class="area-pipeline" style="color:var(--muted)" id="status-count-pendente"></span>
-      </div>
-    </div>
   </aside>
 
   <!-- MAIN -->
@@ -919,11 +954,7 @@
 
     <!-- TAB: PLANOS DE AÇÃO -->
     <div class="tab-content active" id="tab-acoes">
-      <div class="section-head" style="margin-top:0">
-        <div class="section-title">Planos de Ação — BUs</div>
-        <div class="section-line"></div>
-        <div class="section-badge" id="acoes-count">113 ações</div>
-      </div>
+
       <div id="acoes-cards"></div>
     </div>
 
@@ -1268,7 +1299,7 @@ function renderAcoes() {
     return buMatch && areaMatch && (activeData === 'PR 22/04' ? dataMatch : (dataMatch && r.data !== 'PR 22/04')) && statusMatch;
   });
 
-  document.getElementById('acoes-count').textContent = filtered.length + ' ações';
+  const countEl = document.getElementById('acoes-count'); if (countEl) countEl.textContent = filtered.length + ' ações';
 
   if (filtered.length === 0) {
     container.innerHTML = `<div class="empty-state">Nenhuma ação encontrada para este filtro.</div>`;
@@ -1562,7 +1593,7 @@ function setFilter(bu) {
   });
   const classMap = {all:'all',industrial:'ind',esportivo:'esp',cidades:'cid',grow:'grow'};
   const el = document.getElementById('filter-'+bu);
-  el.classList.add('active', classMap[bu]);
+  if (el) el.classList.add('active', classMap[bu]);
 
   // KPIs
   const d = kpiData[bu];
