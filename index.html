@@ -411,10 +411,11 @@
     font-size: 9px; font-weight: 600; padding: 2px 7px;
     border-radius: 4px; display: inline-block;
   }
-  .status-aguardando { background: rgba(107,117,133,0.15); color: var(--muted); }
-  .status-andamento { background: rgba(34,197,94,0.12); color: #4ade80; }
-  .status-finalizado { background: rgba(0,194,255,0.12); color: var(--accent); }
-  .status-stanby { background: rgba(249,115,22,0.1); color: #fb923c; }
+  .status-andamento { background: rgba(59,130,246,0.15); color: #7db4f8; }
+  .status-finalizado { background: rgba(118,184,82,0.15); color: #76B852; }
+  .status-pendente   { background: rgba(249,115,22,0.12); color: #fb923c; }
+  .status-aguardando { background: rgba(249,115,22,0.12); color: #fb923c; }
+  .status-stanby     { background: rgba(249,115,22,0.12); color: #fb923c; }
 
   .bu-pill {
     font-size: 9px; font-weight: 700; padding: 2px 7px;
@@ -541,14 +542,19 @@
     margin-bottom: 5px;
   }
   .acao-pr-label span { color: var(--text); }
-  .pr2-label { color: #76B852; }
-  .pr2-label span { color: #a3d977; }
+  .pr2-label { color: #7db4f8; }
+  .pr2-label span { color: #a8ccf8; }
   .pr2-card {
+    background: rgba(59,130,246,0.05);
+    border-left: 3px solid #3b82f6 !important;
+  }
+  .pr2-card .acao-card-text { color: #a8ccf8; }
+  .fup-num { color: #7db4f8 !important; }
+  .finalizado-card {
     background: rgba(118,184,82,0.05);
     border-left: 3px solid #76B852 !important;
   }
-  .pr2-card .acao-card-text { color: #aec99a; }
-  .fup-num { color: #76B852 !important; }
+  .finalizado-card .acao-card-text { color: #aec99a; }
 
   /* ── ACTION CARDS ── */
   .conta-group { margin-bottom: 16px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
@@ -739,24 +745,24 @@
       </div>
       <div class="area-item" onclick="setStatus('Em andamento')" id="status-andamento">
         <div class="area-item-row">
-          <div class="area-dot" style="background:var(--yellow)"></div>
+          <div class="area-dot" style="background:#7db4f8"></div>
           <span>Em andamento</span>
         </div>
-        <span class="area-pipeline" style="color:var(--yellow)" id="status-count-andamento"></span>
+        <span class="area-pipeline" style="color:#7db4f8" id="status-count-andamento"></span>
       </div>
       <div class="area-item" onclick="setStatus('Finalizado')" id="status-finalizado">
         <div class="area-item-row">
-          <div class="area-dot" style="background:var(--green)"></div>
+          <div class="area-dot" style="background:#76B852"></div>
           <span>Finalizado</span>
         </div>
-        <span class="area-pipeline" style="color:var(--green)" id="status-count-finalizado"></span>
+        <span class="area-pipeline" style="color:#76B852" id="status-count-finalizado"></span>
       </div>
       <div class="area-item" onclick="setStatus('Pendente')" id="status-pendente">
         <div class="area-item-row">
-          <div class="area-dot" style="background:var(--muted)"></div>
+          <div class="area-dot" style="background:#fb923c"></div>
           <span>Pendente</span>
         </div>
-        <span class="area-pipeline" style="color:var(--muted)" id="status-count-pendente"></span>
+        <span class="area-pipeline" style="color:#fb923c" id="status-count-pendente"></span>
       </div>
     </div>
 
@@ -764,9 +770,7 @@
 
     <div class="sidebar-section">
       <div class="filter-label">Filtro por Data</div>
-      <div class="area-item active" onclick="setData('all')" id="data-all">
-        <div class="area-item-row"><div class="area-dot"></div><span>Todas</span></div>
-      </div>
+
       <div class="area-item" onclick="setData('PR 25/03')" id="data-pr-2503">
         <div class="area-item-row">
           <div class="area-dot" style="background:#3b82f6"></div>
@@ -1264,11 +1268,12 @@ function getAreaTag(area) {
 }
 function getStatusTag(status) {
   const s = status.toLowerCase();
-  if (s.includes('aguardando')) return `<span class="status-tag status-aguardando">Aguardando</span>`;
   if (s.includes('andamento')) return `<span class="status-tag status-andamento">Em andamento</span>`;
   if (s.includes('finalizado')) return `<span class="status-tag status-finalizado">Finalizado</span>`;
-  if (s.includes('stanby') || s.includes('standby')) return `<span class="status-tag status-stanby">Stanby</span>`;
-  return `<span class="status-tag status-aguardando">${status}</span>`;
+  if (s.includes('pendente')) return `<span class="status-tag status-pendente">Pendente</span>`;
+  if (s.includes('aguardando')) return `<span class="status-tag status-pendente">Pendente</span>`;
+  if (s.includes('stanby') || s.includes('standby')) return `<span class="status-tag status-pendente">Pendente</span>`;
+  return `<span class="status-tag status-pendente">${status}</span>`;
 }
 function formatValor(v) {
   if (!v) return '<span class="valor-cell none">—</span>';
@@ -1335,7 +1340,8 @@ function renderAcoes() {
   container.innerHTML = groups.map(g => {
     const cards = g.items.map(r => {
       const isFup = r.data.startsWith('FUP');
-      const cardClass = isFup ? 'pr2-card' : 'pr1-card';
+      const isFinalizado = r.status === 'Finalizado';
+      const cardClass = isFinalizado ? 'finalizado-card' : (isFup ? 'pr2-card' : 'pr1-card');
       const labelClass = isFup ? 'acao-pr-label pr2-label' : 'acao-pr-label';
       const [labelType, labelDate] = r.data.startsWith('PR') 
         ? ['Pipe Review', r.data.replace('PR ','')] 
