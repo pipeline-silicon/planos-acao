@@ -489,6 +489,76 @@
   .monitor-stat-val.green { color: var(--green); }
   .monitor-stat-val.amber { color: var(--yellow); }
 
+  /* ── MONITOR TABLE ── */
+  .monitor-table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .monitor-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .monitor-table thead tr {
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+  }
+  .monitor-table th {
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .monitor-table th:not(:first-child) { text-align: right; }
+  .monitor-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.12s;
+  }
+  .monitor-table tbody tr:last-child { border-bottom: none; }
+  .monitor-table tbody tr:hover { background: var(--surface2); }
+  .mt-total { border-top: 1px solid var(--border2) !important; background: rgba(0,194,255,0.03); }
+  .mt-area {
+    padding: 12px 16px;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .mt-num {
+    padding: 12px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: right;
+    color: var(--text);
+  }
+  .mt-pct {
+    padding: 12px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: right;
+  }
+  .mt-bar-cell { padding: 12px 16px; }
+  .mt-bar-wrap {
+    height: 5px;
+    background: var(--border2);
+    border-radius: 3px;
+    overflow: hidden;
+    min-width: 120px;
+  }
+  .mt-bar {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.6s ease;
+  }
+
   /* ── PIPELINE BAR ── */
   .pipeline-wrap {
     background: var(--surface);
@@ -989,97 +1059,103 @@
         </div>
       </div>
 
-      <div class="monitor-grid">
-        <div class="monitor-card">
-          <div class="monitor-area">Comercial — Industrial</div>
-          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:27%; background:var(--ind)"></div></div>
-          <div class="monitor-stats">
-            <div class="monitor-stat"><div class="monitor-stat-val">75</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">45</div><div class="monitor-stat-label">Andamento</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val green">20</div><div class="monitor-stat-label">Concluídas</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--ind)">26,7%</div><div class="monitor-stat-label">% Concl.</div></div>
-          </div>
-        </div>
-        <div class="monitor-card">
-          <div class="monitor-area">Comercial — Esportivo</div>
-          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:27%; background:var(--esp)"></div></div>
-          <div class="monitor-stats">
-            <div class="monitor-stat"><div class="monitor-stat-val">22</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">13</div><div class="monitor-stat-label">Andamento</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val green">6</div><div class="monitor-stat-label">Concluídas</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--esp)">27,3%</div><div class="monitor-stat-label">% Concl.</div></div>
-          </div>
-        </div>
-        <div class="monitor-card">
-          <div class="monitor-area">Comercial — Cidades</div>
-          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:0%; background:var(--cid)"></div></div>
-          <div class="monitor-stats">
-            <div class="monitor-stat"><div class="monitor-stat-val">12</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">8</div><div class="monitor-stat-label">Andamento</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val green">0</div><div class="monitor-stat-label">Concluídas</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--muted)">0%</div><div class="monitor-stat-label">% Concl.</div></div>
-          </div>
-        </div>
-        <div class="monitor-card">
-          <div class="monitor-area" style="color:var(--all-color)">Marketing</div>
-          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:44%; background:var(--all-color)"></div></div>
-          <div class="monitor-stats">
-            <div class="monitor-stat"><div class="monitor-stat-val">16</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">9</div><div class="monitor-stat-label">Andamento</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val green">7</div><div class="monitor-stat-label">Concluídas</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--all-color)">43,8%</div><div class="monitor-stat-label">% Concl.</div></div>
-          </div>
-        </div>
-        <div class="monitor-card">
-          <div class="monitor-area" style="color:var(--esp)">Eng. Comercial</div>
-          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:77%; background:var(--esp)"></div></div>
-          <div class="monitor-stats">
-            <div class="monitor-stat"><div class="monitor-stat-val">13</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">10</div><div class="monitor-stat-label">Andamento</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val green">0</div><div class="monitor-stat-label">Concluídas</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--muted)">0%</div><div class="monitor-stat-label">% Concl.</div></div>
-          </div>
-        </div>
-        <div class="monitor-card">
-          <div class="monitor-area" style="color:var(--cid)">Financeiro</div>
-          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:0%; background:var(--cid)"></div></div>
-          <div class="monitor-stats">
-            <div class="monitor-stat"><div class="monitor-stat-val">2</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">2</div><div class="monitor-stat-label">Andamento</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val green">0</div><div class="monitor-stat-label">Concluídas</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--muted)">0%</div><div class="monitor-stat-label">% Concl.</div></div>
-          </div>
-        </div>
-                <div class="monitor-card">
-          <div class="monitor-area" style="color:#c4b5fd">Inovação</div>
-          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:100%; background:#a78bfa"></div></div>
-          <div class="monitor-stats">
-            <div class="monitor-stat"><div class="monitor-stat-val">4</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">4</div><div class="monitor-stat-label">Andamento</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val green">0</div><div class="monitor-stat-label">Concluídas</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--muted)">0%</div><div class="monitor-stat-label">% Concl.</div></div>
-          </div>
-        </div>
-        <div class="monitor-card">
-          <div class="monitor-area" style="color:#ec4899">Comercial — Grow</div>
-          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:0%; background:#ec4899"></div></div>
-          <div class="monitor-stats">
-            <div class="monitor-stat"><div class="monitor-stat-val">7</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">0</div><div class="monitor-stat-label">Andamento</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val green">0</div><div class="monitor-stat-label">Concluídas</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val" style="color:var(--muted)">0%</div><div class="monitor-stat-label">% Concl.</div></div>
-          </div>
-        </div>
-        <div class="monitor-card" style="border-color:var(--border2); opacity:0.5">
-          <div class="monitor-area">TOTAL GERAL</div>
-          <div class="monitor-bar-wrap"><div class="monitor-bar" style="width:22.5%; background:var(--accent)"></div></div>
-          <div class="monitor-stats">
-            <div class="monitor-stat"><div class="monitor-stat-val">117</div><div class="monitor-stat-label">Total</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val amber">67</div><div class="monitor-stat-label">Andamento</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val green">26</div><div class="monitor-stat-label">Concluídas</div></div>
-            <div class="monitor-stat"><div class="monitor-stat-val accent">22,2%</div><div class="monitor-stat-label">% Concl.</div></div>
-          </div>
-        </div>
+      <div class="monitor-table-wrap">
+        <table class="monitor-table">
+          <thead>
+            <tr>
+              <th>Área</th>
+              <th>Total</th>
+              <th>Em Andamento</th>
+              <th>Concluídas</th>
+              <th>Pendentes</th>
+              <th>% Concl.</th>
+              <th style="width:180px">Progresso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mt-area" style="color:var(--ind)">Comercial — Industrial</td>
+              <td class="mt-num">75</td>
+              <td class="mt-num" style="color:var(--yellow)">45</td>
+              <td class="mt-num" style="color:#76B852">20</td>
+              <td class="mt-num" style="color:var(--muted)">10</td>
+              <td class="mt-pct" style="color:var(--ind)">26,7%</td>
+              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:27%;background:var(--ind)"></div></div></td>
+            </tr>
+            <tr>
+              <td class="mt-area" style="color:var(--esp)">Comercial — Esportivo</td>
+              <td class="mt-num">22</td>
+              <td class="mt-num" style="color:var(--yellow)">13</td>
+              <td class="mt-num" style="color:#76B852">6</td>
+              <td class="mt-num" style="color:var(--muted)">3</td>
+              <td class="mt-pct" style="color:var(--esp)">27,3%</td>
+              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:27%;background:var(--esp)"></div></div></td>
+            </tr>
+            <tr>
+              <td class="mt-area" style="color:var(--cid)">Comercial — Cidades</td>
+              <td class="mt-num">12</td>
+              <td class="mt-num" style="color:var(--yellow)">8</td>
+              <td class="mt-num" style="color:#76B852">0</td>
+              <td class="mt-num" style="color:var(--muted)">4</td>
+              <td class="mt-pct" style="color:var(--muted)">0%</td>
+              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:0%;background:var(--cid)"></div></div></td>
+            </tr>
+            <tr>
+              <td class="mt-area" style="color:#ec4899">Comercial — Grow</td>
+              <td class="mt-num">7</td>
+              <td class="mt-num" style="color:var(--yellow)">1</td>
+              <td class="mt-num" style="color:#76B852">0</td>
+              <td class="mt-num" style="color:var(--muted)">6</td>
+              <td class="mt-pct" style="color:var(--muted)">0%</td>
+              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:0%;background:#ec4899"></div></div></td>
+            </tr>
+            <tr>
+              <td class="mt-area" style="color:var(--all-color)">Marketing</td>
+              <td class="mt-num">16</td>
+              <td class="mt-num" style="color:var(--yellow)">9</td>
+              <td class="mt-num" style="color:#76B852">7</td>
+              <td class="mt-num" style="color:var(--muted)">0</td>
+              <td class="mt-pct" style="color:var(--all-color)">43,8%</td>
+              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:44%;background:var(--all-color)"></div></div></td>
+            </tr>
+            <tr>
+              <td class="mt-area" style="color:var(--esp)">Eng. Comercial</td>
+              <td class="mt-num">13</td>
+              <td class="mt-num" style="color:var(--yellow)">10</td>
+              <td class="mt-num" style="color:#76B852">0</td>
+              <td class="mt-num" style="color:var(--muted)">2</td>
+              <td class="mt-pct" style="color:var(--muted)">0%</td>
+              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:77%;background:var(--esp)"></div></div></td>
+            </tr>
+            <tr>
+              <td class="mt-area" style="color:#c4b5fd">Inovação</td>
+              <td class="mt-num">4</td>
+              <td class="mt-num" style="color:var(--yellow)">4</td>
+              <td class="mt-num" style="color:#76B852">0</td>
+              <td class="mt-num" style="color:var(--muted)">0</td>
+              <td class="mt-pct" style="color:var(--muted)">0%</td>
+              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:100%;background:#a78bfa"></div></div></td>
+            </tr>
+            <tr>
+              <td class="mt-area" style="color:var(--cid)">Financeiro</td>
+              <td class="mt-num">2</td>
+              <td class="mt-num" style="color:var(--yellow)">2</td>
+              <td class="mt-num" style="color:#76B852">0</td>
+              <td class="mt-num" style="color:var(--muted)">0</td>
+              <td class="mt-pct" style="color:var(--muted)">0%</td>
+              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:0%;background:var(--cid)"></div></div></td>
+            </tr>
+            <tr class="mt-total">
+              <td class="mt-area" style="color:var(--accent)">TOTAL GERAL</td>
+              <td class="mt-num" style="color:var(--accent)">117</td>
+              <td class="mt-num" style="color:var(--yellow)">67</td>
+              <td class="mt-num" style="color:#76B852">26</td>
+              <td class="mt-num" style="color:var(--muted)">24</td>
+              <td class="mt-pct" style="color:var(--accent)">22,2%</td>
+              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:22%;background:var(--accent)"></div></div></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
