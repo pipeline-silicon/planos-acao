@@ -38,7 +38,6 @@
     flex-direction: column;
   }
 
-  /* ── HEADER ── */
   header {
     padding: 18px 28px;
     border-bottom: 1px solid var(--border);
@@ -51,31 +50,11 @@
     z-index: 100;
   }
   .logo { display: flex; align-items: center; gap: 10px; }
-  .logo-mark {
-    width: 32px; height: 32px;
-    background: var(--accent);
-    border-radius: 6px;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 13px; color: #000;
-  }
   .logo-text { font-size: 14px; font-weight: 600; color: var(--text); }
   .logo-sub { font-size: 11px; color: var(--muted); font-family: 'DM Mono', monospace; }
-  .header-meta {
-    text-align: right;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-  .header-meta strong { color: var(--accent); }
 
-  /* ── LAYOUT ── */
-  .layout {
-    display: flex;
-    flex: 1;
-  }
+  .layout { display: flex; flex: 1; }
 
-  /* ── SIDEBAR FILTER ── */
   aside {
     width: 180px;
     min-width: 180px;
@@ -109,19 +88,13 @@
     user-select: none;
   }
   .filter-opt:hover { background: var(--surface2); color: var(--text); }
-  .filter-opt.active {
-    color: var(--text);
-    font-weight: 600;
-    background: var(--surface2);
-  }
+  .filter-opt.active { color: var(--text); font-weight: 600; background: var(--surface2); }
   .filter-opt.active.all { border-left-color: var(--all-color); color: var(--all-color); }
   .filter-opt.active.ind { border-left-color: var(--ind); color: var(--ind); }
   .filter-opt.active.esp { border-left-color: var(--esp); color: var(--esp); }
   .filter-opt.active.cid { border-left-color: var(--cid); color: var(--cid); }
   .filter-opt.active.grow { border-left-color: #ec4899; color: #ec4899; }
-  .bu-dot {
-    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
-  }
+  .bu-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
   .filter-count {
     margin-left: auto;
     font-family: 'DM Mono', monospace;
@@ -132,9 +105,7 @@
     color: var(--muted);
   }
 
-  aside .divider {
-    height: 1px; background: var(--border); margin: 16px 0;
-  }
+  aside .divider { height: 1px; background: var(--border); margin: 16px 0; }
   .sidebar-section { padding: 0 16px 8px; }
   .sidebar-section .filter-label { padding: 0 0 8px; }
   .area-item { display: flex; align-items: flex-start; flex-direction: column; gap: 2px; padding: 7px 0; font-size: 12px; color: var(--muted); cursor: pointer; transition: color 0.15s; }
@@ -152,60 +123,11 @@
     min-height: 12px;
   }
 
-  /* ── MAIN ── */
-  main {
-    flex: 1;
-    padding: 24px 28px;
-    overflow-y: auto;
-  }
-
-  /* ── TABS ── */
-  .tabs {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 24px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 0;
-  }
-  .tab {
-    padding: 8px 16px 10px;
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
-    color: var(--muted);
-    transition: all 0.15s;
-    letter-spacing: 0.02em;
-  }
-  .tab:hover { color: var(--text); }
-  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  main { flex: 1; padding: 24px 28px; overflow-y: auto; }
 
   .tab-content { display: none; }
   .tab-content.active { display: block; }
 
-  /* ── BU NAV BAR ── */
-  .bu-nav {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-  }
-  .bu-nav-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text);
-    white-space: nowrap;
-    letter-spacing: 0.01em;
-  }
-  .bu-nav-sep {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-    min-width: 16px;
-    max-width: 40px;
-  }
   .bu-nav-item {
     display: flex;
     align-items: center;
@@ -229,13 +151,7 @@
   .bu-nav-item.active.cid  { color: var(--cid); border-color: var(--cid); background: rgba(16,185,129,0.08); }
   .bu-nav-item.active.grow { color: #ec4899; border-color: #ec4899; background: rgba(236,72,153,0.08); }
 
-  /* ── KPI CARDS ── */
-  .kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 12px;
-    margin-bottom: 24px;
-  }
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 24px; }
   .kpi {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -246,12 +162,7 @@
     transition: border-color 0.2s;
   }
   .kpi:hover { border-color: var(--border2); }
-  .kpi::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-  }
+  .kpi::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
   .kpi.blue::before { background: var(--ind); }
   .kpi.amber::before { background: var(--esp); }
   .kpi.green::before { background: var(--cid); }
@@ -267,75 +178,20 @@
   .kpi-value.accent { color: var(--accent); }
   .kpi-value.all { color: var(--all-color); }
 
-  /* ── SECTION HEADER ── */
-  .section-head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-    margin-top: 28px;
-  }
+  .section-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; margin-top: 28px; }
   .section-head:first-of-type { margin-top: 0; }
-  .section-title {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-  }
+  .section-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); }
   .section-line { flex: 1; height: 1px; background: var(--border); }
-  .section-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 10px;
-    background: var(--border);
-    color: var(--muted);
-  }
 
-  /* ── DIAGNÓSTICO TABLE ── */
-  .diag-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 8px;
-  }
-  .diag-block {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  .diag-head {
-    padding: 10px 16px;
-    background: var(--surface2);
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    border-bottom: 1px solid var(--border);
-  }
-  .diag-row {
-    display: flex;
-    align-items: center;
-    padding: 9px 16px;
-    border-bottom: 1px solid var(--border);
-    gap: 12px;
-    font-size: 12px;
-    transition: background 0.1s;
-  }
+  .diag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 8px; }
+  .diag-block { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .diag-head { padding: 10px 16px; background: var(--surface2); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); border-bottom: 1px solid var(--border); }
+  .diag-row { display: flex; align-items: center; padding: 9px 16px; border-bottom: 1px solid var(--border); gap: 12px; font-size: 12px; transition: background 0.1s; }
   .diag-row:last-child { border-bottom: none; }
   .diag-row:hover { background: var(--surface2); }
   .diag-row-label { flex: 1; color: var(--muted); }
   .diag-row-label.highlight { color: var(--text); font-weight: 500; }
-  .diag-val {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    min-width: 52px;
-    text-align: right;
-    font-weight: 500;
-  }
+  .diag-val { font-family: 'DM Mono', monospace; font-size: 12px; min-width: 52px; text-align: right; font-weight: 500; }
   .diag-val.total { color: var(--text); }
   .diag-val.ind { color: var(--ind); }
   .diag-val.esp { color: var(--esp); }
@@ -343,230 +199,7 @@
   .diag-val.muted { color: var(--muted); }
   .diag-val.money { color: var(--accent); }
 
-  /* ── AÇÕES TABLE ── */
-  .acoes-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-    background: var(--surface);
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
-  .acoes-table th {
-    padding: 9px 12px;
-    text-align: left;
-    background: var(--surface2);
-    color: var(--muted);
-    font-size: 9px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    border-bottom: 1px solid var(--border);
-    white-space: nowrap;
-  }
-  .acoes-table td {
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--border);
-    vertical-align: top;
-    line-height: 1.5;
-  }
-  .acoes-table tr:last-child td { border-bottom: none; }
-  .acoes-table tr:hover td { background: #13171e; }
-  .hidden { display: none !important; }
-
-  .conta-name { font-weight: 600; color: var(--text); }
-  .tipo-tag {
-    font-size: 9px; font-weight: 600; text-transform: uppercase;
-    padding: 2px 7px; border-radius: 4px; letter-spacing: 0.06em;
-    display: inline-block; margin-top: 3px;
-  }
-  .tipo-tag.cliente { background: rgba(59,130,246,0.15); color: #7db4f8; }
-  .tipo-tag.parceiro { background: rgba(245,158,11,0.15); color: #fbbf24; }
-
-  .fase-badge {
-    font-size: 9px; font-weight: 500;
-    padding: 3px 8px; border-radius: 4px;
-    white-space: nowrap; display: inline-block;
-  }
-  .fase-negociacao { background: rgba(0,194,255,0.12); color: var(--accent); }
-  .fase-fechamento { background: rgba(34,197,94,0.12); color: #4ade80; }
-  .fase-desenvolvimento { background: rgba(167,139,250,0.12); color: #c4b5fd; }
-  .fase-potencial { background: rgba(107,117,133,0.15); color: var(--muted); }
-  .fase-revisao { background: rgba(249,115,22,0.12); color: #fb923c; }
-  .fase-abertura { background: rgba(16,185,129,0.12); color: #34d399; }
-  .fase-sem { background: rgba(107,117,133,0.1); color: #4b5563; }
-
-  .area-tag {
-    font-size: 9px; font-weight: 600; padding: 2px 7px;
-    border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em;
-    display: inline-block;
-  }
-  .area-comercial { background: rgba(59,130,246,0.12); color: #60a5fa; }
-  .area-marketing { background: rgba(167,139,250,0.12); color: #a78bfa; }
-  .area-eng { background: rgba(245,158,11,0.12); color: #fbbf24; }
-  .area-financeiro { background: rgba(16,185,129,0.12); color: #34d399; }
-
-  .status-tag {
-    font-size: 9px; font-weight: 600; padding: 2px 7px;
-    border-radius: 4px; display: inline-block;
-  }
-  .status-andamento { background: rgba(59,130,246,0.15); color: #7db4f8; }
-  .status-finalizado { background: rgba(118,184,82,0.15); color: #76B852; }
-  .status-pendente   { background: rgba(249,115,22,0.12); color: #fb923c; }
-  .status-aguardando { background: rgba(249,115,22,0.12); color: #fb923c; }
-  .status-stanby     { background: rgba(249,115,22,0.12); color: #fb923c; }
-
-  .bu-pill {
-    font-size: 9px; font-weight: 700; padding: 2px 7px;
-    border-radius: 4px; text-transform: uppercase; letter-spacing: 0.06em;
-    display: inline-block;
-  }
-  .bu-industrial { background: rgba(59,130,246,0.15); color: #7db4f8; }
-  .bu-esportivo { background: rgba(245,158,11,0.15); color: #fbbf24; }
-  .bu-cidades { background: rgba(16,185,129,0.15); color: #34d399; }
-
-  .valor-cell {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    white-space: nowrap;
-    color: var(--accent);
-    font-weight: 500;
-  }
-  .valor-cell.big { color: #f472b6; }
-  .valor-cell.none { color: var(--muted); font-style: italic; font-size: 10px; }
-
-  .prazo-cell { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); white-space: nowrap; }
-  .prazo-cell.overdue { color: var(--red); }
-  .prazo-cell.soon { color: var(--yellow); }
-
-  .acao-text { color: #c9d1dc; max-width: 320px; line-height: 1.5; }
-  .owner-cell { color: var(--text); font-weight: 500; white-space: nowrap; font-size: 11px; }
-
-  /* ── GESTÃO GRID ── */
-  .gestao-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 12px;
-  }
-  .gestao-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px 16px;
-    transition: border-color 0.2s;
-  }
-  .gestao-card:hover { border-color: var(--border2); }
-  .gestao-cat {
-    font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
-    padding: 2px 7px; border-radius: 4px; display: inline-block; margin-bottom: 10px;
-  }
-  .cat-inovacao { background: rgba(167,139,250,0.12); color: #c4b5fd; }
-  .cat-outros { background: rgba(107,117,133,0.15); color: var(--muted); }
-  .cat-contas { background: rgba(0,194,255,0.12); color: var(--accent); }
-  .gestao-plano { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
-  .gestao-meta { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-
-  /* ── MONITORAMENTO ── */
-  .monitor-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 12px;
-  }
-  .monitor-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px 16px;
-  }
-  .monitor-area { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
-  .monitor-bar-wrap { height: 5px; background: var(--border2); border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
-  .monitor-bar { height: 100%; border-radius: 3px; background: var(--accent); transition: width 0.6s ease; }
-  .monitor-stats { display: flex; gap: 12px; font-size: 10px; font-family: 'DM Mono', monospace; }
-  .monitor-stat { display: flex; flex-direction: column; gap: 2px; }
-  .monitor-stat-val { font-size: 16px; font-weight: 700; color: var(--text); }
-  .monitor-stat-label { color: var(--muted); font-size: 9px; }
-  .monitor-stat-val.green { color: var(--green); }
-  .monitor-stat-val.amber { color: var(--yellow); }
-
-  /* ── MONITOR TABLE ── */
-  .monitor-table-wrap {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  .monitor-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-  }
-  .monitor-table thead tr {
-    background: var(--surface2);
-    border-bottom: 1px solid var(--border);
-  }
-  .monitor-table th {
-    padding: 10px 16px;
-    text-align: left;
-    font-size: 9px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    white-space: nowrap;
-  }
-  .monitor-table th:not(:first-child) { text-align: right; }
-  .monitor-table tbody tr {
-    border-bottom: 1px solid var(--border);
-    transition: background 0.12s;
-  }
-  .monitor-table tbody tr:last-child { border-bottom: none; }
-  .monitor-table tbody tr:hover { background: var(--surface2); }
-  .mt-total { border-top: 1px solid var(--border2) !important; background: rgba(0,194,255,0.03); }
-  .mt-area {
-    padding: 12px 16px;
-    font-weight: 600;
-    font-size: 12px;
-    color: var(--text);
-    white-space: nowrap;
-  }
-  .mt-num {
-    padding: 12px 16px;
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    font-weight: 600;
-    text-align: right;
-    color: var(--text);
-  }
-  .mt-pct {
-    padding: 12px 16px;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    font-weight: 600;
-    text-align: right;
-  }
-  .mt-bar-cell { padding: 12px 16px; }
-  .mt-bar-wrap {
-    height: 5px;
-    background: var(--border2);
-    border-radius: 3px;
-    overflow: hidden;
-    min-width: 120px;
-  }
-  .mt-bar {
-    height: 100%;
-    border-radius: 3px;
-    transition: width 0.6s ease;
-  }
-
-  /* ── PIPELINE BAR ── */
-  .pipeline-wrap {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px 20px;
-    margin-bottom: 16px;
-  }
+  .pipeline-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-bottom: 16px; }
   .pipeline-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 14px; }
   .pipeline-bars { display: flex; flex-direction: column; gap: 10px; }
   .p-bar-row { display: flex; align-items: center; gap: 12px; }
@@ -575,74 +208,27 @@
   .p-bar-fill { height: 100%; border-radius: 4px; transition: width 0.8s ease; }
   .p-bar-val { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text); min-width: 100px; text-align: right; }
 
-  .empty-state {
-    text-align: center;
-    padding: 40px;
-    color: var(--muted);
-    font-size: 13px;
-  }
+  .area-tag { font-size: 9px; font-weight: 600; padding: 2px 7px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em; display: inline-block; }
+  .area-comercial { background: rgba(59,130,246,0.12); color: #60a5fa; }
+  .area-marketing { background: rgba(167,139,250,0.12); color: #a78bfa; }
+  .area-eng { background: rgba(245,158,11,0.12); color: #fbbf24; }
+  .area-financeiro { background: rgba(16,185,129,0.12); color: #34d399; }
+  .area-inovacao { background: rgba(240,50,0,0.12); color: #ff7755; }
 
-  .acao-fup {
-    margin-top: 8px;
-    padding: 10px 12px;
-    background: rgba(118,184,82,0.07);
-    border-left: 3px solid #76B852;
-    border-radius: 0 6px 6px 0;
-    font-size: 12px;
-    color: #aec99a;
-    line-height: 1.6;
-    white-space: pre-line;
-  }
-  .acao-fup-label {
-    font-size: 9px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #76B852;
-    margin-bottom: 4px;
-  }
+  .status-tag { font-size: 9px; font-weight: 600; padding: 2px 7px; border-radius: 4px; display: inline-block; }
+  .status-andamento { background: rgba(59,130,246,0.15); color: #7db4f8; }
+  .status-finalizado { background: rgba(118,184,82,0.15); color: #76B852; }
+  .status-pendente { background: rgba(249,115,22,0.12); color: #fb923c; }
 
-  /* ── PR LABEL CARDS ── */
-  .acao-pr-label {
-    font-size: 9px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    margin-bottom: 5px;
-  }
-  .acao-pr-label span { color: var(--text); }
-  .pr2-label { color: #7db4f8; }
-  .pr2-label span { color: #a8ccf8; }
-  .pr2-card {
-    background: rgba(59,130,246,0.05);
-    border-left: 3px solid #3b82f6 !important;
-  }
-  .pr2-card .acao-card-text { color: #a8ccf8; }
-  .fup-num { color: #7db4f8 !important; }
-  .finalizado-card {
-    background: rgba(118,184,82,0.05);
-    border-left: 3px solid #76B852 !important;
-  }
-  .finalizado-card .acao-card-text { color: #aec99a; }
+  .bu-pill { font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.06em; display: inline-block; }
+  .bu-industrial { background: rgba(59,130,246,0.15); color: #7db4f8; }
+  .bu-esportivo { background: rgba(245,158,11,0.15); color: #fbbf24; }
+  .bu-cidades { background: rgba(16,185,129,0.15); color: #34d399; }
 
-  /* ── ACTION CARDS ── */
   .conta-group { margin-bottom: 16px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
-  .conta-group-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 11px 16px;
-    background: var(--surface2);
-    border-bottom: 1px solid var(--border);
-  }
+  .conta-group-header { display: flex; align-items: center; gap: 10px; padding: 11px 16px; background: var(--surface2); border-bottom: 1px solid var(--border); }
   .conta-group-name { font-size: 13px; font-weight: 700; color: var(--text); flex: 1; }
-  .conta-group-valor {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--accent);
-  }
+  .conta-group-valor { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 600; color: var(--accent); }
   .conta-group-valor.big { color: #f472b6; }
 
   .acao-card {
@@ -657,75 +243,54 @@
   .acao-card:first-of-type { border-top: none; }
   .acao-card:hover { background: #13171e; }
   .acao-card-body { display: flex; flex-direction: column; gap: 10px; }
+  .acao-card-text { font-size: 12.5px; color: #c4cdd9; line-height: 1.7; white-space: pre-line; }
+  .acao-card-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .owner-pill { font-size: 10px; font-weight: 500; color: var(--muted); background: var(--border); padding: 2px 8px; border-radius: 10px; display: inline-flex; align-items: center; gap: 4px; }
+  .owner-pill::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+  .acao-card-side { display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; gap: 8px; min-width: 80px; flex-shrink: 0; }
+  .acao-num { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); background: var(--border); padding: 2px 7px; border-radius: 4px; }
 
-  .acao-card-text {
-    font-size: 12.5px;
-    color: #c4cdd9;
-    line-height: 1.7;
-    white-space: pre-line;
-  }
-  .acao-card-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    align-items: center;
-  }
-  .owner-pill {
-    font-size: 10px;
-    font-weight: 500;
-    color: var(--muted);
-    background: var(--border);
-    padding: 2px 8px;
-    border-radius: 10px;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .owner-pill::before {
-    content: '';
-    display: inline-block;
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
+  .acao-pr-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 5px; }
+  .acao-pr-label span { color: var(--text); }
+  .pr2-label { color: #7db4f8; }
+  .pr2-label span { color: #a8ccf8; }
+  .pr2-card { background: rgba(59,130,246,0.05); border-left: 3px solid #3b82f6 !important; }
+  .pr2-card .acao-card-text { color: #a8ccf8; }
+  .fup-num { color: #7db4f8 !important; }
+  .finalizado-card { background: rgba(118,184,82,0.05); border-left: 3px solid #76B852 !important; }
+  .finalizado-card .acao-card-text { color: #aec99a; }
 
-  .acao-card-side {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 8px;
-    min-width: 80px;
-    flex-shrink: 0;
-  }
-  .acao-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    background: var(--border);
-    padding: 2px 7px;
-    border-radius: 4px;
-  }
-  .prazo-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    white-space: nowrap;
-    text-align: right;
-  }
-  .prazo-badge .prazo-label {
-    display: block;
-    font-size: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 1px;
-  }
+  /* ── PR 22/04 highlight ── */
+  .pr2204-card { background: rgba(245,158,11,0.05) !important; border-left: 3px solid var(--esp) !important; }
+  .pr2204-label { color: var(--esp) !important; }
+  .pr2204-label span { color: var(--text) !important; }
 
+  .tipo-tag { font-size: 9px; font-weight: 600; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; letter-spacing: 0.06em; display: inline-block; margin-top: 3px; }
+  .tipo-tag.cliente { background: rgba(59,130,246,0.15); color: #7db4f8; }
+  .tipo-tag.parceiro { background: rgba(245,158,11,0.15); color: #fbbf24; }
 
-  /* ── DISTRIBUIÇÃO ── */
-  #dist-preview { cursor: text; }
+  .valor-cell { font-family: 'DM Mono', monospace; font-size: 11px; white-space: nowrap; color: var(--accent); font-weight: 500; }
+  .valor-cell.big { color: #f472b6; }
+  .valor-cell.none { color: var(--muted); font-style: italic; font-size: 10px; }
 
-  /* scrollbar */
+  .empty-state { text-align: center; padding: 40px; color: var(--muted); font-size: 13px; }
+
+  .monitor-table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .monitor-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .monitor-table thead tr { background: var(--surface2); border-bottom: 1px solid var(--border); }
+  .monitor-table th { padding: 10px 16px; text-align: left; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); white-space: nowrap; }
+  .monitor-table th:not(:first-child) { text-align: right; }
+  .monitor-table tbody tr { border-bottom: 1px solid var(--border); transition: background 0.12s; }
+  .monitor-table tbody tr:last-child { border-bottom: none; }
+  .monitor-table tbody tr:hover { background: var(--surface2); }
+  .mt-total { border-top: 1px solid var(--border2) !important; background: rgba(0,194,255,0.03); }
+  .mt-area { padding: 12px 16px; font-weight: 600; font-size: 12px; color: var(--text); white-space: nowrap; }
+  .mt-num { padding: 12px 16px; font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 600; text-align: right; color: var(--text); }
+  .mt-pct { padding: 12px 16px; font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 600; text-align: right; }
+  .mt-bar-cell { padding: 12px 16px; }
+  .mt-bar-wrap { height: 5px; background: var(--border2); border-radius: 3px; overflow: hidden; min-width: 120px; }
+  .mt-bar { height: 100%; border-radius: 3px; transition: width 0.6s ease; }
+
   ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
@@ -738,7 +303,7 @@
   <div class="logo">
     <div style="height:32px;display:flex;align-items:center"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 700" height="28" style="display:block"><defs><linearGradient id="lg" x1="224.51" y1="611.21" x2="994.75" y2="166.51" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f6c847"/><stop offset=".07" stop-color="#f5c244"/><stop offset=".15" stop-color="#f5b13c"/><stop offset=".25" stop-color="#f4962f"/><stop offset=".36" stop-color="#f2701d"/><stop offset=".47" stop-color="#f04107"/><stop offset=".5" stop-color="#f03200"/><stop offset=".54" stop-color="#e33311"/><stop offset=".65" stop-color="#bf3740"/><stop offset=".75" stop-color="#a33a66"/><stop offset=".85" stop-color="#8f3d81"/><stop offset=".93" stop-color="#833e92"/><stop offset="1" stop-color="#7f3f98"/></linearGradient></defs><path fill="url(#lg)" d="m339.73,595.83c-133.03,0-241.25-108.22-241.25-241.25,0-73.63,29.76-139.55,81.67-180.85,16.48-13.06,40.48-10.38,53.64,6.11,13.12,16.49,10.38,40.52-6.11,53.64-33.1,26.32-52.85,71.6-52.85,121.1,0,90.93,73.99,164.92,164.92,164.92s164.9-73.99,164.9-164.92c0-49.5-19.76-94.79-52.85-121.1-16.49-13.12-19.23-37.14-6.11-53.64,13.16-16.49,37.14-19.23,53.64-6.11,51.9,41.3,81.67,107.22,81.67,180.85,0,133.03-108.22,241.25-241.24,241.25Zm-.92-500c-30.75,0-55.67,24.93-55.67,55.68s24.93,55.67,55.67,55.67,55.68-24.93,55.68-55.67-24.93-55.68-55.68-55.68h0Zm371.98,451.41v-197.03c0-86.68,70.52-157.2,157.2-157.2s157.2,70.52,157.2,157.2v196.19c0,21.08,17.09,38.17,38.17,38.17s38.17-17.09,38.17-38.17v-196.19c0-128.78-104.76-233.54-233.54-233.54s-233.54,104.76-233.54,233.54v197.03c0,21.08,17.09,38.17,38.17,38.17s38.17-17.09,38.17-38.17Z"/></svg></div>
     <div>
-      <div class="logo-text" onclick="setTab('acoes')" style="cursor:pointer">Planos de Ação</div>
+      <div class="logo-text">Planos de Ação</div>
       <div class="logo-sub">Pipeline Review</div>
     </div>
   </div>
@@ -759,16 +324,12 @@
     <div class="bu-nav-item" onclick="setFilter('grow')" id="filter-grow" style="border:none;background:none;padding:4px 10px">
       <div class="bu-dot" style="background:#ec4899"></div>Grow
     </div>
-    <div class="bu-nav-item" style="opacity:0.35;cursor:not-allowed;border:none;background:none;padding:4px 10px" title="Nenhuma Pipeline Review realizada para USA">
-      <div class="bu-dot" style="background:#6366f1"></div>USA
-    </div>
   </div>
   <div style="display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0">
-    <div id="header-tab-diagnostico" onclick="setTab('diagnostico')" style="padding:6px 16px;font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;border-radius:6px;border:1px solid var(--accent);background:rgba(0,194,255,0.08);transition:all 0.15s;white-space:nowrap" onmouseover="this.style.background='rgba(0,194,255,0.16)'" onmouseout="if(!this.classList.contains('htab-active')){this.style.background='rgba(0,194,255,0.08)'}">Diagnóstico</div>
-    <div id="header-tab-monitoramento" onclick="setTab('monitoramento')" style="padding:6px 16px;font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;border-radius:6px;border:1px solid var(--accent);background:rgba(0,194,255,0.08);transition:all 0.15s;white-space:nowrap" onmouseover="this.style.background='rgba(0,194,255,0.16)'" onmouseout="if(!this.classList.contains('htab-active')){this.style.background='rgba(0,194,255,0.08)'}">Monitoramento</div>
+    <div id="header-tab-diagnostico" onclick="setTab('diagnostico')" style="padding:6px 16px;font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;border-radius:6px;border:1px solid var(--accent);background:rgba(0,194,255,0.08);transition:all 0.15s;white-space:nowrap">Diagnóstico</div>
+    <div id="header-tab-monitoramento" onclick="setTab('monitoramento')" style="padding:6px 16px;font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;border-radius:6px;border:1px solid var(--accent);background:rgba(0,194,255,0.08);transition:all 0.15s;white-space:nowrap">Monitoramento</div>
   </div>
   </div>
-
 </header>
 
 <div class="layout">
@@ -801,12 +362,6 @@
         <div class="area-item-row"><div class="area-dot"></div><span>Inovação</span></div>
         <span class="area-pipeline" id="apipe-inovacao"></span>
       </div>
-      <div class="area-item" style="opacity:0.45;cursor:not-allowed" title="Nenhum plano de ação cadastrado">
-        <div class="area-item-row"><div class="area-dot"></div><span>RH</span></div>
-      </div>
-      <div class="area-item" style="opacity:0.45;cursor:not-allowed" title="Nenhum plano de ação cadastrado">
-        <div class="area-item-row"><div class="area-dot"></div><span>Operações</span></div>
-      </div>
     </div>
 
     <div class="divider"></div>
@@ -818,24 +373,15 @@
         <span class="area-pipeline" id="status-count-all"></span>
       </div>
       <div class="area-item" onclick="setStatus('Em andamento')" id="status-andamento">
-        <div class="area-item-row">
-          <div class="area-dot" style="background:#7db4f8"></div>
-          <span>Em andamento</span>
-        </div>
+        <div class="area-item-row"><div class="area-dot" style="background:#7db4f8"></div><span>Em andamento</span></div>
         <span class="area-pipeline" style="color:#7db4f8" id="status-count-andamento"></span>
       </div>
       <div class="area-item" onclick="setStatus('Finalizado')" id="status-finalizado">
-        <div class="area-item-row">
-          <div class="area-dot" style="background:#76B852"></div>
-          <span>Finalizado</span>
-        </div>
+        <div class="area-item-row"><div class="area-dot" style="background:#76B852"></div><span>Finalizado</span></div>
         <span class="area-pipeline" style="color:#76B852" id="status-count-finalizado"></span>
       </div>
       <div class="area-item" onclick="setStatus('Pendente')" id="status-pendente">
-        <div class="area-item-row">
-          <div class="area-dot" style="background:#fb923c"></div>
-          <span>Pendente</span>
-        </div>
+        <div class="area-item-row"><div class="area-dot" style="background:#fb923c"></div><span>Pendente</span></div>
         <span class="area-pipeline" style="color:#fb923c" id="status-count-pendente"></span>
       </div>
     </div>
@@ -844,221 +390,87 @@
 
     <div class="sidebar-section">
       <div class="filter-label">Filtro por Data</div>
-
       <div class="area-item" onclick="setData('PR 25/03')" id="data-pr-2503">
-        <div class="area-item-row">
-          <div class="area-dot" style="background:#3b82f6"></div>
-          <span>PR 25/03</span>
-        </div>
+        <div class="area-item-row"><div class="area-dot" style="background:#3b82f6"></div><span>PR 25/03</span></div>
         <span class="area-pipeline" style="color:#3b82f6">Pipe Review</span>
       </div>
       <div class="area-item" onclick="setData('PR 08/04')" id="data-pr-0804">
-        <div class="area-item-row">
-          <div class="area-dot" style="background:#3b82f6"></div>
-          <span>PR 08/04</span>
-        </div>
+        <div class="area-item-row"><div class="area-dot" style="background:#3b82f6"></div><span>PR 08/04</span></div>
         <span class="area-pipeline" style="color:#3b82f6">Pipe Review</span>
       </div>
       <div class="area-item" onclick="setData('PR 15/04')" id="data-pr-1504">
-        <div class="area-item-row">
-          <div class="area-dot" style="background:#3b82f6"></div>
-          <span>PR 15/04</span>
-        </div>
+        <div class="area-item-row"><div class="area-dot" style="background:#3b82f6"></div><span>PR 15/04</span></div>
         <span class="area-pipeline" style="color:#3b82f6">Pipe Review</span>
       </div>
       <div class="area-item" onclick="setData('FUP 16/04')" id="data-fup-1604">
-        <div class="area-item-row">
-          <div class="area-dot" style="background:#76B852"></div>
-          <span>FUP 16/04</span>
-        </div>
+        <div class="area-item-row"><div class="area-dot" style="background:#76B852"></div><span>FUP 16/04</span></div>
         <span class="area-pipeline" style="color:#76B852">Follow-up</span>
       </div>
       <div class="area-item" onclick="setData('FUP 20/04')" id="data-fup-2004">
-        <div class="area-item-row">
-          <div class="area-dot" style="background:#76B852"></div>
-          <span>FUP 20/04</span>
-        </div>
+        <div class="area-item-row"><div class="area-dot" style="background:#76B852"></div><span>FUP 20/04</span></div>
         <span class="area-pipeline" style="color:#76B852">Follow-up</span>
       </div>
-      <div class="area-item" onclick="setData('PR 22/04')" id="data-pr-2204">
-        <div class="area-item-row">
-          <div class="area-dot" style="background:#f59e0b"></div>
-          <span>PR 22/04</span>
-        </div>
-        <span class="area-pipeline" style="color:#f59e0b">Industrial</span>
+      <div class="area-item active" onclick="setData('PR 22/04')" id="data-pr-2204">
+        <div class="area-item-row"><div class="area-dot" style="background:#f59e0b"></div><span>PR 22/04</span></div>
+        <span class="area-pipeline" style="color:#f59e0b">Ind · Esp · Cid</span>
       </div>
     </div>
-
-
   </aside>
 
   <!-- MAIN -->
   <main>
+    <!-- TAB: PLANOS DE AÇÃO -->
+    <div class="tab-content active" id="tab-acoes">
+      <div id="acoes-cards"></div>
+    </div>
 
     <!-- TAB: DIAGNÓSTICO -->
     <div class="tab-content" id="tab-diagnostico">
-
-      <!-- KPIs dinâmicos -->
-      <div class="kpi-grid" id="kpi-area">
-        <div class="kpi cyan">
-          <div class="kpi-label">Pipeline Total</div>
-          <div class="kpi-value small accent" id="kpi-pipeline">R$ 146,3M</div>
-          <div class="kpi-sub" id="kpi-pipeline-sub">todas as BUs</div>
-        </div>
-        <div class="kpi blue">
-          <div class="kpi-label">Contas Discutidas</div>
-          <div class="kpi-value accent" id="kpi-contas">54</div>
-          <div class="kpi-sub" id="kpi-contas-sub">50 clientes · 4 parceiros</div>
-        </div>
-        <div class="kpi purple">
-          <div class="kpi-label">Planos de Ação</div>
-          <div class="kpi-value all" id="kpi-planos">117</div>
-          <div class="kpi-sub" id="kpi-planos-sub">em todas as áreas</div>
-        </div>
-        <div class="kpi amber">
-          <div class="kpi-label">Acima de R$ 10M</div>
-          <div class="kpi-value" style="color:var(--yellow)" id="kpi-10m">5</div>
-          <div class="kpi-sub" id="kpi-10m-sub">oportunidades grandes</div>
-        </div>
-        <div class="kpi green">
-          <div class="kpi-label">Taxa Conclusão</div>
-          <div class="kpi-value" style="color:var(--green)">22,2%</div>
-          <div class="kpi-sub">26 finalizados · 67 em andamento</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted)">Pipeline Review</div>
+        <div style="display:flex;gap:6px">
+          <div onclick="setDiagPR('2503')" id="diagbtn-2503" style="padding:4px 12px;font-size:11px;font-weight:600;border-radius:6px;cursor:pointer;border:1px solid var(--ind);color:var(--ind);background:rgba(59,130,246,0.1)">25/03</div>
+          <div onclick="setDiagPR('0804')" id="diagbtn-0804" style="padding:4px 12px;font-size:11px;font-weight:600;border-radius:6px;cursor:pointer;border:1px solid var(--border2);color:var(--muted);background:none">08/04</div>
+          <div onclick="setDiagPR('2204')" id="diagbtn-2204" style="padding:4px 12px;font-size:11px;font-weight:600;border-radius:6px;cursor:pointer;border:1px solid var(--border2);color:var(--muted);background:none">22/04</div>
         </div>
       </div>
-
-      <!-- Pipeline por BU bar -->
-      <div class="pipeline-wrap" id="pipeline-bar-section">
-        <div class="pipeline-title">Distribuição de Pipeline Gerado por BU</div>
-        <div class="pipeline-bars">
-          <div class="p-bar-row" data-bu="industrial">
-            <div class="p-bar-label">Industrial</div>
-            <div class="p-bar-track"><div class="p-bar-fill" style="width:20%; background:var(--ind)"></div></div>
-            <div class="p-bar-val" style="color:var(--ind)">R$ 31,1M</div>
-          </div>
-          <div class="p-bar-row" data-bu="esportivo">
-            <div class="p-bar-label">Esportivo</div>
-            <div class="p-bar-track"><div class="p-bar-fill" style="width:18%; background:var(--esp)"></div></div>
-            <div class="p-bar-val" style="color:var(--esp)">R$ 27,3M</div>
-          </div>
-          <div class="p-bar-row" data-bu="cidades">
-            <div class="p-bar-label">Cidades</div>
-            <div class="p-bar-track"><div class="p-bar-fill" style="width:59%; background:var(--cid)"></div></div>
-            <div class="p-bar-val" style="color:var(--cid)">R$ 87,6M</div>
-          </div>
-        </div>
+      <div class="kpi-grid" id="diag-kpis" style="margin-bottom:20px"></div>
+      <div class="pipeline-wrap" style="margin-bottom:20px">
+        <div class="pipeline-title">Pipeline Gerado por BU</div>
+        <div class="pipeline-bars" id="diag-pipeline-bars"></div>
       </div>
-
-      <!-- Diagnóstico detalhado -->
-      <div class="section-head">
-        <div class="section-title">Contas</div>
-        <div class="section-line"></div>
-      </div>
-      <div class="diag-grid" id="diag-contas">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
         <div class="diag-block">
-          <div class="diag-head">Composição da Carteira</div>
-          <div class="diag-row">
-            <div class="diag-row-label highlight">Contas discutidas</div>
-            <div class="diag-val total" data-total="54" data-ind="23" data-esp="12" data-cid="12">54</div>
-            <div class="diag-val ind" data-type="ind" data-total="54" data-ind="23" data-esp="12" data-cid="12">Ind 23</div>
-            <div class="diag-val esp" data-type="esp" data-total="54" data-ind="23" data-esp="12" data-cid="12">Esp 12</div>
-            <div class="diag-val cid" data-type="cid" data-total="54" data-ind="23" data-esp="12" data-cid="12">Cid 12</div>
-          </div>
-          <div class="diag-row">
-            <div class="diag-row-label">Clientes</div>
-            <div class="diag-val total">50</div>
-            <div class="diag-val ind">19</div>
-            <div class="diag-val esp">12</div>
-            <div class="diag-val cid">12</div>
-          </div>
-          <div class="diag-row">
-            <div class="diag-row-label">Parceiros</div>
-            <div class="diag-val total">5</div>
-            <div class="diag-val ind">5</div>
-            <div class="diag-val esp muted">—</div>
-            <div class="diag-val cid muted">—</div>
-          </div>
-          <div class="diag-row">
-            <div class="diag-row-label" style="color:var(--red)">Sem cadastro SF</div>
-            <div class="diag-val total">1</div>
-            <div class="diag-val ind">1</div>
-            <div class="diag-val esp muted">—</div>
-            <div class="diag-val cid muted">—</div>
-          </div>
-          <div class="diag-row">
-            <div class="diag-row-label" style="color:var(--orange)">Sem valor de oport.</div>
-            <div class="diag-val total">1</div>
-            <div class="diag-val ind">1</div>
-            <div class="diag-val esp muted">—</div>
-            <div class="diag-val cid muted">—</div>
-          </div>
+          <div class="diag-head">Contas</div>
+          <div id="diag-contas-content"></div>
         </div>
-
-        <div class="diag-block" id="diag-faixa-block">
-          <div class="diag-head" id="diag-faixa-head">Pipeline por Faixa de Valor</div>
+        <div class="diag-block">
+          <div class="diag-head">Pipeline por Faixa de Valor</div>
           <div id="diag-faixa-content"></div>
         </div>
       </div>
-
-      <div class="section-head" style="margin-top:20px">
-        <div class="section-title">Planos de Ação por Área</div>
-        <div class="section-line"></div>
+      <div class="diag-block">
+        <div class="diag-head">Planos de Ação por Área</div>
+        <div id="diag-planos-content"></div>
       </div>
-      <div class="diag-grid">
-        <div class="diag-block">
-          <div class="diag-head" id="diag-area-head">Distribuição por Área</div>
-          <div id="diag-area-content"></div>
-        </div>
-
-        <div class="diag-block">
-          <div class="diag-head">Observações e Alertas</div>
-          <div class="diag-row" style="flex-direction:column; align-items:flex-start; gap:6px">
-            <div style="font-size:11px; color:var(--red); font-weight:500">⚠ Laticínio Carolina sem cadastro no SF</div>
-            <div style="font-size:11px; color: var(--orange)">⚠ Ajinomoto sem valor de oportunidade</div>
-            <div style="font-size:11px; color:var(--muted)">ℹ Esportivo concentra maior ticket médio</div>
-            <div style="font-size:11px; color:var(--green); margin-top:4px">✓ 1 plano finalizado (Facchini / encantamento)</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- TAB: PLANOS DE AÇÃO -->
-    <div class="tab-content active" id="tab-acoes">
-
-      <div id="acoes-cards"></div>
     </div>
 
     <!-- TAB: MONITORAMENTO -->
     <div class="tab-content" id="tab-monitoramento">
-      <div class="section-head" style="margin-top:0">
-        <div class="section-title">Monitoramento de Ações por Área</div>
-        <div class="section-line"></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted)">Monitoramento por PR</div>
+        <div style="display:flex;gap:6px">
+          <div onclick="setMonPR('2503')" id="monbtn-2503" style="padding:4px 12px;font-size:11px;font-weight:600;border-radius:6px;cursor:pointer;border:1px solid var(--ind);color:var(--ind);background:rgba(59,130,246,0.1)">25/03</div>
+          <div onclick="setMonPR('0804')" id="monbtn-0804" style="padding:4px 12px;font-size:11px;font-weight:600;border-radius:6px;cursor:pointer;border:1px solid var(--border2);color:var(--muted);background:none">08/04</div>
+          <div onclick="setMonPR('2204')" id="monbtn-2204" style="padding:4px 12px;font-size:11px;font-weight:600;border-radius:6px;cursor:pointer;border:1px solid var(--border2);color:var(--muted);background:none">22/04</div>
+        </div>
       </div>
-
       <div class="kpi-grid" style="margin-bottom:24px">
-        <div class="kpi cyan">
-          <div class="kpi-label">Total de Ações</div>
-          <div class="kpi-value accent">117</div>
-          <div class="kpi-sub">em todas as áreas</div>
-        </div>
-        <div class="kpi green">
-          <div class="kpi-label">Concluídas</div>
-          <div class="kpi-value" style="color:var(--green)">26</div>
-          <div class="kpi-sub">ações concluídas</div>
-        </div>
-        <div class="kpi amber">
-          <div class="kpi-label">Em Andamento</div>
-          <div class="kpi-value" style="color:var(--yellow)">67</div>
-          <div class="kpi-sub">57% em execução</div>
-        </div>
-        <div class="kpi blue">
-          <div class="kpi-label">Aguardando / Stanby</div>
-          <div class="kpi-value ind">24</div>
-          <div class="kpi-sub">pendentes de início</div>
-        </div>
+        <div class="kpi cyan"><div class="kpi-label">Total de Ações</div><div class="kpi-value accent" id="mon-total">—</div><div class="kpi-sub">em todas as áreas</div></div>
+        <div class="kpi green"><div class="kpi-label">Concluídas</div><div class="kpi-value" style="color:var(--green)" id="mon-fin">—</div><div class="kpi-sub" id="mon-fin-sub">—</div></div>
+        <div class="kpi amber"><div class="kpi-label">Em Andamento</div><div class="kpi-value" style="color:var(--yellow)" id="mon-and">—</div><div class="kpi-sub" id="mon-and-sub">—</div></div>
+        <div class="kpi blue"><div class="kpi-label">Pendentes</div><div class="kpi-value ind" id="mon-pen">—</div><div class="kpi-sub" id="mon-pen-sub">—</div></div>
       </div>
-
       <div class="monitor-table-wrap">
         <table class="monitor-table">
           <thead>
@@ -1072,133 +484,48 @@
               <th style="width:180px">Progresso</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td class="mt-area" style="color:var(--ind)">Comercial — Industrial</td>
-              <td class="mt-num">75</td>
-              <td class="mt-num" style="color:var(--yellow)">45</td>
-              <td class="mt-num" style="color:#76B852">20</td>
-              <td class="mt-num" style="color:var(--muted)">10</td>
-              <td class="mt-pct" style="color:var(--ind)">26,7%</td>
-              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:27%;background:var(--ind)"></div></div></td>
-            </tr>
-            <tr>
-              <td class="mt-area" style="color:var(--esp)">Comercial — Esportivo</td>
-              <td class="mt-num">22</td>
-              <td class="mt-num" style="color:var(--yellow)">13</td>
-              <td class="mt-num" style="color:#76B852">6</td>
-              <td class="mt-num" style="color:var(--muted)">3</td>
-              <td class="mt-pct" style="color:var(--esp)">27,3%</td>
-              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:27%;background:var(--esp)"></div></div></td>
-            </tr>
-            <tr>
-              <td class="mt-area" style="color:var(--cid)">Comercial — Cidades</td>
-              <td class="mt-num">12</td>
-              <td class="mt-num" style="color:var(--yellow)">8</td>
-              <td class="mt-num" style="color:#76B852">0</td>
-              <td class="mt-num" style="color:var(--muted)">4</td>
-              <td class="mt-pct" style="color:var(--muted)">0%</td>
-              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:0%;background:var(--cid)"></div></div></td>
-            </tr>
-            <tr>
-              <td class="mt-area" style="color:#ec4899">Comercial — Grow</td>
-              <td class="mt-num">7</td>
-              <td class="mt-num" style="color:var(--yellow)">1</td>
-              <td class="mt-num" style="color:#76B852">0</td>
-              <td class="mt-num" style="color:var(--muted)">6</td>
-              <td class="mt-pct" style="color:var(--muted)">0%</td>
-              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:0%;background:#ec4899"></div></div></td>
-            </tr>
-            <tr>
-              <td class="mt-area" style="color:var(--all-color)">Marketing</td>
-              <td class="mt-num">16</td>
-              <td class="mt-num" style="color:var(--yellow)">9</td>
-              <td class="mt-num" style="color:#76B852">7</td>
-              <td class="mt-num" style="color:var(--muted)">0</td>
-              <td class="mt-pct" style="color:var(--all-color)">43,8%</td>
-              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:44%;background:var(--all-color)"></div></div></td>
-            </tr>
-            <tr>
-              <td class="mt-area" style="color:var(--esp)">Eng. Comercial</td>
-              <td class="mt-num">13</td>
-              <td class="mt-num" style="color:var(--yellow)">10</td>
-              <td class="mt-num" style="color:#76B852">0</td>
-              <td class="mt-num" style="color:var(--muted)">2</td>
-              <td class="mt-pct" style="color:var(--muted)">0%</td>
-              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:77%;background:var(--esp)"></div></div></td>
-            </tr>
-            <tr>
-              <td class="mt-area" style="color:#c4b5fd">Inovação</td>
-              <td class="mt-num">4</td>
-              <td class="mt-num" style="color:var(--yellow)">4</td>
-              <td class="mt-num" style="color:#76B852">0</td>
-              <td class="mt-num" style="color:var(--muted)">0</td>
-              <td class="mt-pct" style="color:var(--muted)">0%</td>
-              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:100%;background:#a78bfa"></div></div></td>
-            </tr>
-            <tr>
-              <td class="mt-area" style="color:var(--cid)">Financeiro</td>
-              <td class="mt-num">2</td>
-              <td class="mt-num" style="color:var(--yellow)">2</td>
-              <td class="mt-num" style="color:#76B852">0</td>
-              <td class="mt-num" style="color:var(--muted)">0</td>
-              <td class="mt-pct" style="color:var(--muted)">0%</td>
-              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:0%;background:var(--cid)"></div></div></td>
-            </tr>
-            <tr class="mt-total">
-              <td class="mt-area" style="color:var(--accent)">TOTAL GERAL</td>
-              <td class="mt-num" style="color:var(--accent)">117</td>
-              <td class="mt-num" style="color:var(--yellow)">67</td>
-              <td class="mt-num" style="color:#76B852">26</td>
-              <td class="mt-num" style="color:var(--muted)">24</td>
-              <td class="mt-pct" style="color:var(--accent)">22,2%</td>
-              <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:22%;background:var(--accent)"></div></div></td>
-            </tr>
-          </tbody>
+          <tbody id="mon-tbody"></tbody>
         </table>
       </div>
     </div>
-
-
-
+  </main>
 </div>
 
 <script>
 // ── DATA ──
-// Cada linha = uma entrada por data (PR ou FUP)
 const acoesData = [
   {n:1, bu:'Industrial', conta:'OCLE', tipo:'Parceiro', area:'Comercial', owner:'Pilato', valor:752919.56, valorRef:752919.56, data:'PR 25/03', status:'Em andamento', acao:'Ações de relacionamento (ex: almoços, levar a jogos) com Bruno da OCLE para descobrir informações estratégicas da empresa' },
   {n:2, bu:'Industrial', conta:'OCLE', tipo:'Parceiro', area:'Comercial', owner:'Pilato', valor:752919.56, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'Trazer o contato Bruno para uma reunião no escritório (com a presença do Jeff e Andre) e, em seguida, levá-lo ao jogo do Santos no Couto Pereira no dia 13/05.' },
   {n:3, bu:'Industrial', conta:'OCLE', tipo:'Parceiro', area:'Comercial', owner:'Pilato', valor:752919.56, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'O Mychael já estruturou um one pager preliminar com base em dados públicos. A Gisele complementou parte das informações que estavam pendentes. Além disso, o jogo do Inter foi confirmado para o dia 09/05 (sábado), oportunidade em que o Bruno será levado.' },
-  {n:4, bu:'Industrial', conta:'OCLE', tipo:'Parceiro', area:'Marketing', owner:'Mychael', valor:752919.56, valorRef:null, data:'PR 25/03', status:'Finalizado', acao:'Criar uma One pager de parceiro com as informações:\n\n• Faturamento;\n• Donos/hierarquia;\n• Mercados:  parceiros e clientes preferenciais com quem a OCLE ganha mais obras;\n• Inovação: Entender se eles têm alguma "dor" ou se precisam de algum produto específico que a empresa possa desenvolver e fornecer para ajudá-los;\n• Número de funcionários;\n• Principais parceiros;\n• Volume de luminárias compradas no ano passado.\n• Terceirizados: Visitar uma obra da OCLE para descobrir quem são os terceiros (empreiteiros) que eles contratam para a execução, também servirá como pesquisa de mercado para avaliar se a própria empresa poderia pivotar no futuro e atuar gerindo obras de forma parecida com o que a OCLE faz.' },
+  {n:4, bu:'Industrial', conta:'OCLE', tipo:'Parceiro', area:'Marketing', owner:'Mychael', valor:752919.56, valorRef:null, data:'PR 25/03', status:'Finalizado', acao:'Criar uma One pager de parceiro com as informações:\n\n• Faturamento;\n• Donos/hierarquia;\n• Mercados: parceiros e clientes preferenciais com quem a OCLE ganha mais obras;\n• Inovação: Entender se eles têm alguma "dor" ou se precisam de algum produto específico;\n• Número de funcionários;\n• Principais parceiros;\n• Volume de luminárias compradas no ano passado.\n• Terceirizados: Visitar uma obra da OCLE para descobrir quem são os terceiros (empreiteiros) que eles contratam para a execução.' },
   {n:5, bu:'Industrial', conta:'OCLE', tipo:'Parceiro', area:'Marketing', owner:'Mychael', valor:752919.56, valorRef:null, data:'PR 08/04', status:'Finalizado', acao:'Prazo de entrega V1 one pager: 10/04' },
   {n:6, bu:'Industrial', conta:'LOG', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:1128808.89, valorRef:1128808.89, data:'PR 25/03', status:'Em andamento', acao:'Verificar se a luminária Highbay de 120W com 5 anos de garantia tem preço competitivo para vencer o leilão. Considerar visitar uma obra executada pelos concorrentes para medir se eles realmente entregam a luminosidade (lux) prometida.' },
   {n:7, bu:'Industrial', conta:'LOG', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:1128808.89, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'O Pilato vai verificar com o Pablo quais foram as últimas unidades inauguradas da Log para agendar uma visita noturna (idealmente com um consultor ou engenheiro) e auditar a entrega de luminosidade real das concorrentes.' },
   {n:8, bu:'Industrial', conta:'LOG', tipo:'Cliente', area:'Marketing', owner:'Mychael', valor:1128808.89, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'Realizar levantamento de informações e análise competitiva sobre a Luther e a ILumen no contexto da indústria.' },
   {n:9, bu:'Industrial', conta:'LOG', tipo:'Cliente', area:'Marketing', owner:'Mychael', valor:1128808.89, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'Listar produtos que precisam ser verificados para Mycha levantar ASAP' },
   {n:10, bu:'Industrial', conta:'LOG', tipo:'Cliente', area:'Marketing', owner:'Mychael', valor:1128808.89, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'- O Pilato enviou a lista de produtos para o Mychael em 19/04.\n- Há duas unidades da LOG recém-inauguradas (João Pessoa e Salvador).\n- Próximo passo: alinhar com o Pablo ou o Bruno Leite a possibilidade de alguém da equipe de execução realizar visitas noturnas a essas obras, com o objetivo de mapear e avaliar os concorrentes.' },
-  {n:11, bu:'Industrial', conta:'Sabor & Arte', tipo:'Cliente', area:'Financeiro', owner:'Rodrygo', valor:175000.22, valorRef:175000.22, data:'2026-03-25 00:00:00', status:'Em andamento', acao:'1 entrada de sinal, e + 4 parcelas. Equipe financeira buscando uma maneira de financiar o cliente.' },
-  {n:12, bu:'Industrial', conta:'Sabor & Arte', tipo:'Cliente', area:'Financeiro', owner:'Rodrygo', valor:175000.22, valorRef:null, data:'2026-04-08 00:00:00', status:'Em andamento', acao:'Solicitar ao Rodrygo (Financeiro) para gerar um link de pagamento e absorver a taxa de 3% da maquininha, visando finalizar a venda sem mais desgaste.' },
+  {n:11, bu:'Industrial', conta:'Sabor & Arte', tipo:'Cliente', area:'Financeiro', owner:'Rodrygo', valor:175000.22, valorRef:175000.22, data:'PR 25/03', status:'Em andamento', acao:'1 entrada de sinal, e + 4 parcelas. Equipe financeira buscando uma maneira de financiar o cliente.' },
+  {n:12, bu:'Industrial', conta:'Sabor & Arte', tipo:'Cliente', area:'Financeiro', owner:'Rodrygo', valor:175000.22, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'Solicitar ao Rodrygo (Financeiro) para gerar um link de pagamento e absorver a taxa de 3% da maquininha, visando finalizar a venda sem mais desgaste.' },
   {n:13, bu:'Industrial', conta:'Electrolux', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:132850.71, valorRef:132850.71, data:'PR 25/03', status:'Em andamento', acao:'Criar um programa institucional de relacionamento chamado "Jogando Junto", conduzido pelo Marketing, para viabilizar ações com contas estratégicas que possuem restrições de compliance, evitando que a abordagem seja feita diretamente pelo time comercial.' },
   {n:14, bu:'Industrial', conta:'Electrolux', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:132850.71, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'Em fase de finalização da identidade visual da campanha, junto com conteúdo, para validação final do Pilato.' },
-  {n:15, bu:'Industrial', conta:'Magnera', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'Mapeamento de Decisor: investigar e encontrar o tomador de decisão final/CFO da Magneira para direcionar a comunicação estratégica diretamente a ele e acelerar a oportunidade.\n\nModelagem Financeira: Utilizar os insights de mercado colhidos com especialistas (como a visão do CFO do Banco CNH) para estruturar opções financeiras robustas (como leasing) e avaliando precificação com planilha aberta ou redução estratégica de margem em equipamentos, com o objetivo de apresentar um payback altamente atrativo (abaixo de 5 anos) que justifique o investimento.\n\nAtendimento Consultivo (Opções Técnicas Integradas): Substituir o discurso padrão de venda de produtos por uma abordagem de reengenharia. Como a iluminação atual deles (da marca GE) começou a queimar e eles possuem metas de redução de energia, a equipe deve desenhar e apresentar o pacote completo unindo Usina Solar + Retrofit de LED, comprovando o impacto direto no fluxo de caixa da indústria.' },
-  {n:16, bu:'Industrial', conta:'Magnera', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'A equipe enviou os dados para a parceira Green Yellow no dia 07/04 e está aguardando o retorno com a modelagem financeira do projeto. Assim que receberem, o objetivo é levar o pacote de leasing para o  Ivo e pedir para ele envolver o Diretor/CFO na conversa, com participção do Jeff.' },
+  {n:15, bu:'Industrial', conta:'Magnera', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'Mapeamento de Decisor: investigar e encontrar o tomador de decisão final/CFO da Magneira.\n\nModelagem Financeira: Utilizar os insights de mercado colhidos com especialistas para estruturar opções financeiras robustas (como leasing) e avaliar precificação com planilha aberta ou redução estratégica de margem em equipamentos.\n\nAtendimento Consultivo: Substituir o discurso padrão de venda de produtos por uma abordagem de reengenharia, apresentando o pacote completo unindo Usina Solar + Retrofit de LED.' },
+  {n:16, bu:'Industrial', conta:'Magnera', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'A equipe enviou os dados para a parceira Green Yellow no dia 07/04 e está aguardando o retorno com a modelagem financeira do projeto. Assim que receberem, o objetivo é levar o pacote de leasing para o Ivo e pedir para ele envolver o Diretor/CFO na conversa, com participação do Jeff.' },
   {n:17, bu:'Industrial', conta:'Magnera', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'- O principal contato interno (Ivo) foi promovido a Diretor — um movimento positivo para o relacionamento.\n- A equipe está no aguardo do envio do pacote de leasing pela Green Yellow (GY), com previsão de entrega para 20/04.\n- O cliente sinalizou que as luminárias antigas da GE estão impactando negativamente o payback, abrindo um bom gancho para avanço da oportunidade.' },
-  {n:18, bu:'Industrial', conta:'Facchini', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:341737.2, valorRef:341737.2, data:'PR 25/03', status:'Finalizado', acao:'Encantamento na entrega: Para combater a desconfiança do cliente em relação à eficiência prometida, a equipe deve focar em "encantar" a entrega dessas 10 unidades. A ação envolve enviá-las em uma embalagem especial acompanhada de um cartão com uma mensagem' },
-  {n:19, bu:'Industrial', conta:'Facchini', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:341737.2, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'Acompanhamento Técnico (Suporte): A equipe deve perguntar ao cliente exatamente quais critérios serão testados e disponibilizar alguém da engenharia comercial para ir até o local apoiar e acompanhar esse teste. Também ficou acordado que o Thiago (vendedor) deve fazer uma visita presencial lá' },
+  {n:18, bu:'Industrial', conta:'Facchini', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:341737.2, valorRef:341737.2, data:'PR 25/03', status:'Finalizado', acao:'Encantamento na entrega: Para combater a desconfiança do cliente em relação à eficiência prometida, a equipe deve focar em "encantar" a entrega dessas 10 unidades. A ação envolve enviá-las em uma embalagem especial acompanhada de um cartão com uma mensagem.' },
+  {n:19, bu:'Industrial', conta:'Facchini', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:341737.2, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'Acompanhamento Técnico (Suporte): A equipe deve perguntar ao cliente exatamente quais critérios serão testados e disponibilizar alguém da engenharia comercial para ir até o local apoiar e acompanhar esse teste. Também ficou acordado que o Thiago (vendedor) deve fazer uma visita presencial lá.' },
   {n:20, bu:'Industrial', conta:'Facchini', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:341737.2, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'O Thiago vai auxiliar nos testes à distância e fará uma visita presencial durante a feira Agrishow para buscar o equipamento e tentar bater o martelo.' },
   {n:21, bu:'Industrial', conta:'Facchini', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:341737.2, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'- As luminárias já foram entregues ao cliente, que validou melhora na iluminação. No entanto, sinalizou a necessidade de um período de teste de 30 dias antes de avançar com a decisão de compra.\n- O Thiago realizará uma visita ao cliente na quarta-feira (29/04), durante a Agrishow, com o objetivo de fortalecer o relacionamento e avançar na conversão do negócio.' },
-  {n:22, bu:'Industrial', conta:'SINCOL', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:64003.82, valorRef:64003.82, data:'PR 25/03', status:'Finalizado', acao:'Desconversar sobre automação neste momento e focar na qualidade superior da luminária. Tentar descobrir se o cliente tem um potencial de compra maior do que os R$ 64.000 orçados' },
+  {n:22, bu:'Industrial', conta:'SINCOL', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:64003.82, valorRef:64003.82, data:'PR 25/03', status:'Finalizado', acao:'Desconversar sobre automação neste momento e focar na qualidade superior da luminária. Tentar descobrir se o cliente tem um potencial de compra maior do que os R$ 64.000 orçados.' },
   {n:23, bu:'Industrial', conta:'SINCOL', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:64003.82, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'Pedro fez a reunião, desconversou sobre a automação e confirmou que a empresa troca cerca de 100 pontos por mês, mas é estritamente focada em preço baixo. A orientação agora é apenas fazer visitas de manutenção quando o consultor estiver na região.' },
   {n:24, bu:'Industrial', conta:'SINCOL', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:64003.82, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'- Sem novas ações no momento.\n- A estratégia para a conta permanece inalterada: cliente altamente sensível a preço, com volume recorrente de troca de aproximadamente 100 pontos/mês.\n- Foco em visitas de manutenção e relacionamento, sem expectativa de avanço estrutural no curto prazo.' },
-  {n:25, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:2075463.0, valorRef:2075463.0, data:'PR 25/03', status:'Em andamento', acao:'Aproximar-se de Edmilson e convidá-lo para uma reunião no escritório' },
+  {n:25, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:2075463.0, valorRef:2075463.0, data:'PR 25/03', status:'Em andamento', acao:'Aproximar-se de Edmilson e convidá-lo para uma reunião no escritório.' },
   {n:26, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:2075463.0, valorRef:null, data:'PR 08/04', status:'Finalizado', acao:'Aguardando a compra da camisa da seleção para formalizar o convite.' },
-  {n:27, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:2075463.0, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'Presentear o Edimilson com uma camisa da Seleção Brasileira' },
+  {n:27, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:2075463.0, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'Presentear o Edimilson com uma camisa da Seleção Brasileira.' },
   {n:28, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:2075463.0, valorRef:null, data:'PR 08/04', status:'Finalizado', acao:'A camisa já está conosco no escritório. Seguimos aguardando o agendamento da reunião para a entrega.' },
   {n:29, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:2075463.0, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'Fazer uma análise/perícia preventiva da fábrica junto à Segurança do Trabalho para patrocinar a troca de toda a planta (reprojeto).' },
   {n:30, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:2075463.0, valorRef:null, data:'PR 08/04', status:'Finalizado', acao:'Foi decidido não envolver a Segurança do Trabalho agora para não colocar o Edmilson em uma posição desconfortável. O novo plano é o Thiago pegar a planta da fábrica para que a engenharia comercial faça um projeto/desenho preventivo.' },
-  {n:31, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:2075463.0, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'Criar um Business Case (vídeos/depoimentos) sobre a durabilidade de 8 anos do produto. Abrir a oportunidade de projeto RGB na área externa' },
-  {n:32, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:2075463.0, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'- O contato de facilities não autorizou a captação de imagens.\n- A estratégia foi ajustada: o Thiago buscará contato com o Cassiano (nível hierárquico mais alto e patrocinador histórico) para viabilizar a aprovação.\n- A camisa da seleção, destinada ao Edmilson, já está disponível no escritório.\n- Ação cancelada: decidiu-se não envolver a área de Segurança do Trabalho neste momento, para evitar exposição ou desgaste com o Edmilson.' },
+  {n:31, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:2075463.0, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'Criar um Business Case (vídeos/depoimentos) sobre a durabilidade de 8 anos do produto. Abrir a oportunidade de projeto RGB na área externa.' },
+  {n:32, bu:'Industrial', conta:'Caterpillar Campo Largo', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:2075463.0, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'- O contato de facilities não autorizou a captação de imagens.\n- A estratégia foi ajustada: o Thiago buscará contato com o Cassiano (nível hierárquico mais alto e patrocinador histórico) para viabilizar a aprovação.\n- A camisa da seleção, destinada ao Edmilson, já está disponível no escritório.\n- Ação cancelada: decidiu-se não envolver a área de Segurança do Trabalho neste momento.' },
   {n:33, bu:'Industrial', conta:'Caterpillar Piracicaba', tipo:'Cliente', area:'Inovação', owner:'Victor Piovezan', valor:3834803.14, valorRef:3834803.14, data:'PR 25/03', status:'Em andamento', acao:'A fábrica da Caterpillar em Piracicaba está com a iluminação atual (Alufone) no fim da vida útil e aberta a testar novas tecnologias, especialmente automação sem fio. O cliente quer testar a melhor solução do mercado em um barracão de 56.000 m² antes de escalar para toda a planta, com prioridade total em tecnologia (não preço). Já foi implementado o sistema Quantum da Lutron em Campo Largo (~R$1M), considerado referência máxima técnica.' },
   {n:34, bu:'Industrial', conta:'Caterpillar Piracicaba', tipo:'Cliente', area:'Inovação', owner:'Victor Piovezan', valor:3834803.14, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'Área de inovação deve mapear 3 níveis de solução de mercado (básico, intermediário e top), com foco em benchmarking das líderes globais como Lutron e Crestron. Mapear também uma fabricante chinesa premium que concorra em tecnologia com essas líderes, mas com potencial de melhor custo-benefício.\n\nEntregáveis: detalhar funcionamento das soluções, faixas de preço e diferenciais técnicos claros para cada nível para apresentação ao Jeff até o dia 25/04.' },
   {n:35, bu:'Industrial', conta:'Caterpillar Piracicaba', tipo:'Cliente', area:'Inovação', owner:'Victor Piovezan', valor:3834803.14, valorRef:null, data:'FUP 20/04', status:'Pendente', acao:'As ações estão em andamento. Priorizando a evolução ao longo da semana.' },
@@ -1210,55 +537,55 @@ const acoesData = [
   {n:41, bu:'Industrial', conta:'Sulfibra', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:458390.07, valorRef:null, data:'PR 25/03', status:'Pendente', acao:'Revisar a precificação (pricing) para ser mais agressivo/ousado.' },
   {n:42, bu:'Industrial', conta:'Sulfibra', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:458390.07, valorRef:null, data:'PR 08/04', status:'Pendente', acao:'A revisão de precificação para ser mais agressiva entrou em standby, pois a equipe já está trabalhando com uma margem muito baixa nesse negócio.' },
   {n:43, bu:'Industrial', conta:'Sulfibra', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:458390.07, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'- A negociação permanece na mesa final, com concorrência direta de Zagonel e Signify (Philips).\n- O Folda já entregou o laudo comparativo em 07/04.\n- A revisão de precificação por José Lucas segue em standby.' },
-  {n:44, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:11220589.78, valorRef:11220589.78, data:'PR 25/03', status:'Em andamento', acao:'Ajustar o modelo de negócios (precificação com planilha aberta/redução de margem em equipamentos)' },
+  {n:44, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:11220589.78, valorRef:11220589.78, data:'PR 25/03', status:'Em andamento', acao:'Ajustar o modelo de negócios (precificação com planilha aberta/redução de margem em equipamentos).' },
   {n:45, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:11220589.78, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'Modelo da planilha aberta feito e enviado para validação do Jeff, após validação será detalhada a precificação na planilha.\nEstimativa dia 17/04/26.' },
-  {n:46, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:11220589.78, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'Oferecer opções financeiras (leasing)' },
-  {n:47, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:11220589.78, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'Leasing direcionado para o comercial (Alinhamento feito com o Pilato);' },
+  {n:46, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:11220589.78, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'Oferecer opções financeiras (leasing).' },
+  {n:47, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:11220589.78, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'Leasing direcionado para o comercial (Alinhamento feito com o Pilato).' },
   {n:48, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:11220589.78, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'- O José Lucas enviou o modelo de planilha aberta para validação do Jeff, com previsão inicial de retorno em 17/04.\n- A Green Yellow (GY) foi acionada novamente hoje (20/04) quanto às opções de leasing e respectivos cálculos.\n- O nome do diretor em férias já foi identificado, e a pauta de bateria (BESS) foi direcionada ao Victor Piovezan para investigação.' },
-  {n:49, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Inovação', owner:'Victor Piovezan', valor:11220589.78, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'A fábrica está no momento ideal de troca pois a iluminação deles tem mais de 10 anos (da marca GE) e alguns pontos já começaram a queimar e a equipe vê isso como uma excelente oportunidade comercial. A oportunidade resultaria em um projeto de R$ 11,2 milhões, no entanto, a Engenharia detectou que, se eles implementarem 100% dessa carga, a rede elétrica da fábrica vai sofrer cortes/limitações de energia.' },
+  {n:49, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Inovação', owner:'Victor Piovezan', valor:11220589.78, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'A fábrica está no momento ideal de troca pois a iluminação deles tem mais de 10 anos (da marca GE) e alguns pontos já começaram a queimar. A oportunidade resultaria em um projeto de R$ 11,2 milhões, no entanto, a Engenharia detectou que, se eles implementarem 100% dessa carga, a rede elétrica da fábrica vai sofrer cortes/limitações de energia.' },
   {n:50, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Inovação', owner:'Victor Piovezan', valor:11220589.78, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'Como solução, vamos propor BESS para garantir estabilidade e viabilizar o projeto. A demanda foi encaminhada pela Engenharia Comercial ao time de Inovação, e aguardamos o prazo para definição de como o BESS será estruturado e viabilizado para este caso.' },
   {n:51, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Inovação', owner:'Victor Piovezan', valor:11220589.78, valorRef:null, data:'FUP 20/04', status:'Pendente', acao:'As ações estão em andamento. Priorizando a evolução ao longo da semana.' },
   {n:52, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Comercial', owner:'Jeff', valor:11220589.78, valorRef:null, data:'PR 25/03', status:'Finalizado', acao:'Descobrir o nome do diretor em férias.' },
-  {n:53, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Comercial', owner:'Jeff', valor:11220589.78, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'JP tem a missão de conseguir a agenda com o Diretor Financeiro (que já retornou de férias)' },
-  {n:54, bu:'Industrial', conta:'Laticínio Carolina / ICMS', tipo:'Parceiro', area:'Financeiro', owner:'Rodrygo', valor:null, valorRef:null, data:'2026-03-25 00:00:00', status:'Em andamento', acao:'Passar a investigação da regra tributária para a área fiscal.' },
-  {n:55, bu:'Industrial', conta:'Laticínio Carolina / ICMS', tipo:'Parceiro', area:'Financeiro', owner:'Rodrygo', valor:null, valorRef:null, data:'2026-04-08 00:00:00', status:'Finalizado', acao:'ICSM foi mapeado como OKR do time financeiro no Q2.' },
-  {n:56, bu:'Industrial', conta:'Ledvance', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:null, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'Realizar uma reunião para alinhar diretrizes de comissionamento caso a empresa decida atuar como parceira que "pina" (especifica) o projeto para que a Ledvance fature direto' },
+  {n:53, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Comercial', owner:'Jeff', valor:11220589.78, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'JP tem a missão de conseguir a agenda com o Diretor Financeiro (que já retornou de férias).' },
+  {n:54, bu:'Industrial', conta:'Laticínio Carolina / ICMS', tipo:'Parceiro', area:'Financeiro', owner:'Rodrygo', valor:null, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'Passar a investigação da regra tributária para a área fiscal.' },
+  {n:55, bu:'Industrial', conta:'Laticínio Carolina / ICMS', tipo:'Parceiro', area:'Financeiro', owner:'Rodrygo', valor:null, valorRef:null, data:'PR 08/04', status:'Finalizado', acao:'ICSM foi mapeado como OKR do time financeiro no Q2.' },
+  {n:56, bu:'Industrial', conta:'Ledvance', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:null, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'Realizar uma reunião para alinhar diretrizes de comissionamento caso a empresa decida atuar como parceira que "pina" (especifica) o projeto para que a Ledvance fature direto.' },
   {n:57, bu:'Industrial', conta:'Ledvance', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:null, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'Agendar uma reunião com o Guilherme Profeta (gerente da Ledvance). É indispensável que o Jeff participe dessa conversa junto com o José Lucas para definirem as diretrizes de comissionamento.\nEstimativa dia 24/04/26.' },
-  {n:58, bu:'Industrial', conta:'Emergent Cold \n(Negociação via Óptima)', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'PR 25/03', status:'Pendente', acao:'Aceitar a divisão 50/50 do lucro, mas com a condição de contabilizar e descontar todos os custos de viagem e engenharia antes da divisão. Exigir também que, caso o negócio não feche, o prejuízo das visitas seja dividido por dois' },
-  {n:59, bu:'Industrial', conta:'Emergent Cold \n(Negociação via Óptima)', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'PR 08/04', status:'Pendente', acao:'O negócio está em standby por um erro na importação. A fornecedora chinesa produziu as lentes e adesivos incorretamente devido a uma falha de comunicação da equipe. O plano de ação atual é tentar trocar as lentes internamente usando o estoque local para não furar o prazo de entrega com o cliente, ou acionar uma justificativa contratual (força maior) se o prazo for impactad' },
-  {n:60, bu:'Industrial', conta:'Emergent Cold \n(Negociação via Óptima)', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'FUP 20/04', status:'Pendente', acao:'- A conta segue sendo monitorada internamente por Pilato e Bruno.\n- O projeto permanece em standby (de forma proposital) após um erro crítico na importação de lentes e adesivos, com provável impacto no prazo final de entrega.' },
+  {n:58, bu:'Industrial', conta:'Emergent Cold (Negociação via Óptima)', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'PR 25/03', status:'Pendente', acao:'Aceitar a divisão 50/50 do lucro, mas com a condição de contabilizar e descontar todos os custos de viagem e engenharia antes da divisão. Exigir também que, caso o negócio não feche, o prejuízo das visitas seja dividido por dois.' },
+  {n:59, bu:'Industrial', conta:'Emergent Cold (Negociação via Óptima)', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'PR 08/04', status:'Pendente', acao:'O negócio está em standby por um erro na importação. A fornecedora chinesa produziu as lentes e adesivos incorretamente devido a uma falha de comunicação da equipe.' },
+  {n:60, bu:'Industrial', conta:'Emergent Cold (Negociação via Óptima)', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'FUP 20/04', status:'Pendente', acao:'- A conta segue sendo monitorada internamente por Pilato e Bruno.\n- O projeto permanece em standby (de forma proposital) após um erro crítico na importação de lentes e adesivos, com provável impacto no prazo final de entrega.' },
   {n:61, bu:'Industrial', conta:'Ajinomoto', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'PR 25/03', status:'Finalizado', acao:'Confirmar se o executivo japonês (tomador de decisão da planta) realmente joga futebol na associação de funcionários onde a pequena usina solar foi solicitada.' },
   {n:62, bu:'Industrial', conta:'Ajinomoto', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'FUP 20/04', status:'Finalizado', acao:'- O contato interno (Luiz Bruno) avaliou a Associação de Funcionários e confirmou que a oportunidade não gera visibilidade junto aos tomadores de decisão japoneses.\n- Diante disso, a oportunidade foi integralmente descartada.' },
   {n:63, bu:'Industrial', conta:'MaxFort', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:2147121.98, valorRef:2147121.98, data:'PR 25/03', status:'Finalizado', acao:'Levar o Beto Kirsch e família para jogo do Grêmio x Remo.' },
   {n:64, bu:'Industrial', conta:'MaxFort', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:2147121.98, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'- O jogo ocorreu conforme o planejado, sem intercorrências.\n- A única pendência é a entrega da camisa autografada.\n- A área de Permutas (Vanessa) prevê a finalização na semana de 10/05, quando o Jean realizará a entrega em mãos ao cliente.' },
-  {n:65, bu:'Industrial', conta:'MaxFort', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:2147121.98, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'O consultor Jean fez uma visita altamente consultiva que agradou muito o decisor (Beto). A ação decisiva será uma reunião agendada para sexta-feira, onde a equipe apresentará as opções e o Beto escolherá qual caminho técnico seguir para o fechamento' },
-  {n:66, bu:'Industrial', conta:'Hollos', tipo:'Parceiro', area:'Marketing', owner:'Mychael', valor:65423.11, valorRef:65423.11, data:'PR 25/03', status:'Finalizado', acao:'Criar um One Pager para entender as dores da Hollos na mesma modelagem da OCLE' },
-  {n:67, bu:'Industrial', conta:'Engemase', tipo:'Parceiro', area:'Marketing', owner:'Mychael', valor:null, valorRef:null, data:'PR 25/03', status:'Finalizado', acao:'Criar um One Pager para entender as dores da parceira Engemasi na mesma modelagem da OCLE' },
-  {n:68, bu:'Industrial', conta:'Fama (Londrina)', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:1570456.92, valorRef:1570456.92, data:'PR 08/04', status:'Pendente', acao:'Pedir para a Green Yellow revisar e ajustar a modelagem financeira para garantir que a conta do cliente fique sempre no "zero a zero" ou positiva (sem necessidade de desembolso futuro)' },
-  {n:69, bu:'Industrial', conta:'Fama (Londrina)', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:1570456.92, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'- O retorno da modelagem financeira da Green Yellow (GY) foi recebido hoje (20/04).\n- A conta será levada para a Pipeline Review, dado o nível de urgência (“pressa de dono”) e potencial de aceleração.' },
+  {n:65, bu:'Industrial', conta:'MaxFort', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:2147121.98, valorRef:null, data:'PR 08/04', status:'Em andamento', acao:'O consultor Jean fez uma visita altamente consultiva que agradou muito o decisor (Beto). A ação decisiva será uma reunião agendada para sexta-feira, onde a equipe apresentará as opções e o Beto escolherá qual caminho técnico seguir para o fechamento.' },
+  {n:66, bu:'Industrial', conta:'Hollos', tipo:'Parceiro', area:'Marketing', owner:'Mychael', valor:65423.11, valorRef:65423.11, data:'PR 25/03', status:'Finalizado', acao:'Criar um One Pager para entender as dores da Hollos na mesma modelagem da OCLE.' },
+  {n:67, bu:'Industrial', conta:'Engemase', tipo:'Parceiro', area:'Marketing', owner:'Mychael', valor:null, valorRef:null, data:'PR 25/03', status:'Finalizado', acao:'Criar um One Pager para entender as dores da parceira Engemasi na mesma modelagem da OCLE.' },
+  {n:68, bu:'Industrial', conta:'Fama (Londrina)', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:1570456.92, valorRef:1570456.92, data:'PR 08/04', status:'Pendente', acao:'Pedir para a Green Yellow revisar e ajustar a modelagem financeira para garantir que a conta do cliente fique sempre no "zero a zero" ou positiva (sem necessidade de desembolso futuro).' },
+  {n:69, bu:'Industrial', conta:'Fama (Londrina)', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:1570456.92, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'- O retorno da modelagem financeira da Green Yellow (GY) foi recebido hoje (20/04).\n- A conta será levada para a Pipeline Review, dado o nível de urgência ("pressa de dono") e potencial de aceleração.' },
   {n:70, bu:'Industrial', conta:'Scherer', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:6600000.0, valorRef:6600000.0, data:'PR 08/04', status:'Finalizado', acao:'Envolver o Dan para investigar opções de terrenos (especialmente no Paraná) que já possuam parecer de acesso (GD1) para arrendar ou vender ao cliente. Em paralelo, abrir o projeto com a Engenharia Comercial e agendar rapidamente uma visita presencial ao cliente em Joaçaba para esquentar o relacionamento.' },
   {n:71, bu:'Industrial', conta:'CONFAB', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'PR 25/03', status:'Finalizado', acao:'Aguardar o tempo do cliente para o envio do pedido. Para quebrar o gelo e acelerar as próximas áreas, enviar uma camiseta da Seleção Brasileira para o contato.' },
   {n:72, bu:'Industrial', conta:'CONFAB', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:456000.0, valorRef:456000.0, data:'FUP 20/04', status:'Em andamento', acao:'- Os orçamentos foram atualizados, e a equipe possui aproximadamente R$ 280 mil com potencial de fechamento imediato (Q2/Q3).\n- Há também a estratégia de puxar um bloco adicional de cerca de R$ 456 mil para aprovação ainda neste ano.' },
-  {n:73, bu:'Industrial', conta:'Nexa', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:11673.58, valorRef:11673.58, data:'PR 08/04', status:'Finalizado', acao:'Pilato deve descobrir de qual concorrente a Nexa compra atualmente para coletar dados de eficiência, garantia e vida útil. O objetivo é montar um comparativo provando que a luminária atual sai mais cara a longo prazo, para então convencê-los a aceitar os produtos de demonstração' },
-  {n:74, bu:'Industrial', conta:'Porto Ponta do Félix', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:46210.5, valorRef:46210.5, data:'PR 08/04', status:'Finalizado', acao:'Agendar uma visita presencial ao cliente logo após bater o martelo da venda atual em andamento' },
+  {n:73, bu:'Industrial', conta:'Nexa', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:11673.58, valorRef:11673.58, data:'PR 08/04', status:'Finalizado', acao:'Pilato deve descobrir de qual concorrente a Nexa compra atualmente para coletar dados de eficiência, garantia e vida útil. O objetivo é montar um comparativo provando que a luminária atual sai mais cara a longo prazo, para então convencê-los a aceitar os produtos de demonstração.' },
+  {n:74, bu:'Industrial', conta:'Porto Ponta do Félix', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:46210.5, valorRef:46210.5, data:'PR 08/04', status:'Finalizado', acao:'Agendar uma visita presencial ao cliente logo após bater o martelo da venda atual em andamento.' },
   {n:75, bu:'Esportivo', conta:'Vila Belmiro', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:null, valorRef:null, data:'PR 25/03', status:'Finalizado', acao:'Agendar reunião presencial (um jantar/relacionamento) em São Paulo com Roger Antunes da WTorres. Este contato é a chave para destravar a obra da Vila Belmiro e oportunidades de iluminação RGB no Allianz Parque.' },
   {n:76, bu:'Esportivo', conta:'Vila Belmiro', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:null, valorRef:null, data:'FUP 16/04', status:'Em andamento', acao:'O jantar ocorreu, mas foi muito ruim. Roger alertou que o Santos "tá quebrado" e não há contrato, apenas uma intenção prévia. Além disso, informou que não investirá em iluminação RGB no Allianz agora devido a brigas judiciais com o Palmeiras (conflito entre jogos vs. shows). A nova ação será agendar uma reunião diretamente com o Santos no próximo mês, alavancando relacionamento que o Michel possui com o técnico Cuca. O time também tentará conversar com o Roger novamente na feira Fut Pro.' },
   {n:77, bu:'Esportivo', conta:'Barretos', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:1547045.6, valorRef:1547045.6, data:'PR 25/03', status:'Em andamento', acao:'Em Orçamentação. A ideia de marketing (ABM) foi descartada por ora. O Bruno está montando o orçamento da engenharia para apresentar a proposta RGB.' },
   {n:78, bu:'Esportivo', conta:'Náutico', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:640555.4, valorRef:640555.4, data:'PR 25/03', status:'Finalizado', acao:'O negócio foi concluído e as luminárias já chegaram ao clube.' },
   {n:79, bu:'Esportivo', conta:'Mobit', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:784000.0, valorRef:784000.0, data:'PR 25/03', status:'Finalizado', acao:'O negócio foi garantido e a empresa aguarda a importação para mandar os primeiros produtos.' },
   {n:80, bu:'Esportivo', conta:'Barbalhão (Mangueirão / OCC)', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:1400000.0, valorRef:1400000.0, data:'PR 25/03', status:'Pendente', acao:'Aguardar a antecipação da minuta do contrato prevista para a mesma semana e tratar diretamente com a gerente Paula, evitando envolver o diretor geral Marco Aurélio na negociação.' },
-  {n:81, bu:'Esportivo', conta:'Barbalhão (Mangueirão / OCC)', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:1400000.0, valorRef:null, data:'FUP 16/04', status:'Pendente', acao:'Sem avanço. Estão mantendo o relacionamento próximo com a gerente Paula para garantir a venda, apenas aguardando a publicação do contrato pelo cliente' },
-  {n:82, bu:'Esportivo', conta:'Arena Pantanal', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:4000000.0, valorRef:4000000.0, data:'PR 25/03', status:'Em andamento', acao:'Atualizar e garantir a documentação de acervo técnico com projetos que unam iluminação esportiva e cênica para criar um diferencial' },
+  {n:81, bu:'Esportivo', conta:'Barbalhão (Mangueirão / OCC)', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:1400000.0, valorRef:null, data:'FUP 16/04', status:'Pendente', acao:'Sem avanço. Estão mantendo o relacionamento próximo com a gerente Paula para garantir a venda, apenas aguardando a publicação do contrato pelo cliente.' },
+  {n:82, bu:'Esportivo', conta:'Arena Pantanal', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:4000000.0, valorRef:4000000.0, data:'PR 25/03', status:'Em andamento', acao:'Atualizar e garantir a documentação de acervo técnico com projetos que unam iluminação esportiva e cênica para criar um diferencial.' },
   {n:83, bu:'Esportivo', conta:'Arena Pantanal', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:4000000.0, valorRef:null, data:'FUP 16/04', status:'Finalizado', acao:'Aguardando Publicações. Arena Pantanal aguarda solicitação das cotações pelo poder público. Na Arena PE e no Sarasate, o comercial finalizou os processos e restou apenas aguardar a publicação dos editais.' },
-  {n:84, bu:'Esportivo', conta:'Arena Pernambuco', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:3393324.21, valorRef:3393324.21, data:'PR 25/03', status:'Em andamento', acao:'Intensificar os contatos e focar a aproximação na Ângela, que lidera administrativamente o processo' },
+  {n:84, bu:'Esportivo', conta:'Arena Pernambuco', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:3393324.21, valorRef:3393324.21, data:'PR 25/03', status:'Em andamento', acao:'Intensificar os contatos e focar a aproximação na Ângela, que lidera administrativamente o processo.' },
   {n:85, bu:'Esportivo', conta:'Arena Pernambuco', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:3393324.21, valorRef:null, data:'FUP 16/04', status:'Finalizado', acao:'Arena PE e no Sarasate, o comercial finalizou os processos e restou apenas aguardar a publicação dos editais.' },
-  {n:86, bu:'Esportivo', conta:'Sarasate', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:1000000.0, valorRef:1000000.0, data:'PR 25/03', status:'Em andamento', acao:'Manter o relacionamento ativo e aguardar, com possibilidade de ações presenciais no futuro' },
+  {n:86, bu:'Esportivo', conta:'Sarasate', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:1000000.0, valorRef:1000000.0, data:'PR 25/03', status:'Em andamento', acao:'Manter o relacionamento ativo e aguardar, com possibilidade de ações presenciais no futuro.' },
   {n:87, bu:'Esportivo', conta:'Sarasate', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:1000000.0, valorRef:null, data:'FUP 16/04', status:'Finalizado', acao:'Arena PE e no Sarasate, o comercial finalizou os processos e restou apenas aguardar a publicação dos editais.' },
-  {n:88, bu:'Esportivo', conta:'SEJEL', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:5957030.0, valorRef:5957030.0, data:'PR 25/03', status:'Pendente', acao:'Fazer uma ligação de alinhamento com o contato Luquinha' },
-  {n:89, bu:'Esportivo', conta:'SEJEL', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:5957030.0, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'O Pedro deve entregar a conclusão do projeto de engenharia, enquanto o José constrói e compila toda a documentação administrativa exigida, visto que a verba de R$ 1 milhão já está disponível' },
-  {n:90, bu:'Esportivo', conta:'Palotina', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:2500000.0, valorRef:2500000.0, data:'PR 25/03', status:'Em andamento', acao:'Montar toda a documentação do zero e acompanhar de perto o processo da prefeitura para a contratação do engenheiro Fábio (o mesmo de Maringá), que será feita por dispensa de licitação' },
+  {n:88, bu:'Esportivo', conta:'SEJEL', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:5957030.0, valorRef:5957030.0, data:'PR 25/03', status:'Pendente', acao:'Fazer uma ligação de alinhamento com o contato Luquinha.' },
+  {n:89, bu:'Esportivo', conta:'SEJEL', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:5957030.0, valorRef:null, data:'PR 25/03', status:'Em andamento', acao:'O Pedro deve entregar a conclusão do projeto de engenharia, enquanto o José constrói e compila toda a documentação administrativa exigida, visto que a verba de R$ 1 milhão já está disponível.' },
+  {n:90, bu:'Esportivo', conta:'Palotina', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:2500000.0, valorRef:2500000.0, data:'PR 25/03', status:'Em andamento', acao:'Montar toda a documentação do zero e acompanhar de perto o processo da prefeitura para a contratação do engenheiro Fábio (o mesmo de Maringá), que será feita por dispensa de licitação.' },
   {n:91, bu:'Esportivo', conta:'Palotina', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:2500000.0, valorRef:null, data:'FUP 16/04', status:'Em andamento', acao:'A prefeitura não conseguiu abrir a prioridade na CID para uso do recurso. Michel tem um ponto de contato na tarde de hoje para cobrar a evolução, 16/04.' },
-  {n:92, bu:'Esportivo', conta:'Sergipe', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:4900000.0, valorRef:4900000.0, data:'PR 25/03', status:'Em andamento', acao:'Aguardar a definição da reunião. Se houver a mudança para semi-integrada, será preciso voltar para a prancheta e refazer as alterações nos documentos. Além disso, foi sugerido aproveitar a boa relação com a secretária Mariana para mapear o estado inteiro em busca de novas oportunidades' },
+  {n:92, bu:'Esportivo', conta:'Sergipe', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:4900000.0, valorRef:4900000.0, data:'PR 25/03', status:'Em andamento', acao:'Aguardar a definição da reunião. Se houver a mudança para semi-integrada, será preciso voltar para a prancheta e refazer as alterações nos documentos. Além disso, foi sugerido aproveitar a boa relação com a secretária Mariana para mapear o estado inteiro em busca de novas oportunidades.' },
   {n:93, bu:'Esportivo', conta:'Sergipe', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:4900000.0, valorRef:null, data:'FUP 16/04', status:'Em andamento', acao:'Refazendo Engenharia. Como antecipado no plano, a equipe está precisando refazer documentos técnicos para devolver ao Estado para que consigam publicar o edital.' },
   {n:94, bu:'Esportivo', conta:'Operário', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:1200000.0, valorRef:1200000.0, data:'PR 25/03', status:'Em andamento', acao:'Revisar orçamentos e simular um financiamento com parcela atrativa (ex: R$ 33 mil). Usar o valor da parcela como "isca" para trazer o presidente ao escritório.' },
   {n:95, bu:'Esportivo', conta:'Operário', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:1200000.0, valorRef:null, data:'FUP 16/04', status:'Em andamento', acao:'- A aprovação de crédito e a definição do valor de venda estão pendentes.\n- O cliente não tem respondido às tentativas de contato via WhatsApp nem atendido às ligações.' },
@@ -1270,95 +597,71 @@ const acoesData = [
   {n:101, bu:'Cidades', conta:'Umuarama', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:4500000.0, valorRef:4500000.0, data:'FUP 16/04', status:'Em andamento', acao:'Os projetos foram readequados e já entregues. Agora a documentação está nas mãos do cliente aguardando a publicação na Copel.' },
   {n:102, bu:'Cidades', conta:'Arapoti', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:3000000.0, valorRef:3000000.0, data:'FUP 16/04', status:'Pendente', acao:'O contato Marine não retornou. Agora dependem de o prefeito fazer força política para destravar o processo dentro da secretaria.' },
   {n:103, bu:'Cidades', conta:'USP (São Carlos)', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:5500000.0, valorRef:5500000.0, data:'FUP 16/04', status:'Pendente', acao:'Falaram com o "prefeito do campus", mas não tiveram retorno. Processo está preso na Procuradoria Geral do Estado, que está inacessível.' },
-  {n:104, bu:'Cidades', conta:'Docas', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:3000000.0, valorRef:3000000.0, data:'FUP 16/04', status:'Em andamento', acao:'Aguardando Assinatura. A expectativa é que a confirmação do contrato chegue ainda hoje,  16/04.' },
+  {n:104, bu:'Cidades', conta:'Docas', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:3000000.0, valorRef:3000000.0, data:'FUP 16/04', status:'Em andamento', acao:'Aguardando Assinatura. A expectativa é que a confirmação do contrato chegue ainda hoje, 16/04.' },
   {n:105, bu:'Cidades', conta:'Campo Mourão', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:1300000.0, valorRef:1300000.0, data:'FUP 16/04', status:'Em andamento', acao:'O aditivo foi recebido pela empresa e está programado para ser assinado no dia de hoje, 16/04.' },
   {n:106, bu:'Cidades', conta:'Guarapuava e Cascavel', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:null, valorRef:null, data:'FUP 16/04', status:'Em andamento', acao:'Como o foco total está na CID (Secretaria das Cidades), a tentativa de agenda com os prefeitos foi deixada para o mês de maio.' },
   {n:107, bu:'Cidades', conta:'Itaquaquecetuba', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:2700000.0, valorRef:2700000.0, data:'FUP 16/04', status:'Pendente', acao:'Sem novidades. Seguem aguardando os trâmites internos do cliente para publicação do edital.' },
-  {n:108, bu:'Grow', conta:'EUCALIPTO MUDA - Suzano', tipo:'Cliente', area:'Comercial', owner:'Arthur', valor:148800.0, valorRef:148800.0, data:'PR 15/04', status:'Pendente', acao:'A empresa passou por mudanças estruturais recentes, com o pesquisador referência (Alex) sendo direcionado para a operação. As novas responsáveis demonstraram percepção positiva dos resultados já apresentados.\n\nPróximos passos:\n- Mapear a nova estrutura organizacional e identificar os novos decisores.\n- Alinhar com o Alex para aprofundar o contexto das mudanças e validar os principais stakeholders.\n- Priorizar reuniões de alinhamento estratégico neste momento, em vez de visitas de campo.\n- Utilizar o Jeff e o Ander para uma abordagem top-down, aproveitando o evento B55 como oportunidade de conexão com a alta liderança (incluindo o dono da Suzano) para gerar abertura e destravar o avanço do negócio.' },
-  {n:109, bu:'Grow', conta:'CAFÉ MUDA - Viveiro São Judas Tadeu', tipo:'Cliente', area:'Comercial', owner:'Arthur', valor:66500.0, valorRef:66500.0, data:'PR 15/04', status:'Pendente', acao:'Cliente está inativo desde o final de março após receber proposta de alto valor (~R$60 mil para 1/4 da estufa), indicando possível fricção na percepção de investimento.\n\nPróximos passos:\n- Reativar o contato com uma abordagem consultiva e criativa, utilizando um “gancho” de valor na comunicação (e não apenas follow-up de cobrança).\n- Testar novas narrativas que despertem interesse, como insights, comparativos ou provocações estratégicas relacionadas ao negócio do cliente.\n- Ofertar um projeto piloto menor como porta de entrada, reduzindo barreira de investimento e facilitando a retomada da conversa.\n- Reposicionar a proposta com foco em aprendizado e validação, diminuindo risco percebido e aumentando aderência inicial.' },
-  {n:110, bu:'Grow', conta:'EUCALIPTO MUDA - Panflora Florestal', tipo:'Cliente', area:'Comercial', owner:'Arthur', valor:20000.0, valorRef:20000.0, data:'PR 15/04', status:'Pendente', acao:'Proposta apresentada, com o cliente (Laurindo) indicando que irá realizar análises internas de viabilidade/payback antes de avançar.\n\nPróximos passos:\n- Acompanhar o retorno, mantendo proximidade sem pressionar.\n- Adotar postura consultiva para entender como ele estrutura a análise de viabilidade.\n- Explorar quais métricas e critérios são determinantes na tomada de decisão.\n- Identificar quais resultados mínimos (payback, ROI, prazo, ganho operacional) são necessários para viabilizar o fechamento.\n- Apoiar o cliente com insumos que facilitem essa análise, aumentando as chances de avanço.' },
-  {n:111, bu:'Grow', conta:'EUCALIPTO MUDA - FuturaGene', tipo:'Cliente', area:'Comercial', owner:'Arthur', valor:15700.0, valorRef:15700.0, data:'PR 15/04', status:'Pendente', acao:'Empresa de tecnologia ligada à Suzano, com negociação em estágio avançado que foi congelada, possivelmente por restrições orçamentárias ou timing da matriz.\n\nPróximos passos:\n- Investigar o cenário atual da empresa, entendendo prioridades, tipo de pesquisa realizada e momento interno.\n- Mapear a relação com a Suzano (nível de autonomia, dependência orçamentária e influência nas decisões).\n- Identificar os decisores e influenciadores envolvidos no processo.\n- Buscar contexto adicional com o Alex para entender os reais motivos do congelamento e possíveis caminhos de retomada.\n- Avaliar o melhor timing e abordagem para reengajar a oportunidade com maior chance de avanço.' },
-  {n:112, bu:'Grow', conta:'TRIGO - GDM Seeds', tipo:'Cliente', area:'Comercial', owner:'Arthur', valor:11200.0, valorRef:11200.0, data:'PR 15/04', status:'Pendente', acao:'Empresa multinacional focada em testes genéticos e aceleração de ciclos (speed breeding), que reduziu o ticket de entrada de ~R$600 mil para ~R$11 mil como estratégia de validação inicial, mas teve avanço travado na diretoria/compras.\n\nPróximos passos:\n- Mapear o processo interno de aprovação de compras, entendendo etapas, critérios, prazos e pontos de bloqueio.\n- Identificar e estruturar o mapa de stakeholders: decisores (diretoria), influenciadores técnicos (P&D) e áreas envolvidas (compras e financeiro).\n- Realizar uma investigação aprofundada da estrutura organizacional e do modelo de negócio da empresa para entender como decisões de inovação são priorizadas.\n- Aprofundar o entendimento sobre o papel e a influência da GDM (Grupo Don Mario) dentro desse contexto.\n- Entender o modelo de negócio, estrutura (filiais/unidades) e objetivos estratégicos da GDM, especialmente em relação ao uso de speed breeding.\n- Conectar a proposta de valor diretamente com as prioridades estratégicas identificadas, estruturando uma abordagem mais assertiva para destravar a negociação.' },
-  {n:113, bu:'Grow', conta:'EUCALIPTO MUDA - Viveiro Vimac', tipo:'Cliente', area:'Comercial', owner:'Arthur', valor:6300.0, valorRef:6300.0, data:'PR 15/04', status:'Pendente', acao:'Após solicitação de redução, a proposta revisada foi enviada, mas o cliente interrompeu o contato e o follow-up entrou em “modo cobrança”, com baixa efetividade.\n\nPróximos passos:\n- Reposicionar o follow-up com uma abordagem mais estratégica e criativa, evitando tom de cobrança.\n- Trazer elementos novos para a conversa (ex: ajuste de escopo, nova hipótese de ganho, piloto) em vez de apenas reforçar a proposta enviada.\n- Conduzir a reaproximação de forma consultiva, buscando entender o momento e possíveis objeções não explicitadas.' },
-  {n:114, bu:'Grow', conta:'CAFÉ MUDA - Viveiro Real Conilon', tipo:'Cliente', area:'Comercial', owner:'Arthur', valor:5995.0, valorRef:5995.0, data:'PR 15/04', status:'Pendente', acao:'Projeto inicial de R$43.000 gerou fricção, levando à redução da proposta. Na nova etapa, o cliente solicitou desconto sobre o valor de R$6.100.\n\nPróximos passos:\n- Conduzir a reunião com foco em fechamento, trabalhando o valor final de R$5.995 de forma estratégica, preservando margem.\n- Reforçar o custo-benefício e o racional do investimento, reduzindo sensibilidade a preço.\n- Evoluir a abordagem de follow-up com mais criatividade e valor agregado, evitando dependência de descontos para avanço.' },
+  {n:108, bu:'Grow', conta:'EUCALIPTO MUDA - Suzano', tipo:'Cliente', area:'Comercial', owner:'Arthur', valor:148800.0, valorRef:148800.0, data:'PR 15/04', status:'Pendente', acao:'A empresa passou por mudanças estruturais recentes, com o pesquisador referência (Alex) sendo direcionado para a operação.\n\nPróximos passos:\n- Mapear a nova estrutura organizacional e identificar os novos decisores.\n- Alinhar com o Alex para aprofundar o contexto das mudanças.\n- Priorizar reuniões de alinhamento estratégico neste momento, em vez de visitas de campo.\n- Utilizar o Jeff e o Ander para uma abordagem top-down, aproveitando o evento B55 como oportunidade de conexão com a alta liderança.' },
+  {n:109, bu:'Grow', conta:'CAFÉ MUDA - Viveiro São Judas Tadeu', tipo:'Cliente', area:'Comercial', owner:'Arthur', valor:66500.0, valorRef:66500.0, data:'PR 15/04', status:'Pendente', acao:'Cliente está inativo desde o final de março após receber proposta de alto valor (~R$60 mil para 1/4 da estufa), indicando possível fricção na percepção de investimento.\n\nPróximos passos:\n- Reativar o contato com uma abordagem consultiva e criativa.\n- Ofertar um projeto piloto menor como porta de entrada.\n- Reposicionar a proposta com foco em aprendizado e validação.' },
+  {n:110, bu:'Grow', conta:'EUCALIPTO MUDA - Panflora Florestal', tipo:'Cliente', area:'Comercial', owner:'Arthur', valor:20000.0, valorRef:20000.0, data:'PR 15/04', status:'Pendente', acao:'Proposta apresentada, com o cliente (Laurindo) indicando que irá realizar análises internas de viabilidade/payback antes de avançar.\n\nPróximos passos:\n- Acompanhar o retorno, mantendo proximidade sem pressionar.\n- Adotar postura consultiva para entender como ele estrutura a análise de viabilidade.' },
+  {n:111, bu:'Grow', conta:'EUCALIPTO MUDA - FuturaGene', tipo:'Cliente', area:'Comercial', owner:'Arthur', valor:15700.0, valorRef:15700.0, data:'PR 15/04', status:'Pendente', acao:'Empresa de tecnologia ligada à Suzano, com negociação em estágio avançado que foi congelada, possivelmente por restrições orçamentárias ou timing da matriz.\n\nPróximos passos:\n- Investigar o cenário atual da empresa.\n- Mapear a relação com a Suzano (nível de autonomia, dependência orçamentária).\n- Buscar contexto adicional com o Alex para entender os reais motivos do congelamento.' },
+  {n:112, bu:'Grow', conta:'TRIGO - GDM Seeds', tipo:'Cliente', area:'Comercial', owner:'Arthur', valor:11200.0, valorRef:11200.0, data:'PR 15/04', status:'Pendente', acao:'Empresa multinacional focada em testes genéticos e aceleração de ciclos (speed breeding), que reduziu o ticket de entrada de ~R$600 mil para ~R$11 mil como estratégia de validação inicial, mas teve avanço travado na diretoria/compras.\n\nPróximos passos:\n- Mapear o processo interno de aprovação de compras.\n- Identificar e estruturar o mapa de stakeholders.' },
+  {n:113, bu:'Grow', conta:'EUCALIPTO MUDA - Viveiro Vimac', tipo:'Cliente', area:'Comercial', owner:'Arthur', valor:6300.0, valorRef:6300.0, data:'PR 15/04', status:'Pendente', acao:'Após solicitação de redução, a proposta revisada foi enviada, mas o cliente interrompeu o contato e o follow-up entrou em "modo cobrança", com baixa efetividade.\n\nPróximos passos:\n- Reposicionar o follow-up com uma abordagem mais estratégica e criativa.\n- Trazer elementos novos para a conversa em vez de apenas reforçar a proposta enviada.' },
+  {n:114, bu:'Grow', conta:'CAFÉ MUDA - Viveiro Real Conilon', tipo:'Cliente', area:'Comercial', owner:'Arthur', valor:5995.0, valorRef:5995.0, data:'PR 15/04', status:'Pendente', acao:'Projeto inicial de R$43.000 gerou fricção, levando à redução da proposta. Na nova etapa, o cliente solicitou desconto sobre o valor de R$6.100.\n\nPróximos passos:\n- Conduzir a reunião com foco em fechamento, trabalhando o valor final de R$5.995 de forma estratégica, preservando margem.' },
   {n:115, bu:'Grow', conta:'CAFÉ MUDA - Viveiro Real Conilon', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:5995.0, valorRef:null, data:'PR 15/04', status:'Em andamento', acao:'Imprimir o manual de instalação e o "guia de acompanhamento" (protocolo de medição de dados) e enviar em uma pasta física junto com o produto. Isso facilitará a vida do produtor em campo (que não pode usar notebook no meio da lavoura).' },
-
-
-
-
-
-
-
-
-
-
-  {n:116, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:11220589.78, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'Previsão da Planilha para dia 23/04/26 (Priorização para orçamentos da SECID)' },
+  {n:116, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:11220589.78, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'Previsão da Planilha para dia 23/04/26 (Priorização para orçamentos da SECID).' },
   {n:117, bu:'Esportivo', conta:'SEJEL', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:5957030.0, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'Ainda não recebemos as informações para executar a tarefa, acredito que por conta da SECID, isso não se tornou uma prioridade do comercial.' },
-
-  {n:116, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:11220589.78, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'Previsão da Planilha para dia 23/04/26 (Priorização para orçamentos da SECID)' },
-  {n:117, bu:'Esportivo', conta:'SEJEL', tipo:'Cliente', area:'Eng. Comercial', owner:'José Lucas', valor:5957030.0, valorRef:null, data:'FUP 20/04', status:'Em andamento', acao:'Ainda não recebemos as informações para executar a tarefa, acredito que por conta da SECID, isso não se tornou uma prioridade do comercial.' },
-];
-const gestaoData = [
-  {cat:'Inovação', plano:'Rodar pesquisa de som para estádios', conta:'—', bu:'Esportivo', resp:'Definir'},
-  {cat:'Inovação', plano:'Luminária solar — Google Ads', conta:'—', bu:'Marketing', resp:'Kauana'},
-  {cat:'Inovação', plano:'Luminária solar — Landing Page (LP)', conta:'—', bu:'Marketing', resp:'Kauana'},
-  {cat:'Inovação', plano:'Luminária solar — Inbound', conta:'—', bu:'Marketing', resp:'Kauana'},
-  {cat:'Inovação', plano:'Luminária para LOG', conta:'—', bu:'Industrial', resp:'Definir'},
-  {cat:'Inovação', plano:'Potenze (luminárias EX)', conta:'—', bu:'Industrial', resp:'Definir'},
-  {cat:'Outros', plano:'Reforçar licitação tipo 2', conta:'—', bu:'Cidades', resp:'Definir'},
-  {cat:'Outros', plano:'Ledvance (parceria)', conta:'Ledvance', bu:'Industrial', resp:'Definir'},
-  {cat:'Outros', plano:'Problema de Cidades Magno', conta:'—', bu:'Cidades', resp:'Definir'},
-  {cat:'Contas', plano:'W-Torres — Palmeiras, Santos e outros', conta:'W-Torres', bu:'Esportivo', resp:'Definir'},
-  {cat:'Contas', plano:'Mateus Andreazza', conta:'Mateus Andreazza', bu:'—', resp:'Definir'},
-  {cat:'Contas', plano:'Edinho — usinas para demanda irmão dele', conta:'Edinho', bu:'Industrial', resp:'Definir'},
-  {cat:'Contas', plano:'Desenvolvimento de Oportunidade', conta:'Petrobras', bu:'Industrial', resp:'Definir'},
-  {cat:'Contas', plano:'Qualificação / validação de interesse', conta:'Ajinomoto', bu:'Industrial', resp:'Definir'},
-  {cat:'Contas', plano:'Qualificação / validação de interesse', conta:'Optima', bu:'Industrial', resp:'Definir'},
-  {cat:'Contas', plano:'Coamo — crédito via Sicredi (deságio 32% x pix)', conta:'Coamo', bu:'Industrial', resp:'Definir'},
-  {cat:'Contas', plano:'Desenvolvimento de Oportunidade', conta:'Cacau Park', bu:'Industrial', resp:'Definir'},
-  {cat:'Contas', plano:'Prospecção / mapeamento', conta:'Laticínio Carolina', bu:'Industrial', resp:'Definir'},
+  // ── PR 22/04 — novos planos de ação ──
+  {n:118, bu:'Industrial', conta:'Atlas Schindler', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:11220589.78, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'- Realizar reunião urgente de alinhamento com Jeff, Rodrygo, Pilato e Manu\nObjetivo principal: definição da estratégia comercial a ser adotada\nAvaliar continuidade da estratégia de planilha aberta com redução de margem\nOu adoção da precificação tradicional\n\n- Alinhar estrutura da proposta de leasing com a parceira Green Yellow (GY)\nAjustar condições comerciais e financeiras\nGarantir viabilidade econômica do projeto\nDefinir premissas e impactos na margem e no fluxo de caixa\n\n- Saídas esperadas da reunião:\nDecisão final sobre modelo de precificação\nDirecionamento claro para proposta GY\nPróximos passos e responsáveis definidos' },
+  {n:119, bu:'Industrial', conta:'FAMA (Londrina)', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:1570456.92, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'Proposta de custo de energia MLE e Leasing: A negociação está sendo conduzida diretamente com o CFO da FAMA (uma empresa com forte perfil de dono). Ele gostou bastante da proposta comercial estruturada no formato de leasing para abater o custo de energia via Mercado Livre de Energia (MLE). O obstáculo anterior era que a parceira Green Yellow (GY) havia montado uma modelagem em que o cliente teria que tirar dinheiro do bolso a partir do 7º ano do contrato.\n\nCheck de sanidade: auditar rigorosamente os novos números e cálculos para ter certeza absoluta de que a conta vai ficar "zero a zero" (sem desembolso para o cliente ao longo de todo o período).\n\nPróximo passo: Assim que essa validação interna confirmar que a proposta "para em pé", o objetivo é apresentar imediatamente ao cliente para fechar o negócio, aproveitando o cenário de "pressa de dono" e urgência que a conta apresenta.' },
+  {n:120, bu:'Industrial', conta:'Scherer', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:6600000.0, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'O foco agora é investigativo antes da venda direta. A equipe deve descobrir os detalhes do histórico deles:\n\n- Qual a potência exata das 8 usinas que eles já possuem instaladas\n- Qual foi a empresa que executou essas obras\n- Mapear a fundo quais são as dores atuais do cliente com esses sistemas.\n\nEm paralelo, é preciso garantir o desenho da proteção jurídica para o projeto.' },
+  {n:121, bu:'Industrial', conta:'CERGRAN', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'O foco atual é de correção técnica. O Victor Piovezan (Inovação/Engenharia) está com a missão de resolver alguns erros técnicos da planilha/projeto que haviam sido feitos pelo Rafa anteriormente.' },
+  {n:122, bu:'Industrial', conta:'Plastec', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'A área de plásticos foi citada como um dos alvos estratégicos para desenvolver estudos e aplicar o portfólio de inovação com o sistema de baterias (BESS). O plano é não deixar esse estudo de baterias esfriar para conseguir atender essas demandas.' },
+  {n:123, bu:'Industrial', conta:'ELCO', tipo:'Parceiro', area:'Marketing', owner:'Mychael', valor:null, valorRef:null, data:'PR 22/04', status:'Pendente', acao:'Desenvolver one pagers de inteligência com mapeamento aprofundado das principais instaladoras e empresas de engenharia envolvidas nos projetos do cliente, além da própria Elco:\n\n- Vectra\n- Minerbo\n- ON7 (RS)\n\nUsar os one pagers como base de inteligência para mapear influência das projetistas;\nApoiar decisões de abordagem comercial e construção de proposta técnica mais assertiva;\nIdentificar oportunidades de entrada indireta via engenharia/projetistas-chave.' },
+  {n:124, bu:'Industrial', conta:'ELCO', tipo:'Parceiro', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'PR 22/04', status:'Pendente', acao:'- O Dan deve convidar a Gabi para um almoço com o objetivo de estreitar relacionamento e fortalecer conexão profissional, construindo uma relação de confiança de longo prazo.\n- A Gabi teve papel relevante na estruturação da operação comercial ativa da Elco em São Paulo e possui forte potencial de gerar oportunidades na fase inicial ("nascente") dos projetos.\n- A abordagem deve ser focada em networking estratégico e troca de visão de mercado.' },
+  {n:125, bu:'Industrial', conta:'Magnera', tipo:'Cliente', area:'Comercial', owner:'Pilato', valor:null, valorRef:null, data:'PR 22/04', status:'Pendente', acao:'Para evitar que o projeto pese no caixa do cliente, a principal ação definida foi cobrar as parceiras Green Yellow (GY) e Dynamis pela entrega da modelagem financeira focada em opções robustas de leasing. A apresentação desse "pacotão" financeiro atrativo é o próximo grande passo para tentar fechar o negócio.' },
+  {n:126, bu:'Cidades', conta:'APPA - Administração dos Portos de Paranaguá e Antonina', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:null, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'Melhorar relacionamento já em andamento\nUtilizar o Gabriel como key contact para direcionamento técnico\nMapear processo e stakeholders dentro do Porto' },
+  {n:127, bu:'Cidades', conta:'APPA - Administração dos Portos de Paranaguá e Antonina', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:null, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'- Avaliar cerimônia de encerramento:\nCusto do evento;\nViabilidade de investimento no budget de ABM considerando que a KDL, nossa parceira na automação, propôs bancar a metade do valor da cerimônia.' },
+  {n:128, bu:'Cidades', conta:'APPA - Administração dos Portos de Paranaguá e Antonina', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:null, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'Verificar com o Michel um convite para o Jogo do Santos em Curitiba para o Gabriel (Key contact para direcionamento técnico). Se ele topar, fechamos o camarote para ele e mais alguns stakeholders.' },
+  {n:129, bu:'Cidades', conta:'APPA - Administração dos Portos de Paranaguá e Antonina', tipo:'Cliente', area:'Inovação', owner:'Piovezan', valor:null, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'- Levantar:\nQuantidades e potências necessárias\nAplicações\nDores do cliente\nDesenvolver solução tailor-made\nApoiar construção da proposta mais competitiva' },
+  {n:130, bu:'Cidades', conta:'Leporte', tipo:'Parceiro', area:'Marketing', owner:'Mychael', valor:null, valorRef:null, data:'PR 22/04', status:'Pendente', acao:'Desenvolver one-page de parceiros.' },
+  {n:131, bu:'Cidades', conta:'São Francisco do Sul e Navegantes', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:null, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'Mapeamento de praças e prédios públicos para iluminação\nProposta de teste mais longo para aprovação com o prefeito\nNão aprovaremos teste antes de:\n- Mapear quantidade de oportunidades\n- Estimar valor total\n\nProjetos abaixo de R$ 1 milhão não são prioridade.' },
+  {n:132, bu:'Cidades', conta:'Campo Mourão', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:null, valorRef:null, data:'PR 22/04', status:'Finalizado', acao:'Proposta de R$ 2M para manutenção da instalação\nDecisão: não participar da licitação.' },
+  {n:133, bu:'Cidades', conta:'Brusque', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:null, valorRef:null, data:'PR 22/04', status:'Finalizado', acao:'PPP Solar — Brusque + inteligente\nEficiência da cidade\nNão faz parte do nosso modelo de negócio, não iremos participar.' },
+  {n:134, bu:'Cidades', conta:'USP (São Carlos)', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:null, valorRef:null, data:'PR 22/04', status:'Finalizado', acao:'Projeto já ganho.\nUSA definirá se seremos classificados ou desclassificados.' },
+  {n:135, bu:'Cidades', conta:'Londrina / Projeto Atlas', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:null, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'Contato enviado para o Danilo Pereira para lead de cidades\nTemos contato com o prefeito, aproveitar para marcar uma agenda\nSolicitar contato do assessor, caso seja difícil contato com o prefeito de maneira direta.' },
+  {n:136, bu:'Esportivo', conta:'Arena Pernambuco', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:null, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'Futpro / CBF Day (secretários estaduais de esporte)\nDependência da pregoeira\nAprovado acréscimo de 1 dia no evento.' },
+  {n:137, bu:'Esportivo', conta:'Operário', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:null, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'Perda de contato com Bruno\nReforçar relacionamento via Álvaro\nUtilizar Jean ou Campestrini como ponte para reengajamento.' },
+  {n:138, bu:'Esportivo', conta:'SEJEL', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:null, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'Confissão de dívida em andamento em 500 milhões\nAditivo de R$ 1M a receber.' },
+  {n:139, bu:'Esportivo', conta:'Almeidão e Amigão', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:null, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'Necessária confissão de dívida\nContrato de R$ 4M travado até resolução\nSituação em litígio.' },
+  {n:140, bu:'Esportivo', conta:'FLAFLU', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:null, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'Retirada do carrinho do Maracanã até metade de maio\nProposta RGB em ambiente NFL em andamento.' },
+  {n:141, bu:'Esportivo', conta:'Grêmio', tipo:'Cliente', area:'Marketing', owner:'Rebeca', valor:null, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'Verificar existência do carrinho Grow em operação.' },
+  {n:142, bu:'Esportivo', conta:'Barretos', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:1547045.6, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'1.300 pontos de luminárias\nProposta via permuta (R$ 1,295M)\nNovo projeto com imagens para orçamento atualizado\nAlinhamento positivo com Geromin\nEntrega crítica para festa local.' },
+  {n:143, bu:'Esportivo', conta:'Allianz Parque', tipo:'Cliente', area:'Marketing', owner:'Eric', valor:null, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'Ajustar o vídeo desenvolvido para os EUA com nossos cases relevantes, colocando os títulos em português.\nCriar uma imagem gerada por IA do Allianz iluminado em amarelo como referência visual para a CMED.\nJeff fará envio para o Adib por WhatsApp.' },
+  {n:144, bu:'Esportivo', conta:'Allianz Parque', tipo:'Cliente', area:'Comercial', owner:'Michel', valor:null, valorRef:null, data:'PR 22/04', status:'Em andamento', acao:'Apresentação curta (5–6 slides)\nEng. comercial: proposta de cenografia RGB no Allianz\nEx: roxo (Nubank), amarelo (CMED)\nJeff apresentará para o Adib em um encontro de relacionamento que fará com ele na semana que vem.' },
 ];
 
 // ── STATE ──
 let activeBU = 'all';
 let activeArea = 'all';
-let activeData = 'all';
+let activeData = 'PR 22/04';  // default: PR 22/04
 let activeStatus = 'all';
 
-// ── RENDER ──
-function getFaseBadge(fase) {
-  const f = (fase||'').toLowerCase();
-  if (f.includes('negociação')) return `<span class="fase-badge fase-negociacao">${fase}</span>`;
-  if (f.includes('fechamento') || f.includes('fechado')) return `<span class="fase-badge fase-fechamento">${fase}</span>`;
-  if (f.includes('desenvolvimento')) return `<span class="fase-badge fase-desenvolvimento">${fase}</span>`;
-  if (f.includes('potencial')) return `<span class="fase-badge fase-potencial">${fase}</span>`;
-  if (f.includes('revisão')) return `<span class="fase-badge fase-revisao">${fase}</span>`;
-  if (f.includes('abertura')) return `<span class="fase-badge fase-abertura">${fase}</span>`;
-  if (f.includes('sem op') || f.includes('—') || f==='') return `<span class="fase-badge fase-sem">—</span>`;
-  return `<span class="fase-badge fase-potencial">${fase}</span>`;
-}
+// ── HELPERS ──
 function getAreaTag(area) {
   const a = area.toLowerCase();
   if (a.includes('comercial') && !a.includes('eng')) return `<span class="area-tag area-comercial">${area}</span>`;
   if (a.includes('marketing')) return `<span class="area-tag area-marketing">${area}</span>`;
   if (a.includes('eng')) return `<span class="area-tag area-eng">${area}</span>`;
   if (a.includes('financeiro')) return `<span class="area-tag area-financeiro">${area}</span>`;
+  if (a.includes('inovaç') || a.includes('inova')) return `<span class="area-tag area-inovacao">${area}</span>`;
   return `<span class="area-tag area-comercial">${area}</span>`;
 }
 function getStatusTag(status) {
   const s = status.toLowerCase();
   if (s.includes('andamento')) return `<span class="status-tag status-andamento">Em andamento</span>`;
   if (s.includes('finalizado')) return `<span class="status-tag status-finalizado">Finalizado</span>`;
-  if (s.includes('pendente')) return `<span class="status-tag status-pendente">Pendente</span>`;
-  if (s.includes('aguardando')) return `<span class="status-tag status-pendente">Pendente</span>`;
-  if (s.includes('stanby') || s.includes('standby')) return `<span class="status-tag status-pendente">Pendente</span>`;
-  return `<span class="status-tag status-pendente">${status}</span>`;
-}
-function formatValor(v) {
-  if (!v) return '<span class="valor-cell none">—</span>';
-  if (v >= 10000000) return `<span class="valor-cell big">R$ ${(v/1000000).toFixed(1)}M</span>`;
-  if (v >= 1000000) return `<span class="valor-cell">R$ ${(v/1000000).toFixed(2)}M</span>`;
-  return `<span class="valor-cell">R$ ${v.toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:0})}</span>`;
+  return `<span class="status-tag status-pendente">Pendente</span>`;
 }
 function getBUPill(bu) {
   const b = bu.toLowerCase();
@@ -1368,29 +671,39 @@ function getBUPill(bu) {
   if (b==='grow') return `<span class="bu-pill" style="background:rgba(236,72,153,0.15);color:#f472b6">Grow</span>`;
   return `<span class="bu-pill bu-industrial">${bu}</span>`;
 }
+function fmtV(v) {
+  if (typeof v !== 'number') return '';
+  const cls = v >= 10000000 ? ' big' : '';
+  const txt = v >= 1000000 ? `R$ ${(v/1e6).toFixed(1)}M` : `R$ ${(v/1000).toFixed(0)}k`;
+  return `<span class="conta-group-valor${cls}">${txt}</span>`;
+}
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function fmtPipe(v) {
+  if (v >= 1000000) return 'R$ ' + (v/1000000).toFixed(1) + 'M em oport.';
+  if (v >= 1000) return 'R$ ' + (v/1000).toFixed(0) + 'k em oport.';
+  return 'R$ ' + v.toLocaleString('pt-BR');
+}
 
+// ── RENDER AÇÕES ──
 function renderAcoes() {
   const container = document.getElementById('acoes-cards');
-  const areaMap = {comercial:'comercial', marketing:'marketing', eng:'eng. comercial', financeiro:'financeiro', inovacao:'inovação'};
+  const areaMap = {comercial:'comercial', marketing:'marketing', eng:'eng. comercial', financeiro:'financeiro', inovacao:'inovaç'};
 
-  const contas2204 = ['magnera', 'facchini', 'sulfibra', 'atlas schindler', 'fama', 'scherer', 'confab'];
-  let filtered = acoesData.filter(r => {
+  const filtered = acoesData.filter(r => {
     const buMatch = activeBU === 'all' || r.bu.toLowerCase() === activeBU;
     const areaMatch = activeArea === 'all' || r.area.toLowerCase().includes(areaMap[activeArea]||'§');
-    const dataMatch = activeData === 'all' || r.data === activeData ||
-      (activeData === 'PR 22/04' && r.bu === 'Industrial' && contas2204.some(c => r.conta.toLowerCase().includes(c)));
+    const dataMatch = activeData === 'all' || r.data === activeData;
     const statusMatch = activeStatus === 'all' || r.status === activeStatus;
-    return buMatch && areaMatch && (activeData === 'PR 22/04' ? dataMatch : (dataMatch && r.data !== 'PR 22/04')) && statusMatch;
+    return buMatch && areaMatch && dataMatch && statusMatch;
   });
-
-  const countEl = document.getElementById('acoes-count'); if (countEl) countEl.textContent = filtered.length + ' ações';
 
   if (filtered.length === 0) {
     container.innerHTML = `<div class="empty-state">Nenhuma ação encontrada para este filtro.</div>`;
+    updateStatusCounts();
     return;
   }
 
-  // Group by conta (preserving order)
+  // Group by conta preserving order
   const groups = [];
   const keyMap = new Map();
   filtered.forEach(r => {
@@ -1401,325 +714,156 @@ function renderAcoes() {
       groups.push(g);
     }
     keyMap.get(key).items.push(r);
+    // Update valor to the largest non-null value in group
+    if (typeof r.valor === 'number' && (!keyMap.get(key).valor || r.valor > keyMap.get(key).valor)) {
+      keyMap.get(key).valor = r.valor;
+    }
   });
-
-  const fmtV = v => typeof v === 'number'
-    ? `<span class="conta-group-valor${v>=10000000?' big':''}">${v>=1000000?'R$'+(v/1e6).toFixed(1)+'M':'R$'+(v/1000).toFixed(0)+'k'}</span>`
-    : '';
-
-  const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-
-  const meta = r => `
-    <div class="acao-card-meta">
-      ${getAreaTag(r.area)}
-      <span class="owner-pill">${r.owner}</span>
-      ${getStatusTag(r.status)}
-    </div>`;
 
   container.innerHTML = groups.map(g => {
     const cards = g.items.map(r => {
+      const isPR2204 = r.data === 'PR 22/04';
       const isFup = r.data.startsWith('FUP');
       const isFinalizado = r.status === 'Finalizado';
-      const cardClass = isFinalizado ? 'finalizado-card' : (isFup ? 'pr2-card' : 'pr1-card');
-      const labelClass = isFup ? 'acao-pr-label pr2-label' : 'acao-pr-label';
-      const [labelType, labelDate] = r.data.startsWith('PR') 
-        ? ['Pipe Review', r.data.replace('PR ','')] 
+      let cardClass = '';
+      let labelClass = 'acao-pr-label';
+      if (isPR2204) { cardClass = 'pr2204-card'; labelClass = 'acao-pr-label pr2204-label'; }
+      else if (isFinalizado) { cardClass = 'finalizado-card'; }
+      else if (isFup) { cardClass = 'pr2-card'; labelClass = 'acao-pr-label pr2-label'; }
+      const [labelType, labelDate] = r.data.startsWith('PR')
+        ? ['Pipe Review', r.data.replace('PR ','')]
         : ['FUP', r.data.replace('FUP ','')];
-      return `
-        <div class="acao-card ${cardClass}">
-          <div class="acao-card-body">
-            <div class="${labelClass}">${labelType} <span>${labelDate}</span></div>
-            <div class="acao-card-text">${esc(r.acao)}</div>
-            ${meta(r)}
+      return `<div class="acao-card ${cardClass}">
+        <div class="acao-card-body">
+          <div class="${labelClass}">${labelType} <span>${labelDate}</span></div>
+          <div class="acao-card-text">${esc(r.acao)}</div>
+          <div class="acao-card-meta">
+            ${getAreaTag(r.area)}
+            <span class="owner-pill">${r.owner}</span>
+            ${getStatusTag(r.status)}
           </div>
-          <div class="acao-card-side">
-            <span class="acao-num${isFup?' fup-num':''}">#${r.n}</span>
-          </div>
-        </div>`;
+        </div>
+        <div class="acao-card-side">
+          <span class="acao-num${isFup?' fup-num':''}">#${r.n}</span>
+        </div>
+      </div>`;
     }).join('');
 
     return `<div class="conta-group">
       <div class="conta-group-header">
         ${getBUPill(g.bu)}
         <span class="conta-group-name">${g.conta}</span>
-        <span class="tipo-tag ${g.tipo.toLowerCase()}">${g.tipo}</span>
+        <span class="tipo-tag ${(g.tipo||'').toLowerCase()}">${g.tipo||''}</span>
         ${fmtV(g.valor)}
       </div>
       ${cards}
     </div>`;
   }).join('');
+
+  updateStatusCounts();
 }
 
-function renderGestao() {
-  const grid = document.getElementById('gestao-grid');
-  const catClass = {Inovação:'cat-inovacao', Outros:'cat-outros', Contas:'cat-contas'};
-  grid.innerHTML = gestaoData.map(g => `
-    <div class="gestao-card">
-      <span class="gestao-cat ${catClass[g.cat]||'cat-outros'}">${g.cat}</span>
-      <div class="gestao-plano">${g.plano}</div>
-      <div class="gestao-meta">
-        ${g.conta!=='—'?`<span style="color:var(--accent);font-size:11px">↗ ${g.conta}</span>`:''}
-        ${getBUPill(g.bu)}
-        <span style="color:var(--muted);font-size:10px">Owner: <strong style="color:var(--text)">${g.resp}</strong></span>
-      </div>
-    </div>
-  `).join('');
-}
+// ── MONITORAMENTO ──
+function renderMonitoramento() {
+  const src = activeBU === 'all' ? acoesData : acoesData.filter(r => r.bu.toLowerCase() === activeBU);
+  const dataFiltered = activeData === 'all' ? src : src.filter(r => r.data === activeData);
 
-// ── DIAGNÓSTICO DINÂMICO ──
-const fmt = v => v >= 1000000 ? 'R$'+(v/1000000).toFixed(1)+'M' : 'R$'+(v/1000).toFixed(0)+'k';
+  const total = dataFiltered.length;
+  const fin = dataFiltered.filter(r => r.status === 'Finalizado').length;
+  const and = dataFiltered.filter(r => r.status === 'Em andamento').length;
+  const pen = dataFiltered.filter(r => r.status === 'Pendente').length;
 
-function faixaContas(buKey, minVal, maxVal) {
-  const seen = new Set();
-  return acoesData.filter(r => {
-    if (buKey !== 'all' && r.bu.toLowerCase() !== buKey) return false;
-    const key = r.bu+'|'+r.conta;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return typeof r.valor === 'number' && r.valor >= minVal && r.valor < maxVal;
-  });
-}
-function semValorContas(buKey) {
-  const comValor = new Set();
-  acoesData.forEach(r => {
-    if (typeof r.valor === 'number' && r.valor !== null) comValor.add(r.bu+'|'+r.conta);
-  });
-  const seen = new Set();
-  return acoesData.filter(r => {
-    if (buKey !== 'all' && r.bu.toLowerCase() !== buKey) return false;
-    const key = r.bu+'|'+r.conta;
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return !comValor.has(key);
-  });
-}
+  document.getElementById('mon-total').textContent = total;
+  document.getElementById('mon-fin').textContent = fin;
+  document.getElementById('mon-fin-sub').textContent = total ? Math.round(fin/total*100)+'% do total' : '—';
+  document.getElementById('mon-and').textContent = and;
+  document.getElementById('mon-and-sub').textContent = total ? Math.round(and/total*100)+'% em execução' : '—';
+  document.getElementById('mon-pen').textContent = pen;
+  document.getElementById('mon-pen-sub').textContent = total ? Math.round(pen/total*100)+'% pendentes' : '—';
 
-function renderDiagFaixa(bu) {
-  const buList = ['industrial','esportivo','cidades'];
-  const buLabel = {industrial:'Ind', esportivo:'Esp', cidades:'Cid'};
-  const buColor = {industrial:'var(--ind)', esportivo:'var(--esp)', cidades:'var(--cid)'};
+  const areas = [
+    {label:'Comercial — Industrial', bu:'industrial', area:'comercial', color:'var(--ind)'},
+    {label:'Comercial — Esportivo', bu:'esportivo', area:'comercial', color:'var(--esp)'},
+    {label:'Comercial — Cidades', bu:'cidades', area:'comercial', color:'var(--cid)'},
+    {label:'Comercial — Grow', bu:'grow', area:'comercial', color:'#ec4899'},
+    {label:'Marketing', bu:null, area:'marketing', color:'var(--all-color)'},
+    {label:'Eng. Comercial', bu:null, area:'eng. comercial', color:'var(--esp)'},
+    {label:'Inovação', bu:null, area:'inovaç', color:'#c4b5fd'},
+    {label:'Financeiro', bu:null, area:'financeiro', color:'var(--cid)'},
+  ];
 
-  const colHeaders = bu === 'all'
-    ? buList.map(b=>`<div class="diag-val ${b==='industrial'?'ind':b==='esportivo'?'esp':'cid'}" style="font-size:9px;font-weight:700;letter-spacing:0.06em">${buLabel[b]}</div>`).join('')
-    : `<div class="diag-val" style="color:${buColor[bu]||'var(--accent)'};font-size:9px;font-weight:700">${bu.charAt(0).toUpperCase()+bu.slice(1)}</div>`;
+  const tbody = document.getElementById('mon-tbody');
+  let grandTotal=0, grandAnd=0, grandFin=0, grandPen=0;
 
-  function makeRow(label, minVal, maxVal) {
-    const list = faixaContas(bu, minVal, maxVal);
-    const soma = list.reduce((s,r)=>s+r.valor,0);
-    if (bu !== 'all') {
-      return `<div class="diag-row">
-        <div class="diag-row-label">${label}</div>
-        <div class="diag-val total">${list.length||'—'}</div>
-        <div class="diag-val" style="color:${buColor[bu]};font-family:'DM Mono',monospace;font-size:10px;min-width:60px;text-align:right">${list.length?fmt(soma):'—'}</div>
-      </div>`;
-    }
-    const cols = buList.map(b=>{
-      const n = faixaContas(b,minVal,maxVal).length;
-      return `<div class="diag-val ${b==='industrial'?'ind':b==='esportivo'?'esp':'cid'}">${n||'—'}</div>`;
-    }).join('');
-    return `<div class="diag-row">
-      <div class="diag-row-label">${label}</div>
-      <div class="diag-val total">${faixaContas('all',minVal,maxVal).length||'—'}</div>
-      ${cols}
-    </div>`;
-  }
-
-  function makeSemRow() {
-    const n = semValorContas(bu).length;
-    if (bu !== 'all') {
-      return `<div class="diag-row">
-        <div class="diag-row-label" style="color:var(--orange)">Valor não mapeado</div>
-        <div class="diag-val total">${n||'—'}</div>
-        <div class="diag-val muted" style="color:var(--muted);font-size:10px;min-width:60px;text-align:right">${n} conta${n!==1?'s':''}</div>
-      </div>`;
-    }
-    const cols = buList.map(b=>{
-      const x = semValorContas(b).length;
-      return `<div class="diag-val ${b==='industrial'?'ind':b==='esportivo'?'esp':'cid'} muted">${x||'—'}</div>`;
-    }).join('');
-    return `<div class="diag-row">
-      <div class="diag-row-label" style="color:var(--orange)">Valor não mapeado</div>
-      <div class="diag-val total">${semValorContas('all').length}</div>
-      ${cols}
-    </div>`;
-  }
-
-  const totalMapeado = (()=>{
-    const seen = new Set();
-    return acoesData.filter(r=>{
-      if (bu!=='all' && r.bu.toLowerCase()!==bu) return false;
-      const key=r.bu+'|'+r.conta;
-      if(seen.has(key)) return false;
-      seen.add(key);
-      return typeof r.valor==='number';
-    }).reduce((s,r)=>s+r.valor,0);
-  })();
-
-  document.getElementById('diag-faixa-head').textContent = 'Pipeline por Faixa de Valor';
-  document.getElementById('diag-faixa-content').innerHTML = `
-    <div class="diag-row" style="padding-bottom:6px;border-bottom:1px solid var(--border2)">
-      <div class="diag-row-label" style="font-size:9px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Faixa</div>
-      <div class="diag-val" style="font-size:9px;color:var(--muted);font-weight:600">Qtd</div>
-      ${colHeaders}
-    </div>
-    <div class="diag-row">
-      <div class="diag-row-label highlight">Valor total mapeado</div>
-      <div class="diag-val money" style="font-size:11px">${fmt(totalMapeado)}</div>
-    </div>
-    ${makeRow('Acima de R$ 10M', 10000000, Infinity)}
-    ${makeRow('Entre R$ 1M–10M', 1000000, 10000000)}
-    ${makeRow('Abaixo de R$ 1M', 0, 1000000)}
-    ${makeSemRow()}
-  `;
-}
-
-function renderDiagArea(bu) {
-  const buList = ['industrial','esportivo','cidades'];
-  const buLabel = {industrial:'Ind', esportivo:'Esp', cidades:'Cid'};
-  const buColor = {industrial:'var(--ind)', esportivo:'var(--esp)', cidades:'var(--cid)'};
-  const areas = ['Comercial','Marketing','Eng. Comercial','Financeiro','Inovação','RH','Operações','Enablement'];
-
-  const countArea = (buKey, area) => acoesData.filter(r =>
-    (buKey==='all'||r.bu.toLowerCase()===buKey) && r.area.toLowerCase().includes(area.toLowerCase())
-  ).length;
-
-  const totalAll = bu==='all' ? acoesData.length : acoesData.filter(r=>r.bu.toLowerCase()===bu).length;
-
-  const colHeaders = bu === 'all'
-    ? buList.map(b=>`<div class="diag-val ${b==='industrial'?'ind':b==='esportivo'?'esp':'cid'}" style="font-size:9px;font-weight:700;letter-spacing:0.06em">${buLabel[b]}</div>`).join('')
-    : '';
-
-  const rows = areas.map(a => {
-    if (bu !== 'all') {
-      const n = countArea(bu, a);
-      return `<div class="diag-row"><div class="diag-row-label"${!n?' style="color:var(--muted)"':''}>${a}</div><div class="diag-val total"${!n?' style="color:var(--muted)"':''}>${n}</div></div>`;
-    }
-    const total = countArea('all', a);
-    const cols = buList.map(b=>{
-      const n = countArea(b,a);
-      return `<div class="diag-val ${b==='industrial'?'ind':b==='esportivo'?'esp':'cid'}"${!n?' style="opacity:0.35"':''}>${n||'0'}</div>`;
-    }).join('');
-    return `<div class="diag-row"><div class="diag-row-label"${!total?' style="color:var(--muted)"':''}>${a}</div><div class="diag-val total"${!total?' style="color:var(--muted)"':''}>${total}</div>${cols}</div>`;
+  tbody.innerHTML = areas.map(a => {
+    const rows = dataFiltered.filter(r => {
+      const buOk = !a.bu || r.bu.toLowerCase() === a.bu;
+      const areaOk = r.area.toLowerCase().includes(a.area);
+      return buOk && areaOk;
+    });
+    const t = rows.length;
+    const f = rows.filter(r => r.status === 'Finalizado').length;
+    const d = rows.filter(r => r.status === 'Em andamento').length;
+    const p = rows.filter(r => r.status === 'Pendente').length;
+    const pct = t ? Math.round(f/t*100) : 0;
+    grandTotal+=t; grandAnd+=d; grandFin+=f; grandPen+=p;
+    if (!t) return '';
+    return `<tr>
+      <td class="mt-area" style="color:${a.color}">${a.label}</td>
+      <td class="mt-num">${t}</td>
+      <td class="mt-num" style="color:var(--yellow)">${d}</td>
+      <td class="mt-num" style="color:#76B852">${f}</td>
+      <td class="mt-num" style="color:var(--muted)">${p}</td>
+      <td class="mt-pct" style="color:${pct>0?a.color:'var(--muted)'}">${pct}%</td>
+      <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:${pct}%;background:${a.color}"></div></div></td>
+    </tr>`;
   }).join('');
 
-  const totalCols = bu==='all'
-    ? buList.map(b=>`<div class="diag-val ${b==='industrial'?'ind':b==='esportivo'?'esp':'cid'}">${acoesData.filter(r=>r.bu.toLowerCase()===b).length}</div>`).join('')
-    : '';
-
-  document.getElementById('diag-area-head').textContent = 'Distribuição por Área';
-  document.getElementById('diag-area-content').innerHTML = `
-    <div class="diag-row" style="padding-bottom:6px;border-bottom:1px solid var(--border2)">
-      <div class="diag-row-label" style="font-size:9px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Área</div>
-      <div class="diag-val" style="font-size:9px;color:var(--muted);font-weight:600">Total</div>
-      ${colHeaders}
-    </div>
-    <div class="diag-row"><div class="diag-row-label highlight">Total de planos</div><div class="diag-val total">${totalAll}</div>${totalCols}</div>
-    ${rows}
-  `;
+  const gPct = grandTotal ? Math.round(grandFin/grandTotal*100) : 0;
+  tbody.innerHTML += `<tr class="mt-total">
+    <td class="mt-area" style="color:var(--accent)">TOTAL GERAL</td>
+    <td class="mt-num" style="color:var(--accent)">${grandTotal}</td>
+    <td class="mt-num" style="color:var(--yellow)">${grandAnd}</td>
+    <td class="mt-num" style="color:#76B852">${grandFin}</td>
+    <td class="mt-num" style="color:var(--muted)">${grandPen}</td>
+    <td class="mt-pct" style="color:var(--accent)">${gPct}%</td>
+    <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:${gPct}%;background:var(--accent)"></div></div></td>
+  </tr>`;
 }
 
-
-
-// Para cada área, somamos o valorRef (valor da conta na primeira linha que o registra)
-// das ações que pertencem à BU ativa. Isso evita dupla contagem entre ações da mesma conta.
+// ── SIDEBAR PIPELINE ──
 function calcPipelineByArea(bu) {
   const areaKeys = ['all','comercial','marketing','eng','financeiro','inovacao'];
-  const areaMatch = {comercial:'comercial', marketing:'marketing', eng:'eng. comercial', financeiro:'financeiro', inovacao:'inovação'};
+  const areaMatch = {comercial:'comercial', marketing:'marketing', eng:'eng. comercial', financeiro:'financeiro', inovacao:'inovaç'};
 
   areaKeys.forEach(aKey => {
     const filtered = acoesData.filter(r => {
       const buMatch = bu === 'all' || r.bu.toLowerCase() === bu;
-      const aMatch = aKey === 'all'
-        ? typeof r.valorRef === 'number'
-        : r.area.toLowerCase().includes(areaMatch[aKey]||'§');
-      return buMatch && aMatch;
+      return buMatch && (aKey === 'all' ? typeof r.valorRef === 'number' : r.area.toLowerCase().includes(areaMatch[aKey]||'§'));
     });
-    // Deduplicate by conta — sum valor once per conta that has this area
-    const seen = new Set();
     let total = 0;
-    filtered.forEach(r => {
-      const key = r.bu + '|' + r.conta;
-      if (!seen.has(key) && typeof r.valor === 'number') {
-        seen.add(key);
-        total += r.valor;
-      }
-    });
-    // For 'all', use valorRef dedup instead to avoid cross-area double count
     if (aKey === 'all') {
-      total = acoesData.filter(r => {
-        const buMatch = bu === 'all' || r.bu.toLowerCase() === bu;
-        return buMatch && typeof r.valorRef === 'number';
-      }).reduce((s, r) => s + r.valorRef, 0);
+      total = filtered.reduce((s,r) => s + (r.valorRef||0), 0);
+    } else {
+      const seen = new Set();
+      filtered.forEach(r => {
+        const key = r.bu+'|'+r.conta;
+        if (!seen.has(key) && typeof r.valor === 'number') { seen.add(key); total += r.valor; }
+      });
     }
-    const el = document.getElementById('apipe-' + aKey);
+    const el = document.getElementById('apipe-'+aKey);
     if (el) el.textContent = total > 0 ? fmtPipe(total) : '';
   });
 }
 
-function fmtPipe(v) {
-  if (v >= 1000000) return 'R$ ' + (v/1000000).toFixed(1) + 'M em oport.';
-  if (v >= 1000) return 'R$ ' + (v/1000).toFixed(0) + 'k em oport.';
-  return 'R$ ' + v.toLocaleString('pt-BR');
-}
-const kpiData = {
-  all:       { pipeline:'R$ 146,3M', pipelinesub:'todas as BUs', contas:'54', contassub:'50 clientes · 4 parceiros', planos:'117', planossub:'em todas as áreas', dez:'5', dezsub:'oportunidades grandes' },
-  industrial:{ pipeline:'R$ 31,1M',  pipelinesub:'BU Industrial', contas:'23', contassub:'19 clientes · 4 parceiros', planos:'75', planossub:'ações na BU', dez:'2', dezsub:'oportunidades grandes' },
-  esportivo: { pipeline:'R$ 27,3M',  pipelinesub:'BU Esportivo', contas:'12', contassub:'12 clientes · 0 parceiros', planos:'22', planossub:'ações na BU', dez:'1', dezsub:'oportunidade grande' },
-  cidades:   { pipeline:'R$ 87,6M',  pipelinesub:'BU Cidades', contas:'12', contassub:'12 clientes · 0 parceiros', planos:'12', planossub:'ações na BU', dez:'4', dezsub:'oportunidades grandes' },
-  grow:      { pipeline:'R$ 274k',   pipelinesub:'BU Grow', contas:'7', contassub:'7 clientes · 0 parceiros', planos:'8', planossub:'ações na BU', dez:'0', dezsub:'oportunidades grandes' },
-};
-
-function setFilter(bu) {
-  activeBU = bu;
-  // sidebar style
-  ['all','industrial','esportivo','cidades','grow'].forEach(b => {
-    const el = document.getElementById('filter-'+b);
-    el.classList.remove('active','all','ind','esp','cid');
-  });
-  const classMap = {all:'all',industrial:'ind',esportivo:'esp',cidades:'cid',grow:'grow'};
-  const el = document.getElementById('filter-'+bu);
-  if (el) el.classList.add('active', classMap[bu]);
-
-  // KPIs
-  const d = kpiData[bu];
-  document.getElementById('kpi-pipeline').textContent = d.pipeline;
-  document.getElementById('kpi-pipeline-sub').textContent = d.pipelinesub;
-  document.getElementById('kpi-contas').textContent = d.contas;
-  document.getElementById('kpi-contas-sub').textContent = d.contassub;
-  document.getElementById('kpi-planos').textContent = d.planos;
-  document.getElementById('kpi-planos-sub').textContent = d.planossub;
-  document.getElementById('kpi-10m').textContent = d.dez;
-  document.getElementById('kpi-10m-sub').textContent = d.dezsub;
-
-  // pipeline bar
-  const rows = document.querySelectorAll('.p-bar-row');
-  rows.forEach(r => {
-    if (bu === 'all') { r.style.opacity = '1'; }
-    else { r.style.opacity = r.dataset.bu === bu ? '1' : '0.25'; }
-  });
-
-  renderAcoes();
-  calcPipelineByArea(bu);
-  renderDiagArea(bu);
-  renderDiagFaixa(bu);
-  updateStatusCounts();
-}
-
-function setArea(area) {
-  activeArea = area;
-  ['all','comercial','marketing','eng','financeiro'].forEach(a => {
-    document.getElementById('area-'+a).classList.remove('active');
-  });
-  document.getElementById('area-'+area).classList.add('active');
-  renderAcoes();
-}
-
+// ── STATUS COUNTS ──
 function updateStatusCounts() {
-  const buF = activeBU === 'all' ? acoesData : acoesData.filter(r => r.bu.toLowerCase() === activeBU);
-  const total = buF.length;
-  const and = buF.filter(r => r.status === 'Em andamento').length;
-  const fin = buF.filter(r => r.status === 'Finalizado').length;
-  const pen = buF.filter(r => r.status === 'Pendente').length;
+  const src = activeBU === 'all' ? acoesData : acoesData.filter(r => r.bu.toLowerCase() === activeBU);
+  const dataFiltered = activeData === 'all' ? src : src.filter(r => r.data === activeData);
+  const total = dataFiltered.length;
+  const and = dataFiltered.filter(r => r.status === 'Em andamento').length;
+  const fin = dataFiltered.filter(r => r.status === 'Finalizado').length;
+  const pen = dataFiltered.filter(r => r.status === 'Pendente').length;
   const pct = v => total ? Math.round(v/total*100)+'%' : '0%';
   document.getElementById('status-count-all').textContent = total + ' ações';
   document.getElementById('status-count-andamento').textContent = and + ' · ' + pct(and);
@@ -1727,13 +871,40 @@ function updateStatusCounts() {
   document.getElementById('status-count-pendente').textContent = pen + ' · ' + pct(pen);
 }
 
+// ── FILTER HANDLERS ──
+function setFilter(bu) {
+  activeBU = bu;
+  const classMap = {all:'all',industrial:'ind',esportivo:'esp',cidades:'cid',grow:'grow'};
+  ['all','industrial','esportivo','cidades','grow'].forEach(b => {
+    const el = document.getElementById('filter-'+b);
+    if (!el) return;
+    el.classList.remove('active','all','ind','esp','cid','grow');
+  });
+  const el = document.getElementById('filter-'+bu);
+  if (el) el.classList.add('active', classMap[bu]);
+  renderAcoes();
+  calcPipelineByArea(bu);
+  renderMonitoramento();
+}
+
+function setArea(area) {
+  activeArea = area;
+  ['all','comercial','marketing','eng','financeiro','inovacao'].forEach(a => {
+    const el = document.getElementById('area-'+a);
+    if (el) el.classList.remove('active');
+  });
+  const el = document.getElementById('area-'+area);
+  if (el) el.classList.add('active');
+  renderAcoes();
+}
+
 function setStatus(status) {
   activeStatus = status;
+  const idMap = {'all':'all','Em andamento':'andamento','Finalizado':'finalizado','Pendente':'pendente'};
   ['all','andamento','finalizado','pendente'].forEach(id => {
     const el = document.getElementById('status-'+id);
     if (el) el.classList.remove('active');
   });
-  const idMap = {'all':'all','Em andamento':'andamento','Finalizado':'finalizado','Pendente':'pendente'};
   const el = document.getElementById('status-'+idMap[status]);
   if (el) el.classList.add('active');
   renderAcoes();
@@ -1741,54 +912,268 @@ function setStatus(status) {
 
 function setData(data) {
   activeData = data;
-  ['all','pr-2503','pr-0804','pr-1504','fup-1604','fup-2004','pr-2204'].forEach(id => {
+  const idMap = {
+    'all':'all','PR 25/03':'pr-2503','PR 08/04':'pr-0804',
+    'PR 15/04':'pr-1504','FUP 16/04':'fup-1604','FUP 20/04':'fup-2004','PR 22/04':'pr-2204'
+  };
+  ['pr-2503','pr-0804','pr-1504','fup-1604','fup-2004','pr-2204'].forEach(id => {
     const el = document.getElementById('data-'+id);
     if (el) el.classList.remove('active');
   });
-  const idMap = {
-    'all':'all', 'PR 25/03':'pr-2503', 'PR 08/04':'pr-0804',
-    'PR 15/04':'pr-1504', 'FUP 16/04':'fup-1604', 'FUP 20/04':'fup-2004', 'PR 22/04':'pr-2204'
-  };
   const el = document.getElementById('data-'+idMap[data]);
   if (el) el.classList.add('active');
   renderAcoes();
+  renderMonitoramento();
+}
+
+function setMonPR(pr) {
+  activeMonPR = pr;
+  ['2503','0804','2204'].forEach(id => {
+    const el = document.getElementById('monbtn-'+id);
+    if (!el) return;
+    if (id === pr) {
+      el.style.border = '1px solid var(--ind)'; el.style.color = 'var(--ind)'; el.style.background = 'rgba(59,130,246,0.1)';
+    } else {
+      el.style.border = '1px solid var(--border2)'; el.style.color = 'var(--muted)'; el.style.background = 'none';
+    }
+  });
+  renderMonitoramento();
 }
 
 function setTab(tab) {
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
   document.getElementById('tab-'+tab).classList.add('active');
-  // Update header tab styles
-  ['diagnostico','monitoramento'].forEach(t => {
-    const el = document.getElementById('header-tab-'+t);
-    if (!el) return;
-    el.classList.remove('htab-active');
-    el.style.color = 'var(--muted)';
-    el.style.background = 'none';
-    el.style.borderBottom = 'none';
-  });
-  const active = document.getElementById('header-tab-'+tab);
-  if (active) {
-    active.classList.add('htab-active');
-    active.style.color = 'var(--accent)';
-    active.style.background = 'none';
-    active.style.borderBottom = '2px solid var(--accent)';
-    active.style.borderRadius = '0';
-    active.style.paddingBottom = '4px';
-  }
-  // Show/hide acoes tab — clicking Diagnóstico or Monitoramento hides planos
-  if (tab === 'acoes') {
-    document.getElementById('tab-acoes').classList.add('active');
-  }
+  if (tab === 'monitoramento') renderMonitoramento();
+  if (tab === 'diagnostico') renderDiag();
 }
 
+// ── DIAGNÓSTICO DATA (from spreadsheet) ──
+const diagData = {
+  '2503': {
+    label: 'PR 25/03/2026',
+    pipeline: { total: 148843277, ind: 33921322, esp: 27321955, cid: 87600000 },
+    contas: { total:42, ind:19, esp:11, cid:12, clientes:37, parceiros:5, semSF:1, semValor:1 },
+    faixa: { acima10m:{total:7,ind:2,esp:1,cid:4}, acima1m:{total:18,ind:5,esp:6,cid:7}, abaixo1m:{total:9,ind:7,esp:2,cid:0}, semValor:{total:3,ind:0,esp:2,cid:1} },
+    planos: { total:{total:51,ind:27,esp:13,cid:11}, comercial:{total:33,ind:10,esp:12,cid:11}, marketing:{total:8,ind:8,esp:0,cid:0}, eng:{total:7,ind:6,esp:1,cid:0}, financeiro:{total:3,ind:3,esp:0,cid:0}, inovacao:{total:0,ind:0,esp:0,cid:0} }
+  },
+  '0804': {
+    label: 'PR 08/04/2026',
+    pipeline: { total: 114921955, ind: 33397111, esp: 27321955, cid: 87600000 },
+    contas: { total:41, ind:18, esp:11, cid:12, clientes:37, parceiros:4, semSF:1, semValor:1 },
+    faixa: { acima10m:{total:7,ind:2,esp:1,cid:4}, acima1m:{total:17,ind:4,esp:6,cid:7}, abaixo1m:{total:9,ind:7,esp:2,cid:0}, semValor:{total:3,ind:0,esp:2,cid:1} },
+    planos: { total:{total:38,ind:38,esp:0,cid:0}, comercial:{total:21,ind:21,esp:0,cid:0}, marketing:{total:9,ind:9,esp:0,cid:0}, eng:{total:4,ind:4,esp:0,cid:0}, financeiro:{total:2,ind:2,esp:0,cid:0}, inovacao:{total:2,ind:2,esp:0,cid:0} }
+  },
+  '2204': {
+    label: 'PR 22/04/2026',
+    pipeline: { total: null, ind: null, esp: null, cid: null },
+    contas: { total:null, ind:null, esp:null, cid:null, clientes:null, parceiros:null, semSF:null, semValor:null },
+    faixa: { acima10m:{total:null,ind:null,esp:null,cid:null}, acima1m:{total:null,ind:null,esp:null,cid:null}, abaixo1m:{total:null,ind:null,esp:null,cid:null}, semValor:{total:null,ind:null,esp:null,cid:null} },
+    planos: { total:{total:27,ind:8,esp:9,cid:10}, comercial:{total:18,ind:5,esp:8,cid:5}, marketing:{total:6,ind:2,esp:2,cid:2}, eng:{total:0,ind:0,esp:0,cid:0}, financeiro:{total:0,ind:0,esp:0,cid:0}, inovacao:{total:1,ind:0,esp:0,cid:1} }
+  }
+};
+
+let activeDiagPR = '2503';
+
+function fmtMoney(v) {
+  if (v === null || v === undefined) return '—';
+  if (v >= 1000000) return 'R$ ' + (v/1000000).toFixed(1) + 'M';
+  if (v >= 1000) return 'R$ ' + (v/1000).toFixed(0) + 'k';
+  return 'R$ ' + v.toLocaleString('pt-BR');
+}
+function fmtN(v) { return (v === null || v === undefined) ? '—' : v; }
+
+function renderDiag() {
+  const d = diagData[activeDiagPR];
+
+  // KPIs
+  const pct = d.planos.total.total ? Math.round((d.planos.total.total - d.planos.comercial.total) / d.planos.total.total * 100) : null;
+  document.getElementById('diag-kpis').innerHTML = `
+    <div class="kpi cyan"><div class="kpi-label">Pipeline Total</div><div class="kpi-value small accent">${fmtMoney(d.pipeline.total)}</div><div class="kpi-sub">${d.label}</div></div>
+    <div class="kpi blue"><div class="kpi-label">Contas Discutidas</div><div class="kpi-value accent">${fmtN(d.contas.total)}</div><div class="kpi-sub">${fmtN(d.contas.clientes)} clientes · ${fmtN(d.contas.parceiros)} parceiros</div></div>
+    <div class="kpi purple"><div class="kpi-label">Planos de Ação</div><div class="kpi-value all">${fmtN(d.planos.total.total)}</div><div class="kpi-sub">Ind ${fmtN(d.planos.total.ind)} · Esp ${fmtN(d.planos.total.esp)} · Cid ${fmtN(d.planos.total.cid)}</div></div>
+    <div class="kpi amber"><div class="kpi-label">Acima de R$ 10M</div><div class="kpi-value" style="color:var(--yellow)">${fmtN(d.faixa.acima10m.total)}</div><div class="kpi-sub">oportunidades grandes</div></div>
+  `;
+
+  // Pipeline bars
+  const maxPipe = Math.max(d.pipeline.ind||0, d.pipeline.esp||0, d.pipeline.cid||0) || 1;
+  document.getElementById('diag-pipeline-bars').innerHTML = [
+    {label:'Industrial', val:d.pipeline.ind, color:'var(--ind)'},
+    {label:'Esportivo',  val:d.pipeline.esp, color:'var(--esp)'},
+    {label:'Cidades',    val:d.pipeline.cid, color:'var(--cid)'},
+  ].map(b => `<div class="p-bar-row">
+    <div class="p-bar-label">${b.label}</div>
+    <div class="p-bar-track"><div class="p-bar-fill" style="width:${b.val ? Math.round(b.val/maxPipe*100) : 0}%;background:${b.color}"></div></div>
+    <div class="p-bar-val" style="color:${b.color}">${fmtMoney(b.val)}</div>
+  </div>`).join('');
+
+  // Contas
+  document.getElementById('diag-contas-content').innerHTML = [
+    {label:'Contas discutidas', total:d.contas.total, ind:d.contas.ind, esp:d.contas.esp, cid:d.contas.cid, bold:true},
+    {label:'Clientes', total:d.contas.clientes, ind:'—', esp:'—', cid:'—'},
+    {label:'Parceiros', total:d.contas.parceiros, ind:'—', esp:'—', cid:'—'},
+    {label:'Sem cadastro SF', total:d.contas.semSF, ind:'—', esp:'—', cid:'—', warn:'red'},
+    {label:'Sem valor de oport.', total:d.contas.semValor, ind:'—', esp:'—', cid:'—', warn:'orange'},
+  ].map(r => `<div class="diag-row">
+    <div class="diag-row-label${r.bold?' highlight':''}"${r.warn?` style="color:var(--${r.warn})"`:''}>${r.label}</div>
+    <div class="diag-val total">${fmtN(r.total)}</div>
+    <div class="diag-val ind">${fmtN(r.ind)}</div>
+    <div class="diag-val esp">${fmtN(r.esp)}</div>
+    <div class="diag-val cid">${fmtN(r.cid)}</div>
+  </div>`).join('');
+
+  // Faixa
+  document.getElementById('diag-faixa-content').innerHTML = `
+    <div class="diag-row" style="padding-bottom:6px;border-bottom:1px solid var(--border2)">
+      <div class="diag-row-label" style="font-size:9px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Faixa</div>
+      <div class="diag-val" style="font-size:9px;color:var(--muted);font-weight:600">Total</div>
+      <div class="diag-val ind" style="font-size:9px;font-weight:700">Ind</div>
+      <div class="diag-val esp" style="font-size:9px;font-weight:700">Esp</div>
+      <div class="diag-val cid" style="font-size:9px;font-weight:700">Cid</div>
+    </div>` +
+  [
+    {label:'Acima de R$ 10M', key:'acima10m'},
+    {label:'Entre R$ 1M–10M', key:'acima1m'},
+    {label:'Abaixo de R$ 1M', key:'abaixo1m'},
+    {label:'Valor não mapeado', key:'semValor', warn:true},
+  ].map(r => `<div class="diag-row">
+    <div class="diag-row-label"${r.warn?' style="color:var(--orange)"':''}>${r.label}</div>
+    <div class="diag-val total">${fmtN(d.faixa[r.key].total)}</div>
+    <div class="diag-val ind">${fmtN(d.faixa[r.key].ind)}</div>
+    <div class="diag-val esp">${fmtN(d.faixa[r.key].esp)}</div>
+    <div class="diag-val cid">${fmtN(d.faixa[r.key].cid)}</div>
+  </div>`).join('');
+
+  // Planos por área
+  document.getElementById('diag-planos-content').innerHTML = `
+    <div class="diag-row" style="padding-bottom:6px;border-bottom:1px solid var(--border2)">
+      <div class="diag-row-label" style="font-size:9px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Área</div>
+      <div class="diag-val" style="font-size:9px;color:var(--muted);font-weight:600">Total</div>
+      <div class="diag-val ind" style="font-size:9px;font-weight:700">Ind</div>
+      <div class="diag-val esp" style="font-size:9px;font-weight:700">Esp</div>
+      <div class="diag-val cid" style="font-size:9px;font-weight:700">Cid</div>
+    </div>` +
+  [
+    {label:'Total de planos', key:'total', bold:true},
+    {label:'Comercial', key:'comercial'},
+    {label:'Marketing', key:'marketing'},
+    {label:'Eng. Comercial', key:'eng'},
+    {label:'Financeiro', key:'financeiro'},
+    {label:'Inovação', key:'inovacao'},
+  ].map(r => `<div class="diag-row">
+    <div class="diag-row-label${r.bold?' highlight':''}">${r.label}</div>
+    <div class="diag-val total">${fmtN(d.planos[r.key].total)}</div>
+    <div class="diag-val ind">${fmtN(d.planos[r.key].ind)}</div>
+    <div class="diag-val esp">${fmtN(d.planos[r.key].esp)}</div>
+    <div class="diag-val cid">${fmtN(d.planos[r.key].cid)}</div>
+  </div>`).join('');
+}
+
+function setDiagPR(pr) {
+  activeDiagPR = pr;
+  ['2503','0804','2204'].forEach(id => {
+    const el = document.getElementById('diagbtn-'+id);
+    if (!el) return;
+    if (id === pr) {
+      el.style.border = '1px solid var(--ind)';
+      el.style.color = 'var(--ind)';
+      el.style.background = 'rgba(59,130,246,0.1)';
+    } else {
+      el.style.border = '1px solid var(--border2)';
+      el.style.color = 'var(--muted)';
+      el.style.background = 'none';
+    }
+  });
+  renderDiag();
+}
+
+// ── MONITORAMENTO DATA (from spreadsheet — "2503 Monitoramento por Área") ──
+const monData = {
+  '2503': [
+    {area:'Comercial — Industrial', color:'var(--ind)', total:39, and:21, fin:12, pen:6},
+    {area:'Comercial — Esportivo',  color:'var(--esp)', total:21, and:12, fin:6,  pen:3},
+    {area:'Comercial — Cidades',    color:'var(--cid)', total:12, and:8,  fin:0,  pen:4},
+    {area:'Comercial — GROW',       color:'#ec4899',    total:7,  and:0,  fin:0,  pen:7},
+    {area:'Marketing',              color:'var(--all-color)', total:16, and:9, fin:7, pen:0},
+    {area:'Engenharia Comercial',   color:'var(--esp)', total:10, and:8,  fin:0,  pen:2},
+    {area:'Inovação',               color:'#c4b5fd',    total:4,  and:4,  fin:0,  pen:0},
+    {area:'Financeiro',             color:'var(--cid)', total:2,  and:2,  fin:0,  pen:0},
+  ],
+  '0804': [
+    {area:'Comercial — Industrial', color:'var(--ind)', total:39, and:21, fin:12, pen:6},
+    {area:'Comercial — Esportivo',  color:'var(--esp)', total:21, and:12, fin:6,  pen:3},
+    {area:'Comercial — Cidades',    color:'var(--cid)', total:12, and:8,  fin:0,  pen:4},
+    {area:'Comercial — GROW',       color:'#ec4899',    total:7,  and:0,  fin:0,  pen:7},
+    {area:'Marketing',              color:'var(--all-color)', total:16, and:9, fin:7, pen:0},
+    {area:'Engenharia Comercial',   color:'var(--esp)', total:10, and:8,  fin:0,  pen:2},
+    {area:'Inovação',               color:'#c4b5fd',    total:4,  and:4,  fin:0,  pen:0},
+    {area:'Financeiro',             color:'var(--cid)', total:2,  and:2,  fin:0,  pen:0},
+  ],
+  '2204': [
+    {area:'Comercial — Industrial', color:'var(--ind)', total:5,  and:2, fin:0, pen:3},
+    {area:'Comercial — Esportivo',  color:'var(--esp)', total:8,  and:8, fin:0, pen:0},
+    {area:'Comercial — Cidades',    color:'var(--cid)', total:5,  and:2, fin:3, pen:0},
+    {area:'Marketing',              color:'var(--all-color)', total:6, and:6, fin:0, pen:0},
+    {area:'Inovação',               color:'#c4b5fd',    total:1,  and:1, fin:0, pen:0},
+    {area:'Comercial — GROW',       color:'#ec4899',    total:7,  and:0, fin:0, pen:7},
+  ],
+};
+
+let activeMonPR = '2503';
+
+function renderMonitoramento() {
+  const rows = monData[activeMonPR] || monData['2503'];
+  const grandTotal = rows.reduce((s,r)=>s+r.total,0);
+  const grandAnd   = rows.reduce((s,r)=>s+r.and,0);
+  const grandFin   = rows.reduce((s,r)=>s+r.fin,0);
+  const grandPen   = rows.reduce((s,r)=>s+r.pen,0);
+  const gPct = grandTotal ? Math.round(grandFin/grandTotal*100) : 0;
+
+  document.getElementById('mon-total').textContent = grandTotal;
+  document.getElementById('mon-fin').textContent   = grandFin;
+  document.getElementById('mon-fin-sub').textContent = grandTotal ? Math.round(grandFin/grandTotal*100)+'% do total' : '—';
+  document.getElementById('mon-and').textContent   = grandAnd;
+  document.getElementById('mon-and-sub').textContent = grandTotal ? Math.round(grandAnd/grandTotal*100)+'% em execução' : '—';
+  document.getElementById('mon-pen').textContent   = grandPen;
+  document.getElementById('mon-pen-sub').textContent = grandTotal ? Math.round(grandPen/grandTotal*100)+'% pendentes' : '—';
+
+  document.getElementById('mon-tbody').innerHTML = rows.map(r => {
+    const pct = r.total ? Math.round(r.fin/r.total*100) : 0;
+    return `<tr>
+      <td class="mt-area" style="color:${r.color}">${r.area}</td>
+      <td class="mt-num">${r.total}</td>
+      <td class="mt-num" style="color:var(--yellow)">${r.and}</td>
+      <td class="mt-num" style="color:#76B852">${r.fin}</td>
+      <td class="mt-num" style="color:var(--muted)">${r.pen}</td>
+      <td class="mt-pct" style="color:${pct>0?r.color:'var(--muted)'}">${pct}%</td>
+      <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:${pct}%;background:${r.color}"></div></div></td>
+    </tr>`;
+  }).join('') + `<tr class="mt-total">
+    <td class="mt-area" style="color:var(--accent)">TOTAL GERAL</td>
+    <td class="mt-num" style="color:var(--accent)">${grandTotal}</td>
+    <td class="mt-num" style="color:var(--yellow)">${grandAnd}</td>
+    <td class="mt-num" style="color:#76B852">${grandFin}</td>
+    <td class="mt-num" style="color:var(--muted)">${grandPen}</td>
+    <td class="mt-pct" style="color:var(--accent)">${gPct}%</td>
+    <td class="mt-bar-cell"><div class="mt-bar-wrap"><div class="mt-bar" style="width:${gPct}%;background:var(--accent)"></div></div></td>
+  </tr>`;
+}
+
+function setTab(tab) {
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  if (tab === 'monitoramento') renderMonitoramento();
+  if (tab === 'diagnostico') renderDiag();
+}
 
 // ── INIT ──
 renderAcoes();
-renderGestao();
 calcPipelineByArea('all');
-renderDiagArea('all');
-renderDiagFaixa('all');
-updateStatusCounts();
+renderDiag();
+renderMonitoramento();
+(function() {
+  const el = document.getElementById('data-pr-2204');
+  if (el) el.classList.add('active');
+})();
 </script>
 </body>
 </html>
